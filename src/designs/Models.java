@@ -1,0 +1,48 @@
+package designs;
+
+import objects.Project;
+import users.Manager;
+import users.Member;
+
+import java.util.ArrayList;
+
+public class Models {
+    public static ArrayList<Manager> managers = new ArrayList<>();
+    public static ArrayList<Member> members = new ArrayList<>();
+    public static ArrayList<Project> projects =new ArrayList<>();
+
+    public static ArrayList<Manager> getManagers() {
+        return managers;
+    }
+
+    public static void setManagers() {
+        managers.add(new Manager("manager1", "manager1@gmai.com", "manager1"));
+        managers.add(new Manager("manager2", "manager2@gmai.com", "manager2"));
+    }
+
+    public static ArrayList<Member> getMembers() {
+        return members;
+    }
+
+    public static void setMembers() {
+        members.add(new Member("member1", "member1@gmail.com", "member1"));
+        members.add(new Member("member2", "member2@gmail.com", "member2"));
+        members.add(new Member("member3", "member3@gmail.com", "member3"));
+        members.add(new Member("member4", "member4@gmail.com", "member4"));
+        members.add(new Member("member5", "member5@gmail.com", "member5"));
+        members.add(new Member("member6", "member6@gmail.com", "member6"));
+        members.add(new Member("member7", "member7@gmail.com", "member7"));
+        members.add(new Member("member8", "member8@gmail.com", "member8"));
+        members.add(new Member("member9", "member9@gmail.com", "member9"));
+        members.add(new Member("member10", "member10@gmail.com", "member10"));
+
+    }
+
+    public static ArrayList<Project> getProjects() {
+        return projects;
+    }
+
+    public static void setProjects() {
+
+    }
+}
