@@ -1,6 +1,9 @@
 package objects;
 
+import activities.Login;
+import activities.SignUp;
 import activities.Validations;
+import designs.Ui;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -24,7 +27,30 @@ public class LoginSignUpPage {
             }
 
             if(isNumber == 0){
-                exit = true;
+                boolean correct = false;
+                System.out.print("Do you really want to exit? yes/no : ");
+                while(!correct){
+
+                    String decision = scanner.next();
+                    if(decision.equalsIgnoreCase("yes")){
+                        correct = true;
+                        Ui.printLine();
+                        exit = true;
+                    }
+                    else if(decision.equalsIgnoreCase("no")){
+                        correct = true;
+                    }
+                    else{
+                        System.out.print("\t\t\nWrong input! Enter yes or no : ");
+                    }
+                }
+            }
+
+            else if(isNumber == 1){
+                Login.loginMethod(scanner);
+            }
+            else if(isNumber == 2){
+                SignUp.signupMethod(scanner);
             }
 
 

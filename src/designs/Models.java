@@ -16,8 +16,8 @@ public class Models {
     }
 
     public static void setManagers() {
-        managers.add(new Manager("manager1", "manager1@gmai.com", "manager1"));
-        managers.add(new Manager("manager2", "manager2@gmai.com", "manager2"));
+        managers.add(new Manager("manager1", "manager1@gmail.com", "manager1"));
+        managers.add(new Manager("manager2", "manager2@gmail.com", "manager2"));
     }
 
     public static ArrayList<Member> getMembers() {
