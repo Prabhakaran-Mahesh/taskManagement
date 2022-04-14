@@ -1,6 +1,5 @@
 package users;
 
-import activities.Login;
 import activities.Validations;
 import designs.Models;
 import designs.Ui;
@@ -10,11 +9,16 @@ import objects.Task;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
+// Member function is the parent class of all the user types in this project
+// this contains all credentials anf functions of the user
+ */
 public class Member {
     String name;
     String email;
     String password;
 
+    // contains all the tasks assigned to the member
     ArrayList<Task> assignedTasks = new ArrayList<>();
 
     public Member() {
@@ -58,6 +62,10 @@ public class Member {
         this.assignedTasks = assignedTasks;
     }
 
+    /*
+    // when a user tries to log out exitVerification function is called
+    // this function verifies whether the user really wants to exit or not
+     */
     public void exitVerification(Scanner keyboard){
         String exit;
         while(true){
@@ -89,6 +97,11 @@ public class Member {
         }
     }
 
+    /*
+    // As manager sets password for every member as temporary password
+    // all members including the manager has the change password function
+    // so that everyone can have their secured password
+     */
     public void changePassword(Scanner keyboard) {
         String oldPassword, newPassword;
         System.out.println();
@@ -111,6 +124,10 @@ public class Member {
         }
     }
 
+    /*
+    // view assigned task displays brief information on the tasks that are assigned for an user
+    // this ia a read only function
+     */
     public void viewAssignedTasks(Scanner scanner){
         System.out.println();
         Ui.printLine();
@@ -133,6 +150,10 @@ public class Member {
         Ui.printLine();
     }
 
+    /*
+    // update task status is the actual work of the user
+    // the user should keep updating the status of the task given to him
+     */
     public void updateTaskStatus(Scanner scanner){
 
         viewAssignedTasks(scanner);
@@ -170,6 +191,10 @@ public class Member {
         Ui.printLine();
     }
 
+    /*
+    -> this function handles all the functions that are used by member
+    -> this function is called once the member gets logged in
+     */
     public void workOfMember(Scanner scanner){
         int adminChoice;
         System.out.println("\n\t\tWelcome back " + name.toUpperCase());

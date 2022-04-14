@@ -9,6 +9,11 @@ import users.TeamLead;
 import java.util.Scanner;
 
 public class Login {
+
+    /*
+    -> login verification method is used to verify the login credentials of the user.
+    -> this method is used to check the credentials, ie. name, password type
+     */
     private static boolean loginVerification(String email, String password, String type){
 
 
@@ -41,6 +46,10 @@ public class Login {
         return false;
     }
 
+    /*
+    -> this is the main login method.
+    -> gets input and checks input and process are done
+     */
     public static void loginMethod(Scanner scanner) {
         boolean verification = false; // for calling loginVerification function
         int limit = 3; // if the user hits wrong credentials for 3 times. the application ends
@@ -77,6 +86,10 @@ public class Login {
         moveToChoiceDecider(type, email);
     }
 
+    /*
+    ->after verification of credentials
+    -> credentials are passed to this method to make the user move into their respective field
+     */
     private static void moveToChoiceDecider(String type, String email) {
 
         Scanner scanner = new Scanner(System.in);

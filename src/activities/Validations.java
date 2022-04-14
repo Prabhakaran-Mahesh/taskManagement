@@ -5,6 +5,12 @@ import designs.Ui;
 import java.util.Scanner;
 
 public class Validations {
+
+    /*
+    -> number validation
+    -> sometimes user may give input other than int where int is required
+    -> this function prevents from input mismatch error
+     */
     public static int numberCheck(Scanner scanner){
         int choice;
 

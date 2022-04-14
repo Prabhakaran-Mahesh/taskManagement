@@ -8,6 +8,11 @@ import objects.Task;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
+// a team lead is created when a member of a project is promoted as teamlead
+// the team lead has the access to create tasks for a project
+// teamlead divides the work for the team according to the tasks
+ */
 public class TeamLead extends Member{
 
     public static Scanner scanner = new Scanner(System.in);
@@ -34,6 +39,10 @@ public class TeamLead extends Member{
         this.project = project;
     }
 
+    /*
+    // this is the important function of the task management system
+    // using this function the teamlead creates tasks for the assigned project
+     */
    public void createTasks(){
         ArrayList<Task> taskArrayList = new ArrayList<>();
 
@@ -109,6 +118,10 @@ public class TeamLead extends Member{
 
    }
 
+    /*
+     // view task displays brief information on the tasks.
+     // this ia a read only function
+      */
    public void viewTask(){
        System.out.println();
        Ui.printLine();
@@ -131,6 +144,10 @@ public class TeamLead extends Member{
        Ui.printLine();
    }
 
+    /*
+     -> this function handles all the functions that are used by teamlead
+     -> this function is called once the teamlead gets logged in
+      */
    public void workOfTeamLead(){
        int adminChoice;
        System.out.println("\n\t\tWelcome back " + name.toUpperCase());

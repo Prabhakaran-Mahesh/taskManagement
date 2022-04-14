@@ -2,6 +2,10 @@ package objects;
 
 import java.util.ArrayList;
 
+/*
+//Task class is the important class of the projecy
+// the task class is the blue print of all task objects that makes up a project
+ */
 public class Task {
     String taskName;
     String deadline;

@@ -9,6 +9,11 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class LoginSignUpPage {
+
+    /*
+    -> this function is used to display the login page categories
+    -> login, signup, exit
+     */
     public static void loginDisplay(Scanner scanner){
         System.out.println("\n\tWelcome User".toUpperCase(Locale.ROOT));
         System.out.println("\n\tLogin/SignUp\n\n");

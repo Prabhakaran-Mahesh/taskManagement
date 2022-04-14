@@ -5,6 +5,11 @@ import users.TeamLead;
 
 import java.util.ArrayList;
 
+
+/*
+// Project class defines the project which is going to be handled by the task management system
+// The project class is the structure of project objects.
+ */
 public class Project {
     String projectName;
     TeamLead teamLead;
