@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.ArrayList;
+
 public class Task {
     String taskName;
     String deadline;
@@ -16,6 +18,20 @@ public class Task {
         this.status = status;
         this.taskPriority = taskPriority;
         this.taskDescription = taskDescription;
+    }
+
+    public Task(String taskName, String deadline, String status, String taskDescription) {
+        this.taskName = taskName;
+        this.deadline = deadline;
+        this.status = status;
+        this.taskDescription = taskDescription;
+    }
+
+    public Task(String taskName, String deadline, String taskDescription) {
+        this.taskName = taskName;
+        this.deadline = deadline;
+        this.taskDescription = taskDescription;
+        this.status = "Not yet Started";
     }
 
     public String getTaskName() {

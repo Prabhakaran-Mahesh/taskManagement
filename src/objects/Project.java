@@ -38,12 +38,12 @@ public class Project {
         this.projectDescription = projectDescription;
     }
 
-    public Project(String projectName, TeamLead teamLead, ArrayList<Member> projectMembers, String deadline, String status, String projectDescription) {
+    public Project(String projectName, TeamLead teamLead, ArrayList<Member> projectMembers, String deadline, String projectDescription) {
         this.projectName = projectName;
         this.teamLead = teamLead;
         this.projectMembers = projectMembers;
         this.deadline = deadline;
-        this.status = status;
+        this.status = "Not yet started";
         this.taskArrayList = new ArrayList<>();
         this.projectDescription = projectDescription;
     }
@@ -55,6 +55,7 @@ public class Project {
         this.deadline = deadline;
         this.taskArrayList = taskArrayList;
         this.projectDescription = projectDescription;
+        this.status = "Not yet started";
     }
 
     public String getProjectName() {

@@ -4,6 +4,7 @@ import designs.Models;
 import designs.Ui;
 import users.Manager;
 import users.Member;
+import users.TeamLead;
 
 import java.util.Scanner;
 
@@ -21,6 +22,14 @@ public class Login {
         else if(type.equalsIgnoreCase("member")){
             //System.out.println("Hello");
             for (Member x : Models.members) {
+                if (x.getPassword().equals(password) && x.getEmail().equals(email)) {
+                    return true;
+                }
+            }
+        }
+        else if(type.equalsIgnoreCase("teamlead")){
+            //System.out.println("Hello");
+            for (TeamLead x : Models.teamLeads) {
                 if (x.getPassword().equals(password) && x.getEmail().equals(email)) {
                     return true;
                 }
@@ -78,11 +87,16 @@ public class Login {
                     manager.workOfManager(scanner);
                 }
             }
-        } else if (type.equalsIgnoreCase("user")) {
+        } else if (type.equalsIgnoreCase("member")) {
             for (Member users : Models.getMembers()) {
                 if (users.getEmail().equals(email)) {
-                    System.out.println("Hi");
-                    //users.workOfUser(keyboard);
+                    users.workOfMember(scanner);
+                }
+            }
+        } else if (type.equalsIgnoreCase("teamlead")) {
+            for (TeamLead teamLead : Models.getTeamLeads()) {
+                if (teamLead.getEmail().equals(email)) {
+                    teamLead.workOfTeamLead();
                 }
             }
         }

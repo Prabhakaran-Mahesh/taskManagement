@@ -12,6 +12,7 @@ public class Models {
     public static ArrayList<Member> members = new ArrayList<>();
     public static ArrayList<Project> projects =new ArrayList<>();
     public static ArrayList<TeamLead> teamLeads = new ArrayList<>();
+    public static ArrayList<String> status = new ArrayList<>();
 
     public static ArrayList<Manager> getManagers() {
         return managers;
@@ -20,6 +21,7 @@ public class Models {
     public static void setManagers() {
         managers.add(new Manager("manager1", "manager1@gmail.com", "manager1"));
         managers.add(new Manager("manager2", "manager2@gmail.com", "manager2"));
+        managers.add(new Manager("m", "m@gmail.com", "123"));
     }
 
     public static ArrayList<Member> getMembers() {
@@ -50,5 +52,17 @@ public class Models {
 
     public static ArrayList<TeamLead> getTeamLeads() {
         return teamLeads;
+    }
+
+    public static ArrayList<String> getStatus() {
+        return status;
+    }
+
+    public static void setStatus() {
+        status.add("RequirementAnalysing");
+        status.add("Design stage");
+        status.add("Implementation");
+        status.add("Debugging");
+        status.add("Completed");
     }
 }

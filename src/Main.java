@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args){
         Models.setManagers();
         Models.setMembers();
+        Models.setStatus();
 
         Ui.printTitle();
         LoginSignUpPage.loginDisplay(scanner);
