@@ -75,7 +75,6 @@ public class Login {
         if (type.equalsIgnoreCase("manager")) {
             for (Manager manager : Models.getManagers()) {
                 if (manager.getEmail().equals(email)) {
-                    System.out.println("Hello");
                     manager.workOfManager(scanner);
                 }
             }

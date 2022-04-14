@@ -2,7 +2,9 @@ package users;
 
 import designs.Models;
 import designs.Ui;
+import objects.Task;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Manager extends Member{
@@ -14,7 +16,7 @@ public class Manager extends Member{
         super(name, email, password);
     }
 
-    static void createUser(Scanner keyboard){
+    public void createUser(Scanner keyboard){
 
         String name, password, email;
 
@@ -33,6 +35,77 @@ public class Manager extends Member{
         Models.members.add(member);
         System.out.println("\t\tUser added to the team");
         Ui.printLine();
+    }
+
+    public void createProject(Scanner scanner){
+
+        String projectName, description, deadline;
+        TeamLead teamLead;
+        ArrayList<Member> memberArrayList = new ArrayList<>();
+        ArrayList<Task> taskArrayList;
+
+        System.out.println();
+        Ui.printLine();
+        System.out.println("\t\tCreate a Project");
+
+        System.out.print("\t\t\tEnter Name of the Project : ");
+        projectName = scanner.next();
+        System.out.print("\t\t\tProduct Description : ");
+        description = scanner.next();
+        System.out.print("\t\t\tProject Deadline : ");
+        deadline = scanner.next();
+
+        System.out.print("\n\t\t\tEnter the ID number of the users you want for this project\n\t\t\tEnter -1 to stop. ");
+        int i=0;
+        for(Member m : Models.members){
+            i++;
+            System.out.print("\n\t\t S.no : " + i + ". Name : " + m.getName());
+        }
+
+        System.out.println("\n\t\tEnter your choices\n");
+        int memberChoice;
+        while(true){
+            System.out.print("\t\t S.no: ");
+            memberChoice = scanner.nextInt();
+            if(memberChoice == -1){
+                break;
+            }
+            else if(memberChoice<1 || memberChoice>Models.members.size()){
+                System.out.println("\n\t\t S.no not found!");
+                continue;
+            }
+            memberArrayList.add(Models.members.get(memberChoice-1));
+        }
+
+        System.out.println();
+        Ui.printLine();
+        System.out.println("\t\tMembers Added to the Project : ");
+
+        i = 0;
+        for(Member m : memberArrayList){
+            System.out.print("\n\t\t\t S.no : " + i + ". Name : " + m.getName());
+        }
+        System.out.println();
+        Ui.printLine();
+
+        System.out.print("\t\tChoose your ProjectLead! Enter their S.no : ");
+        while(true){
+            System.out.print("\t\t S.no: ");
+            memberChoice = scanner.nextInt();
+            if(memberChoice == -1){
+                break;
+            }
+            else if(memberChoice<1 || memberChoice>memberArrayList.size()){
+                System.out.println("\n\t\t S.no not found!");
+                continue;
+            }
+        }
+        Member mem = memberArrayList.get(memberChoice-1);
+        teamLead = new TeamLead(mem.name, mem.email, mem.password);
+        Models.teamLeads.add(teamLead);
+
+        System.out.println("\n\t\tProject created!");
+
     }
 
     public void workOfManager(Scanner scanner){
@@ -64,12 +137,12 @@ public class Manager extends Member{
                 }
 
                 case 1 : {
-                    createUser(scanner);
+                    this.createUser(scanner);
                     break;
                 }
 
                 case 2 : {
-                    //createProject();
+                    createProject(scanner);
                 }
             }
 

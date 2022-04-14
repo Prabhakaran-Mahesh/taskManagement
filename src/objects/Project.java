@@ -48,6 +48,15 @@ public class Project {
         this.projectDescription = projectDescription;
     }
 
+    public Project(String projectName, TeamLead teamLead, ArrayList<Member> projectMembers, String deadline, ArrayList<Task> taskArrayList, String projectDescription) {
+        this.projectName = projectName;
+        this.teamLead = teamLead;
+        this.projectMembers = projectMembers;
+        this.deadline = deadline;
+        this.taskArrayList = taskArrayList;
+        this.projectDescription = projectDescription;
+    }
+
     public String getProjectName() {
         return projectName;
     }

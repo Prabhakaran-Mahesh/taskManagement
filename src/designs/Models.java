@@ -3,6 +3,7 @@ package designs;
 import objects.Project;
 import users.Manager;
 import users.Member;
+import users.TeamLead;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,7 @@ public class Models {
     public static ArrayList<Manager> managers = new ArrayList<>();
     public static ArrayList<Member> members = new ArrayList<>();
     public static ArrayList<Project> projects =new ArrayList<>();
+    public static ArrayList<TeamLead> teamLeads = new ArrayList<>();
 
     public static ArrayList<Manager> getManagers() {
         return managers;
@@ -44,5 +46,9 @@ public class Models {
 
     public static void setProjects() {
 
+    }
+
+    public static ArrayList<TeamLead> getTeamLeads() {
+        return teamLeads;
     }
 }
