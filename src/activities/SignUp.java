@@ -38,9 +38,7 @@ public class SignUp {
         manager.setEmail(email);
         manager.setPassword(password);
         Models.managers.add(manager);
-
-        Ui.printLine();
-
+        
         Login.moveToChoiceDecider("manager", email);
     }
 }

@@ -5,6 +5,8 @@ import activities.SignUp;
 import activities.Validations;
 import designs.Ui;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -15,7 +17,11 @@ public class LoginSignUpPage {
     -> login, signup, exit
      */
     public static void loginDisplay(Scanner scanner){
-        System.out.println("\n\tWelcome User".toUpperCase(Locale.ROOT));
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("E dd MMM, YYYY  hh:mm");
+
+        System.out.print("\n\tWelcome User".toUpperCase(Locale.ROOT));
+        System.out.printf("%83s Today's Date and Time:    %s\n", " ", dateFormat.format(date));
         System.out.println("\n\tLogin/SignUp\n\n");
 
 
