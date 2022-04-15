@@ -90,7 +90,10 @@ public class Login {
     ->after verification of credentials
     -> credentials are passed to this method to make the user move into their respective field
      */
-    private static void moveToChoiceDecider(String type, String email) {
+    public static void moveToChoiceDecider(String type, String email) {
+
+        System.out.println();
+        Ui.printLine();
 
         Scanner scanner = new Scanner(System.in);
 

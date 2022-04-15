@@ -141,12 +141,18 @@ public class Manager extends Member{
         Ui.printLine();
 
         System.out.println("\t\tProject Details\n");
-        for(Project project : projectArraylist){
-            //System.out.println("Project title : " + project.getProjectName().toUpperCase(Locale.ROOT));
-            if(project.getTaskArrayList().size() == 0){
-                project.setStatus("Not yet started");
-            }
-            else{
+
+        int k=0;
+        if(projectArraylist.size() == 0){
+            System.out.print("\t\tNo Projects found!");
+            Ui.printLine();
+        }
+        else{
+            System.out.printf("\n\t\t%15s %15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
+            for(Project project : projectArraylist){
+                k++;
+                //System.out.println("Project title : " + project.getProjectName().toUpperCase());
+
                 int i=0, j=0;
                 for(Task projectTask : project.getTaskArrayList()){
                     if(projectTask.getStatus().equalsIgnoreCase("Not yet started")){
@@ -160,26 +166,18 @@ public class Manager extends Member{
                 if(i==project.getTaskArrayList().size()){
                     project.setStatus("Not yet started");
                 }
-                else if(i==project.getTaskArrayList().size()){
+                else if(j==project.getTaskArrayList().size()){
                     project.setStatus("Completed");
                 }
                 else{
                     project.setStatus("Implementation");
                 }
+                i++;
+                System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
             }
-
-            if(project.getTaskArrayList().size() == 0){
-                System.out.println("\t\t\tNo task is assigned to you yet!");
-            }
-            else {
-                int i = 0;
-                for (Project proj : projectArraylist) {
-                    i++;
-                    System.out.printf("\n\t\t%15s d%15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
-                    System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, proj.getProjectName(), proj.getDeadline(), proj.getStatus(), proj.getProjectDescription());
-                }
-            }
+            Ui.printLine();
         }
+
     }
 
     /*

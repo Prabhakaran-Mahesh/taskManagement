@@ -97,6 +97,9 @@ public class TeamLead extends Member{
                     if(mem == -1){
                         break;
                     }
+                    else if(mem <-1 || mem >project.getProjectMembers().size() || mem == 0){
+                        System.out.println("\n\t\t User not found! Enter the correct S.no");
+                    }
                     else{
                         project.getProjectMembers().get(mem-1).assignedTasks.add(task);
                     }

@@ -17,7 +17,10 @@ public class SignUp {
         String email="", password, name="";
         System.out.println();
         Ui.printLine();
+
+        System.out.println("\tManager Registration");
         System.out.println();
+
 
         System.out.print("\t\tEnter your Name : ");
         name = scanner.next();
@@ -29,7 +32,7 @@ public class SignUp {
         //password = String.valueOf(console.readPassword());
         password = scanner.next();
 
-        System.out.println("\t\tYou have successfully created your Manager Account");
+        System.out.println("\t\tYou have successfully created your Manager Account\n");
 
         manager.setName(name);
         manager.setEmail(email);
@@ -37,5 +40,7 @@ public class SignUp {
         Models.managers.add(manager);
 
         Ui.printLine();
+
+        Login.moveToChoiceDecider("manager", email);
     }
 }
