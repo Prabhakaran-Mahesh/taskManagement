@@ -63,6 +63,9 @@ public class LoginSignUpPage {
             else if(isNumber == 2){
                 SignUp.signupMethod(scanner);
             }
+            else{
+                System.out.print("\n\t\tEnter correct number");
+            }
 
 
         }while (!exit);

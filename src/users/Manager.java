@@ -102,6 +102,7 @@ public class Manager extends Member{
             }
             else if(memberChoice<1 || memberChoice>Models.members.size()){
                 System.out.println("\n\t\t S.no not found!");
+                memberChoice = -1;
                 continue;
             }
             memberArrayList.add(Models.members.get(memberChoice-1));
@@ -130,9 +131,11 @@ public class Manager extends Member{
 
             if(memberChoice<1 || memberChoice>memberArrayList.size()){
                 System.out.println("\n\t\t S.no not found!");
+                memberChoice = -1;
                 continue;
             }
             else{
+                memberChoice = -1;
                 break;
             }
         }
