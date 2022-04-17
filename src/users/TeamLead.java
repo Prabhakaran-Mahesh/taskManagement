@@ -1,6 +1,7 @@
 package users;
 
 import activities.Validations;
+import designs.Models;
 import designs.Ui;
 import objects.Project;
 import objects.Task;
@@ -86,11 +87,36 @@ public class TeamLead extends Member{
                     }
                 }
 
-                task = new Task(taskName, taskDeadline, taskDescription);
+                System.out.println("\t\tPriority List : ");
+
+                int i = 0;
+                for(String m : Models.getPriority()){
+                    i++;
+                    System.out.print("\n\t\t\t S.no : " + i + ". " + m);
+                }
+                System.out.println();
+                Ui.printLine();
+
+                System.out.print("\t\tChoose task Priority! Enter S.no :");
+                int priorityChoice = -1;
+                while(true) {
+                    while (priorityChoice == -1) {
+                        System.out.print("\t\t S.no: ");
+                        priorityChoice = Validations.numberCheck(scanner);
+                    }
+
+                    if (priorityChoice < 1 || priorityChoice > Models.getPriority().size() || priorityChoice == 0) {
+                        System.out.println("\n\t\t S.no not found!");
+                        continue;
+                    } else {
+                        break;
+                    }
+                }
+                task = new Task(taskName, taskDeadline, taskDescription, Models.getPriority().get(priorityChoice-1));
                 taskArrayList.add(task);
 
                 System.out.println("\t\t\tSelect Members for the task. Choose their S.no. Enter -1 to Stop");
-                int i=0;
+                i=0;
                 int mem =0;
                 for(Member m : project.getProjectMembers()){
                     i++;
@@ -146,8 +172,8 @@ public class TeamLead extends Member{
            int i = 0;
            for (Task task : project.getTaskArrayList()) {
                i++;
-               System.out.printf("\n\t\t%15s d%15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
-               System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
+               System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
+               System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
            }
        }
        System.out.println();
@@ -178,23 +204,27 @@ public class TeamLead extends Member{
 
            switch (adminChoice){
 
-               case -1 : {
+               case -2 : {
                    this.exitVerification(scanner);
+                   adminChoice  = -1;
                    continue;
                }
 
                case 0 : {
                    this.changePassword(scanner);
+                   adminChoice  = -1;
                    break;
                }
 
                case 1 : {
                    this.createTasks();
+                   adminChoice  = -1;
                    break;
                }
 
                case 2 : {
                    this.viewTask();
+                   adminChoice  = -1;
                    break;
                }
            }

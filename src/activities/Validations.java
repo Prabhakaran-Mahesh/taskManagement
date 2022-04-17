@@ -27,6 +27,9 @@ public class Validations {
             // Advances the scanner to prevent input errors
             scanner.nextLine();
             // Sets the condition to false to break the loop
+            if(choice == -1){
+                return -2;
+            }
             return choice;
         } else {
             System.out.println("\n\t\tInvalid input.\n");
@@ -48,7 +51,7 @@ public class Validations {
         String regex = "^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$";
 
         while(true){
-            System.out.print("\t\tEnter Email ID : ");
+            System.out.print("\t\t\tEnter Email ID : ");
             email = scanner.next();
 
             if(email.matches(regex)){

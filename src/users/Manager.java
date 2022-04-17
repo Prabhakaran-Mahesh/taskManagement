@@ -105,6 +105,7 @@ public class Manager extends Member{
                 continue;
             }
             memberArrayList.add(Models.members.get(memberChoice-1));
+            memberChoice = -1;
         }
 
         System.out.println();
@@ -160,7 +161,7 @@ public class Manager extends Member{
 
         int k=0;
         if(projectArraylist.size() == 0){
-            System.out.print("\t\tNo Projects found!");
+            System.out.print("\t\tNo Projects found!\n");
             Ui.printLine();
         }
         else{
@@ -222,28 +223,33 @@ public class Manager extends Member{
 
             switch (adminChoice){
 
-                case -1 : {
+                case -2 : {
                     this.exitVerification(scanner);
+                    adminChoice=-1;
                     continue;
                 }
 
                 case 0 : {
                     this.changePassword(scanner);
+                    adminChoice=-1;
                     break;
                 }
 
                 case 1 : {
                     this.createUser(scanner);
+                    adminChoice=-1;
                     break;
                 }
 
                 case 2 : {
                     this.createProject(scanner);
+                    adminChoice=-1;
                     break;
                 }
 
                 case 3 : {
                     this.viewProjects(scanner);
+                    adminChoice=-1;
                     break;
                 }
             }

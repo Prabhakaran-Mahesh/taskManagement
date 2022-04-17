@@ -13,6 +13,7 @@ public class Models {
     public static ArrayList<Project> projects =new ArrayList<>();
     public static ArrayList<TeamLead> teamLeads = new ArrayList<>();
     public static ArrayList<String> status = new ArrayList<>();
+    public static ArrayList<String> priority = new ArrayList<>();
 
     public static ArrayList<Manager> getManagers() {
         return managers;
@@ -64,5 +65,16 @@ public class Models {
         status.add("Implementation");
         status.add("Debugging");
         status.add("Completed");
+    }
+
+    public static ArrayList<String> getPriority() {
+        return priority;
+    }
+
+    public static void setPriority() {
+        priority.add("Low");
+        priority.add("Medium");
+        priority.add("High");
+        priority.add("Very High");
     }
 }

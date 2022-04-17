@@ -12,30 +12,34 @@ public class Task {
     String status;
     String taskPriority;
     String taskDescription;
+    String priority;
 
     public Task() {
     }
 
-    public Task(String taskName, String deadline, String status, String taskPriority, String taskDescription) {
+    public Task(String taskName, String deadline, String status, String taskPriority, String taskDescription, String priority) {
         this.taskName = taskName;
         this.deadline = deadline;
         this.status = status;
         this.taskPriority = taskPriority;
         this.taskDescription = taskDescription;
+        this.priority = priority;
     }
 
-    public Task(String taskName, String deadline, String status, String taskDescription) {
+    public Task(String taskName, String deadline, String status, String taskDescription, String priority) {
         this.taskName = taskName;
         this.deadline = deadline;
         this.status = status;
         this.taskDescription = taskDescription;
+        this.priority = priority;
     }
 
-    public Task(String taskName, String deadline, String taskDescription) {
+    public Task(String taskName, String deadline, String taskDescription, String priority) {
         this.taskName = taskName;
         this.deadline = deadline;
         this.taskDescription = taskDescription;
         this.status = "Not yet Started";
+        this.priority = priority;
     }
 
     public String getTaskName() {
@@ -76,5 +80,13 @@ public class Task {
 
     public void setTaskDescription(String taskDescription) {
         this.taskDescription = taskDescription;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 }
