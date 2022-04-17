@@ -30,4 +30,25 @@ public class Validations {
         }
 
     }
+
+    /*
+    -> email validation
+    -> email verification is used to check whether correct format of email is passed as input
+     */
+    public static String emailValidation(Scanner scanner) {
+        String email;
+        String regex = "^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$";
+
+        while(true){
+            System.out.print("\t\tEnter Email ID : ");
+            email = scanner.next();
+
+            if(email.matches(regex)){
+                return email;
+            }
+            else{
+                System.out.println("\t\tmail id not correct!\n");
+            }
+        }
+    }
 }

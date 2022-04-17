@@ -152,7 +152,7 @@ public class TeamLead extends Member{
      -> this function is called once the teamlead gets logged in
       */
    public void workOfTeamLead(){
-       int adminChoice;
+       int adminChoice  = -1;
        System.out.println("\n\t\tWelcome back " + name.toUpperCase());
 
        boolean check = true;
@@ -164,8 +164,10 @@ public class TeamLead extends Member{
            System.out.println("\t\t\t Enter 2 to View task status");
            System.out.println("\t\t\t Enter -1 to Exit\n");
 
-           System.out.print("\t\t\t Enter your Choice : ");
-           adminChoice = scanner.nextInt();
+           while(adminChoice == -1){
+               System.out.print("\t\t\t Enter your Choice : ");
+               adminChoice = Validations.numberCheck(scanner);
+           }
 
            switch (adminChoice){
 

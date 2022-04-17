@@ -66,7 +66,7 @@ public class Member {
     // when a user tries to log out exitVerification function is called
     // this function verifies whether the user really wants to exit or not
      */
-    public void exitVerification(Scanner keyboard){
+    public void exitVerification(Scanner keyboard) {
         String exit;
         while(true){
             System.out.print("\t\tAre you sure, Do you want to exit? yes/no : ");
@@ -196,7 +196,7 @@ public class Member {
     -> this function is called once the member gets logged in
      */
     public void workOfMember(Scanner scanner){
-        int adminChoice;
+        int adminChoice = -1;
         System.out.println("\n\t\tWelcome back " + name.toUpperCase());
 
         boolean check = true;
@@ -208,8 +208,10 @@ public class Member {
             System.out.println("\t\t\t Enter 2 to Update task status");
             System.out.println("\t\t\t Enter -1 to Exit\n");
 
-            System.out.print("\t\t\t Enter your Choice : ");
-            adminChoice = scanner.nextInt();
+            while(adminChoice == -1){
+                System.out.print("\t\t\t Enter your Choice : ");
+                adminChoice = Validations.numberCheck(scanner);
+            }
 
             switch (adminChoice){
 

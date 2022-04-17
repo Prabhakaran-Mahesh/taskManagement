@@ -83,19 +83,17 @@ public class Login {
             verification = loginVerification(email, password, type);
 
         }
-        moveToChoiceDecider(type, email);
+        moveToChoiceDecider(type, email, scanner);
     }
 
     /*
     ->after verification of credentials
     -> credentials are passed to this method to make the user move into their respective field
      */
-    public static void moveToChoiceDecider(String type, String email) {
+    public static void moveToChoiceDecider(String type, String email, Scanner scanner) {
 
         System.out.println();
         Ui.printLine();
-
-        Scanner scanner = new Scanner(System.in);
 
         if (type.equalsIgnoreCase("manager")) {
             for (Manager manager : Models.getManagers()) {

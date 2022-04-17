@@ -1,5 +1,6 @@
 package users;
 
+import activities.Validations;
 import designs.Models;
 import designs.Ui;
 import objects.Project;
@@ -36,8 +37,9 @@ public class Manager extends Member{
 
         System.out.print("\t\t\tEnter Name of the User : ");
         name = keyboard.next();
-        System.out.print("\t\t\tEnter Email Id of the User : ");
-        email = keyboard.next();
+
+        email = Validations.emailValidation(keyboard);
+
         System.out.print("\t\t\tEnter Temporary Password : ");
         password = keyboard.next();
 
@@ -72,7 +74,7 @@ public class Manager extends Member{
         System.out.print("\t\t\tProject Deadline : ");
         deadline = scanner.next();
 
-        System.out.print("\n\t\t\tEnter the ID number of the users you want for this project\n\t\t\tEnter -1 to stop. ");
+        System.out.print("\n\t\t\tEnter the ID number of the users you want for this project\n\t\t\tEnter 0 to stop. ");
         int i=0;
         for(Member m : Models.members){
             i++;
@@ -80,11 +82,14 @@ public class Manager extends Member{
         }
 
         System.out.println("\n\t\tEnter your choices\n");
-        int memberChoice;
+        int memberChoice = -1;
         while(true){
-            System.out.print("\t\t S.no: ");
-            memberChoice = scanner.nextInt();
-            if(memberChoice == -1){
+            while(memberChoice == -1){
+                System.out.print("\t\t S.no: ");
+                memberChoice = Validations.numberCheck(scanner);;
+            }
+
+            if(memberChoice == 0){
                 break;
             }
             else if(memberChoice<1 || memberChoice>Models.members.size()){
@@ -107,9 +112,12 @@ public class Manager extends Member{
         Ui.printLine();
 
         System.out.print("\t\tChoose your ProjectLead! Enter their");
+        memberChoice = -1;
         while(true){
-            System.out.print("\t\t S.no: ");
-            memberChoice = scanner.nextInt();
+            while(memberChoice == -1){
+                System.out.print("\t\t S.no: ");
+                memberChoice = Validations.numberCheck(scanner);;
+            }
 
             if(memberChoice<1 || memberChoice>memberArrayList.size()){
                 System.out.println("\n\t\t S.no not found!");
@@ -185,7 +193,7 @@ public class Manager extends Member{
     -> this function is called once the manager gets logged in
      */
     public void workOfManager(Scanner scanner){
-        int adminChoice;
+        int adminChoice=-1;
         System.out.println("\n\t\tWelcome back " + name.toUpperCase());
 
         boolean check = true;
@@ -198,8 +206,11 @@ public class Manager extends Member{
             System.out.println("\t\t\t Enter 3 to View Projects");
             System.out.println("\t\t\t Enter -1 to Exit\n");
 
-            System.out.print("\t\t\t Enter your Choice : ");
-            adminChoice = scanner.nextInt();
+            while(adminChoice == -1){
+                System.out.print("\t\t\t Enter your Choice : ");
+                adminChoice = Validations.numberCheck(scanner);
+            }
+
 
             switch (adminChoice){
 

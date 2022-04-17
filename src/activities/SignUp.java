@@ -14,6 +14,7 @@ public class SignUp {
     public static void signupMethod(Scanner scanner) {
         Manager manager = new Manager();
 
+
         String email="", password, name="";
         System.out.println();
         Ui.printLine();
@@ -25,11 +26,9 @@ public class SignUp {
         System.out.print("\t\tEnter your Name : ");
         name = scanner.next();
 
-        System.out.print("\t\tEnter Email ID : ");
-        email = scanner.next();
+        email = Validations.emailValidation(scanner);
 
         System.out.print("\t\tEnter Password : ");
-        //password = String.valueOf(console.readPassword());
         password = scanner.next();
 
         System.out.println("\t\tYou have successfully created your Manager Account\n");
@@ -39,6 +38,6 @@ public class SignUp {
         manager.setPassword(password);
         Models.managers.add(manager);
         
-        Login.moveToChoiceDecider("manager", email);
+        Login.moveToChoiceDecider("manager", email, scanner);
     }
 }
