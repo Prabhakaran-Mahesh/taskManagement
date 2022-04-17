@@ -71,8 +71,16 @@ public class Manager extends Member{
         scanner.nextLine();
         description = scanner.nextLine();
         System.out.print("");
-        System.out.print("\t\t\tProject Deadline : ");
-        deadline = scanner.next();
+
+        while(true){
+            System.out.print("\t\t\tProject Deadline (Date format : dd-MM-yyyy) : ");
+            deadline = scanner.next();
+
+            if(Validations.dateValidation(deadline)){
+                break;
+            }
+        }
+
 
         System.out.print("\n\t\t\tEnter the ID number of the users you want for this project\n\t\t\tEnter 0 to stop. ");
         int i=0;

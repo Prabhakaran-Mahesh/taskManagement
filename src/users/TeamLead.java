@@ -76,8 +76,15 @@ public class TeamLead extends Member{
                 scanner.nextLine();
                 taskDescription = scanner.nextLine();
                 System.out.print("");
-                System.out.print("\t\t\tTask Deadline : ");
-                taskDeadline = scanner.next();
+
+                while(true){
+                    System.out.print("\t\t\tTask Deadline (Date format : dd-MM-yyyy) : ");
+                    taskDeadline = scanner.next();
+
+                    if(Validations.dateValidation(taskDeadline)){
+                        break;
+                    }
+                }
 
                 task = new Task(taskName, taskDeadline, taskDescription);
                 taskArrayList.add(task);

@@ -2,9 +2,17 @@ package activities;
 
 import designs.Ui;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Validations {
+
+    final static String DATE_FORMAT = "dd-MM-yyyy";
 
     /*
     -> number validation
@@ -49,6 +57,32 @@ public class Validations {
             else{
                 System.out.println("\t\tmail id not correct!\n");
             }
+        }
+    }
+
+    public static LocalDate dateToLocalDate(Date dateToConvert) {
+        return dateToConvert.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
+
+    public static Boolean dateValidation(String date){
+        try {
+            DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+            df.setLenient(false);
+            LocalDate localDate1 = LocalDate.now();
+            df.parse(date);
+            boolean result = localDate1.isBefore(dateToLocalDate(df.parse(date)));
+            if(result){
+                return true;
+            }
+            else{
+                System.out.println("\t\tThe mentioned Date is already passed!Try again");
+                return false;
+            }
+        } catch (ParseException e) {
+            System.out.println("\t\tWrong date or Wrong format!\n");
+            return false;
         }
     }
 }
