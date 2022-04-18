@@ -38,6 +38,6 @@ public class SignUp {
         manager.setPassword(password);
         Models.managers.add(manager);
         
-        Login.moveToChoiceDecider("manager", email, scanner);
+        Login.moveToChoiceDecider(email, scanner);
     }
 }

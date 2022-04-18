@@ -222,7 +222,7 @@ public class Member {
      */
     public void workOfMember(Scanner scanner){
         int adminChoice = -1;
-        System.out.println("\n\t\tWelcome back " + name.toUpperCase());
+        System.out.println("\n\t\tWelcome back Member : " + name.toUpperCase());
 
         boolean check = true;
         while(check){

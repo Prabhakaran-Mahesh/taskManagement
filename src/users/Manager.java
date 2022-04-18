@@ -205,7 +205,7 @@ public class Manager extends Member{
      */
     public void workOfManager(Scanner scanner){
         int adminChoice=-1;
-        System.out.println("\n\t\tWelcome back " + name.toUpperCase());
+        System.out.println("\n\t\tWelcome back Manager : " + name.toUpperCase());
 
         boolean check = true;
         while(check){

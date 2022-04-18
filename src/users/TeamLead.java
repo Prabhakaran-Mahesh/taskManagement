@@ -185,7 +185,7 @@ public class TeamLead extends Member{
       */
    public void workOfTeamLead(){
        int adminChoice  = -1;
-       System.out.println("\n\t\tWelcome back " + name.toUpperCase());
+       System.out.println("\n\t\tWelcome back Teamlead : " + name.toUpperCase());
 
        boolean check = true;
        while(check){
@@ -193,7 +193,10 @@ public class TeamLead extends Member{
 
            System.out.println("\n\t\t\t Enter 0 to Change Password");
            System.out.println("\t\t\t Enter 1 to Add tasks to the Project");
-           System.out.println("\t\t\t Enter 2 to View task status");
+           System.out.println("\t\t\t Enter 2 to View Project Tasks status");
+           System.out.println("\t\t\t Enter 3 to view Tasks Assigned");
+           System.out.println("\t\t\t Enter 4 to Update task status");
+           System.out.println("\t\t\t Enter 5 for DiscussionBox");
            System.out.println("\t\t\t Enter -1 to Exit\n");
 
            while(adminChoice == -1){
@@ -220,6 +223,19 @@ public class TeamLead extends Member{
 
                case 2 : {
                    this.viewTask();
+                   break;
+               }
+               case 3 : {
+                   this.viewAssignedTasks();
+                   break;
+               }
+
+               case 4 : {
+                   this.updateTaskStatus(scanner);
+                   break;
+               }
+               case 5 : {
+                   this.writeDiscussionBox(scanner);
                    break;
                }
                default: {
