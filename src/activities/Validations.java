@@ -12,7 +12,10 @@ import java.util.Scanner;
 
 public class Validations {
 
+    //date format which should be given as input
     final static String DATE_FORMAT = "dd-MM-yyyy";
+    // regex to validate email
+    final static String REGEX = "^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$";
 
     /*
     -> number validation
@@ -26,7 +29,7 @@ public class Validations {
             choice = scanner.nextInt();
             // Advances the scanner to prevent input errors
             scanner.nextLine();
-            // Sets the condition to false to break the loop
+            // Sets the condition too false to break the loop
             if(choice == -1){
                 return -2;
             }
@@ -48,13 +51,12 @@ public class Validations {
      */
     public static String emailValidation(Scanner scanner) {
         String email;
-        String regex = "^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$";
 
         while(true){
             System.out.print("\t\tEnter Email ID : ");
             email = scanner.next();
 
-            if(email.matches(regex)){
+            if(email.matches(REGEX)){
                 return email;
             }
             else{
@@ -63,12 +65,19 @@ public class Validations {
         }
     }
 
+    // this function converts the Date to a LocalDate
     public static LocalDate dateToLocalDate(Date dateToConvert) {
         return dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
 
+    /*
+    -> the dateValidation function validates the input date.
+    -> it checks for 2 conditions
+        i. if the given date exits
+        ii. it is a future date, i.e. the date should be correct and should not be a passed date.
+     */
     public static Boolean dateValidation(String date){
         try {
             DateFormat df = new SimpleDateFormat(DATE_FORMAT);

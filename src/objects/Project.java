@@ -6,10 +6,10 @@ import users.TeamLead;
 import java.util.ArrayList;
 
 
-/*
+
 // Project class defines the project which is going to be handled by the task management system
 // The project class is the structure of project objects.
- */
+
 public class Project {
     String projectName;
     TeamLead teamLead;
@@ -24,25 +24,6 @@ public class Project {
         this.taskArrayList = new ArrayList<>();
     }
 
-    public Project(String projectName, String deadline, String status, String projectDescription) {
-        this.projectName = projectName;
-        this.deadline = deadline;
-        this.status = status;
-        this.projectMembers = new ArrayList<>();
-        this.taskArrayList = new ArrayList<>();
-        this.projectDescription = projectDescription;
-    }
-
-    public Project(String projectName, TeamLead teamLead, String deadline, String status, String projectDescription) {
-        this.projectName = projectName;
-        this.teamLead = teamLead;
-        this.deadline = deadline;
-        this.status = status;
-        this.projectMembers = new ArrayList<>();
-        this.taskArrayList = new ArrayList<>();
-        this.projectDescription = projectDescription;
-    }
-
     public Project(String projectName, TeamLead teamLead, ArrayList<Member> projectMembers, String deadline, String projectDescription) {
         this.projectName = projectName;
         this.teamLead = teamLead;
@@ -53,46 +34,16 @@ public class Project {
         this.projectDescription = projectDescription;
     }
 
-    public Project(String projectName, TeamLead teamLead, ArrayList<Member> projectMembers, String deadline, ArrayList<Task> taskArrayList, String projectDescription) {
-        this.projectName = projectName;
-        this.teamLead = teamLead;
-        this.projectMembers = projectMembers;
-        this.deadline = deadline;
-        this.taskArrayList = taskArrayList;
-        this.projectDescription = projectDescription;
-        this.status = "Not yet started";
-    }
-
     public String getProjectName() {
         return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
-
-    public TeamLead getTeamLead() {
-        return teamLead;
-    }
-
-    public void setTeamLead(TeamLead teamLead) {
-        this.teamLead = teamLead;
     }
 
     public ArrayList<Member> getProjectMembers() {
         return projectMembers;
     }
 
-    public void setProjectMembers(ArrayList<Member> projectMembers) {
-        this.projectMembers = projectMembers;
-    }
-
     public String getDeadline() {
         return deadline;
-    }
-
-    public void setDeadline(String deadline) {
-        this.deadline = deadline;
     }
 
     public String getStatus() {
@@ -115,7 +66,4 @@ public class Project {
         return projectDescription;
     }
 
-    public void setProjectDescription(String projectDescription) {
-        this.projectDescription = projectDescription;
-    }
 }

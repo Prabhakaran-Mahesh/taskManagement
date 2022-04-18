@@ -9,10 +9,9 @@ import objects.Task;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/*
+
 // Member function is the parent class of all the user types in this project
 // this contains all credentials anf functions of the user
- */
 public class Member {
     String name;
     String email;
@@ -52,14 +51,6 @@ public class Member {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public ArrayList<Task> getAssignedTasks() {
-        return assignedTasks;
-    }
-
-    public void setAssignedTasks(ArrayList<Task> assignedTasks) {
-        this.assignedTasks = assignedTasks;
     }
 
     /*
@@ -179,13 +170,10 @@ public class Member {
             i++;
             System.out.println("\t\t\t"+i+". "+ status);
         }
-        while(true){
+        do {
             System.out.print("\t\tPick a status using S.no of the task to update: ");
             choice = Validations.numberCheck(scanner);
-            if(choice != -1 && (choice>0 && choice<=Models.getStatus().size())){
-                break;
-            }
-        }
+        } while (choice == -1 || (choice <= 0 || choice > Models.getStatus().size()));
 
         selectedTask.setStatus(Models.getStatus().get(choice-1));
         System.out.println("\n\t\tTask Status Updated");
@@ -195,6 +183,7 @@ public class Member {
     }
 
 
+    //readDiscussionBox displays all the chat that happened in the discussionBox.
     public void readDiscussionBox(){
         System.out.println();
         Ui.printLine();
@@ -212,8 +201,13 @@ public class Member {
         Ui.printLine();
     }
 
-    public void writeDiscussionBox(Scanner scanner){
-        readDiscussionBox();
+    // this writeDiscussionBox helps to chat in the discussionBox.
+    public void writeDiscussionBox(){
+
+        /*while(true){
+            readDiscussionBox();
+
+        }*/
     }
 
     /*
@@ -224,8 +218,7 @@ public class Member {
         int adminChoice = -1;
         System.out.println("\n\t\tWelcome back Member : " + name.toUpperCase());
 
-        boolean check = true;
-        while(check){
+        while(true){
             System.out.println("\n\t\tWhat would you like to do :");
 
             System.out.println("\n\t\t\t Enter 0 to Change Password");
@@ -239,35 +232,19 @@ public class Member {
                 adminChoice = Validations.numberCheck(scanner);
             }
 
-            switch (adminChoice){
+            switch (adminChoice) {
+                case -2 -> this.exitVerification(scanner);
 
-                case -2 : {
-                    this.exitVerification(scanner);
-                    break;
-                }
+                case 0 -> this.changePassword(scanner);
 
-                case 0 : {
-                    this.changePassword(scanner);
-                    break;
-                }
+                case 1 -> this.viewAssignedTasks();
 
-                case 1 : {
-                    this.viewAssignedTasks();
-                    break;
-                }
+                case 2 -> this.updateTaskStatus(scanner);
 
-                case 2 : {
-                   this.updateTaskStatus(scanner);
-                   break;
-                }
-                case 3 : {
-                    this.writeDiscussionBox(scanner);
-                    break;
-                }
-                default: {
-                    System.out.println("\n\tWrong value. Give correct input number!\n");
-                    break;
-                }
+                case 3 -> this.writeDiscussionBox();
+
+                default -> System.out.println("\n\tWrong value. Give correct input number!\n");
+
             }
             adminChoice = -1;
 

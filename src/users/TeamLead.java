@@ -9,41 +9,29 @@ import objects.Task;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/*
+
 // a team lead is created when a member of a project is promoted as teamlead
 // the team lead has the access to create tasks for a project
 // teamlead divides the work for the team according to the tasks
- */
+
 public class TeamLead extends Member{
 
     public static Scanner scanner = new Scanner(System.in);
 
     Project project = new Project();
 
-    public TeamLead() {
-        super();
-    }
-
     public TeamLead(String name, String email, String password) {
         super(name, email, password);
     }
 
-    public TeamLead(String name, String email, String password, ArrayList<Member> teamMembersArrayList) {
-        super(name, email, password);
-    }
-
-    public Project getProject() {
-        return project;
-    }
 
     public void setProject(Project project) {
         this.project = project;
     }
 
-    /*
+
     // this is the important function of the task management system
     // using this function the teamlead creates tasks for the assigned project
-     */
    public void createTasks(){
         ArrayList<Task> taskArrayList = new ArrayList<>();
 
@@ -58,13 +46,10 @@ public class TeamLead extends Member{
             System.out.println("\t\t\t-1. Task Adding completed");
 
             int choice;
-            while(true){
+            do {
                 System.out.print("\n\t\tEnter your choice : ");
                 choice = Validations.numberCheck(scanner);
-                if(choice != -1){
-                    break;
-                }
-            }
+            } while (choice == -1);
 
             if(choice == 1){
                 Task task;
@@ -78,14 +63,11 @@ public class TeamLead extends Member{
                 taskDescription = scanner.nextLine();
                 System.out.print("");
 
-                while(true){
+                do {
                     System.out.print("\t\t\tTask Deadline (Date format : dd-MM-yyyy) : ");
                     taskDeadline = scanner.next();
 
-                    if(Validations.dateValidation(taskDeadline)){
-                        break;
-                    }
-                }
+                } while (!Validations.dateValidation(taskDeadline));
 
                 System.out.println("\t\tPriority List : ");
 
@@ -116,7 +98,7 @@ public class TeamLead extends Member{
 
                 System.out.println("\t\t\tSelect Members for the task. Choose their S.no. Enter -1 to Stop");
                 i=0;
-                int mem =0;
+                int mem;
                 for(Member m : project.getProjectMembers()){
                     i++;
                     System.out.println("\t\t\tS.no. " + i + " Name : " + m.getName());
@@ -187,8 +169,7 @@ public class TeamLead extends Member{
        int adminChoice  = -1;
        System.out.println("\n\t\tWelcome back Teamlead : " + name.toUpperCase());
 
-       boolean check = true;
-       while(check){
+       while(true){
            System.out.println("\n\t\tWhat would you like to do :");
 
            System.out.println("\n\t\t\t Enter 0 to Change Password");
@@ -204,44 +185,23 @@ public class TeamLead extends Member{
                adminChoice = Validations.numberCheck(scanner);
            }
 
-           switch (adminChoice){
+           switch (adminChoice) {
+               case -2 -> this.exitVerification(scanner);
 
-               case -2 : {
-                   this.exitVerification(scanner);
-                   break;
-               }
+               case 0 -> this.changePassword(scanner);
 
-               case 0 : {
-                   this.changePassword(scanner);
-                   break;
-               }
+               case 1 -> this.createTasks();
 
-               case 1 : {
-                   this.createTasks();
-                   break;
-               }
+               case 2 -> this.viewTask();
 
-               case 2 : {
-                   this.viewTask();
-                   break;
-               }
-               case 3 : {
-                   this.viewAssignedTasks();
-                   break;
-               }
+               case 3 -> this.viewAssignedTasks();
 
-               case 4 : {
-                   this.updateTaskStatus(scanner);
-                   break;
-               }
-               case 5 : {
-                   this.writeDiscussionBox(scanner);
-                   break;
-               }
-               default: {
-                   System.out.println("\n\tWrong value. Give correct input number!\n");
-                   break;
-               }
+               case 4 -> this.updateTaskStatus(scanner);
+
+               case 5 -> this.writeDiscussionBox();
+
+               default -> System.out.println("\n\tWrong value. Give correct input number!\n");
+
            }
            adminChoice = -1;
 

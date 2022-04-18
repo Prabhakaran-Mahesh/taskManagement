@@ -1,6 +1,5 @@
 package designs;
 
-import objects.Project;
 import users.Manager;
 import users.Member;
 import users.TeamLead;
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 public class Models {
     public static ArrayList<Manager> managers = new ArrayList<>();
     public static ArrayList<Member> members = new ArrayList<>();
-    public static ArrayList<Project> projects =new ArrayList<>();
     public static ArrayList<TeamLead> teamLeads = new ArrayList<>();
     public static ArrayList<String> status = new ArrayList<>();
     public static ArrayList<String> priority = new ArrayList<>();
@@ -44,14 +42,6 @@ public class Models {
 
     }
 
-    public static ArrayList<Project> getProjects() {
-        return projects;
-    }
-
-    public static void setProjects() {
-
-    }
-
     public static ArrayList<TeamLead> getTeamLeads() {
         return teamLeads;
     }
@@ -81,9 +71,5 @@ public class Models {
 
     public static ArrayList<String> getDiscussionBox() {
         return discussionBox;
-    }
-
-    public static void setDiscussionBox(ArrayList<String> discussionBox) {
-        Models.discussionBox = discussionBox;
     }
 }

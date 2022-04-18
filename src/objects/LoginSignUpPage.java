@@ -18,7 +18,7 @@ public class LoginSignUpPage {
      */
     public static void loginDisplay(Scanner scanner){
         Date date = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("E dd MMM, YYYY  hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("E dd MMM, yyyy  hh:mm");
 
         System.out.print("\n\tWelcome User".toUpperCase(Locale.ROOT));
         System.out.printf("%83s Today's Date and Time:    %s\n", " ", dateFormat.format(date));

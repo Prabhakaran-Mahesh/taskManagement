@@ -2,8 +2,6 @@ import designs.Models;
 import designs.Ui;
 import objects.LoginSignUpPage;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main {

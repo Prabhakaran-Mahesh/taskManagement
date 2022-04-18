@@ -12,7 +12,7 @@ public class Login {
 
     /*
     -> login verification method is used to verify the login credentials of the user.
-    -> this method is used to check the credentials, ie. name, password type
+    -> this method is used to check the credentials, ie. name, password
      */
     private static boolean loginVerification(String email, String password){
 
@@ -34,7 +34,7 @@ public class Login {
             }
         }
 
-        System.out.println("\t\tCheck Your Email and Password and Type");
+        System.out.println("\t\tCheck Your Email and Password");
         return false;
     }
 
@@ -72,9 +72,6 @@ public class Login {
             System.out.print("\t\tEnter Password : ");
             //password = String.valueOf(console.readPassword());
             password = scanner.next();
-
-            //System.out.print("\t\tEnter Type of your Work : ");
-            //type = scanner.next();
 
             verification = loginVerification(email, password);
 
