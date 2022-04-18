@@ -21,7 +21,7 @@ public class Member {
     Project project;
 
     // contains all the tasks assigned to the member
-    ArrayList<Task> assignedTasks = new ArrayList<>();
+    public ArrayList<Task> assignedTasks = new ArrayList<>();
 
     public Member() {
     }
@@ -130,7 +130,7 @@ public class Member {
     // view assigned task displays brief information on the tasks that are assigned for an user
     // this ia a read only function
      */
-    public void viewAssignedTasks(){
+    public int viewAssignedTasks(){
         System.out.println();
         Ui.printLine();
 
@@ -139,17 +139,58 @@ public class Member {
 
         if(assignedTasks.size() == 0){
             System.out.println("\t\t\tNo task is assigned to you yet!");
+
+            System.out.println();
+            Ui.printLine();
+            return 0;
         }
         else {
+            System.out.println("\n\tAll : ");
             int i = 0;
             for (Task task : assignedTasks) {
                 i++;
                 System.out.printf("\n\t\t%15s d%15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
                 System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
             }
+            System.out.println();
+
+            System.out.println("\n\tNot yet started Tasks : ");
+            i = 0;
+            for (Task task : assignedTasks) {
+                i++;
+                if("Not yet started".equalsIgnoreCase(task.getStatus())){
+                    System.out.printf("\n\t\t%15s d%15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
+                    System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
+                }
+            }
+            if(i == 0){
+                System.out.println("\t\t\tAll the tasks are in Progress\n");
+            }
+            else{
+                System.out.println();
+            }
+
+            System.out.println("\n\tHigh Priority : ");
+            i = 0;
+            for (Task task : assignedTasks) {
+                i++;
+                if("Very High".equalsIgnoreCase(task.getStatus()) || "High".equalsIgnoreCase(task.getStatus())){
+                    System.out.printf("\n\t\t%15s d%15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
+                    System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
+                }
+            }
+            if(i == 0){
+                System.out.println("\t\t\tNo tasks are assigned with High or Very High priority\n");
+            }
+            else{
+                System.out.println();
+            }
+
+            System.out.println();
+            Ui.printLine();
+
+            return 1;
         }
-        System.out.println();
-        Ui.printLine();
     }
 
     /*
@@ -158,39 +199,41 @@ public class Member {
      */
     public void updateTaskStatus(Scanner scanner){
 
-        viewAssignedTasks();
+        int size = viewAssignedTasks();
 
         int choice;
-        while(true){
-            System.out.print("\t\tEnter the s.no : ");
-            choice = Validations.numberCheck(scanner);
-            if(choice != -1 && (choice>0 && choice<=assignedTasks.size())){
-                break;
+        if(size != 0){
+            while(true){
+                System.out.print("\t\tEnter the s.no : ");
+                choice = Validations.numberCheck(scanner);
+                if(choice != -1 && (choice>0 && choice<=assignedTasks.size())){
+                    break;
+                }
+                else{
+                    System.out.println("\t\tWrong input");
+                }
             }
-            else{
-                System.out.println("\t\tWrong input");
+
+            Task selectedTask = assignedTasks.get(choice-1);
+            System.out.println("\t\t"+selectedTask.getTaskName()+"\n");
+
+            System.out.println("\t\tStatus list : ");
+            int i=0;
+            for(String status : Models.getStatus()){
+                i++;
+                System.out.println("\t\t\t"+i+". "+ status);
             }
+            do {
+                System.out.print("\t\tPick a status using S.no of the task to update: ");
+                choice = Validations.numberCheck(scanner);
+            } while (choice == -1 || (choice <= 0 || choice > Models.getStatus().size()));
+
+            selectedTask.setStatus(Models.getStatus().get(choice-1));
+            System.out.println("\n\t\tTask Status Updated");
+
+            System.out.println();
+            Ui.printLine();
         }
-
-        Task selectedTask = assignedTasks.get(choice-1);
-        System.out.println("\t\t"+selectedTask.getTaskName()+"\n");
-
-        System.out.println("\t\tStatus list : ");
-        int i=0;
-        for(String status : Models.getStatus()){
-            i++;
-            System.out.println("\t\t\t"+i+". "+ status);
-        }
-        do {
-            System.out.print("\t\tPick a status using S.no of the task to update: ");
-            choice = Validations.numberCheck(scanner);
-        } while (choice == -1 || (choice <= 0 || choice > Models.getStatus().size()));
-
-        selectedTask.setStatus(Models.getStatus().get(choice-1));
-        System.out.println("\n\t\tTask Status Updated");
-
-        System.out.println();
-        Ui.printLine();
     }
 
 

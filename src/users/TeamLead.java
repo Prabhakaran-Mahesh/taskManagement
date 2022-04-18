@@ -177,7 +177,13 @@ public class TeamLead extends Member{
                         System.out.println("\n\t\t User not found! Enter the correct S.no");
                     }
                     else{
-                        mainProject.getProjectMembers().get(mem-1).assignedTasks.add(task);
+                        if(mainProject.getProjectMembers().get(mem-1).getEmail() == this.getEmail()){
+                            this.assignedTasks.add(task);
+                        }
+                        else{
+                            mainProject.getProjectMembers().get(mem-1).assignedTasks.add(task);
+                        }
+
                     }
                 }
 
@@ -211,7 +217,7 @@ public class TeamLead extends Member{
        System.out.println();
 
        if(mainProject.getTaskArrayList().size() == 0){
-           System.out.println("\t\t\tNo task is assigned to you yet!");
+           System.out.println("\t\t\tNo task is created yet!");
        }
        else {
            int i = 0;
