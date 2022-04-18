@@ -56,7 +56,7 @@ public class Validations {
             System.out.print("\t\tEnter Email ID : ");
             email = scanner.next();
 
-            if(email.matches(REGEX)){
+            if(email.toLowerCase().matches(REGEX)){
                 return email;
             }
             else{

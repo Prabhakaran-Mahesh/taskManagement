@@ -4,6 +4,7 @@ import activities.Validations;
 import designs.Models;
 import designs.Ui;
 import objects.LoginSignUpPage;
+import objects.Project;
 import objects.Task;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class Member {
     String name;
     String email;
     String password;
+
+    Project project;
 
     // contains all the tasks assigned to the member
     ArrayList<Task> assignedTasks = new ArrayList<>();
@@ -53,10 +56,18 @@ public class Member {
         this.password = password;
     }
 
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
     /*
-    // when a user tries to log out exitVerification function is called
-    // this function verifies whether the user really wants to exit or not
-     */
+        // when a user tries to log out exitVerification function is called
+        // this function verifies whether the user really wants to exit or not
+        */
     public void exitVerification(Scanner keyboard) {
         String exit;
         while(true){
@@ -184,30 +195,64 @@ public class Member {
 
 
     //readDiscussionBox displays all the chat that happened in the discussionBox.
-    public void readDiscussionBox(){
+    public int readDiscussionBox(){
         System.out.println();
         Ui.printLine();
 
-        if(Models.getDiscussionBox().size() == 0){
-            System.out.println("\n\t\tEmpty Chat box");
+        System.out.println("\t\tCHAT BOX");
+        if(project == null){
+            System.out.println("\t\tNo chatBoxes are available for you!");
+            return -1;
+        }
+        else if(getProject().getChatBox().size() == 0){
+            System.out.println("\t\tChatbox is Empty");
+            return 1;
         }
         else{
-            for(String chat : Models.getDiscussionBox()){
-                System.out.println("\t\t" + chat);
+            for(String msg : getProject().getChatBox()){
+                System.out.println("\t\t\t" + msg);
             }
+            return 1;
         }
-
-        System.out.println();
-        Ui.printLine();
     }
 
     // this writeDiscussionBox helps to chat in the discussionBox.
-    public void writeDiscussionBox(){
+    public void writeDiscussionBox(Scanner scanner){
 
-        /*while(true){
-            readDiscussionBox();
+        while(true){
+            int chatboxResult = readDiscussionBox();
 
-        }*/
+            if(chatboxResult == -1){
+                break;
+            }
+            else{
+                System.out.println("\n\t\t\t Enter 1 to Add a chat.");
+                System.out.println("\t\t\t Enter -1 to End chat");
+
+                int choice;
+                do {
+                    System.out.print("\n\t\tEnter your choice : ");
+                    choice = Validations.numberCheck(scanner);
+                } while (choice == -1);
+
+                if (choice == -2) {
+                    System.out.println();
+                    Ui.printLine();
+
+                    break;
+                } else if (choice == 1) {
+                    String chat;
+                    System.out.print("\n\t\tYour message : ");
+                    //scanner.nextLine();
+                    chat = scanner.nextLine();
+                    System.out.print("");
+
+                    project.getChatBox().add("\t\t\t\t" + this.name + " : " + chat);
+                } else {
+                    System.out.println("\t\tWrong number. check your Input!\n");
+                }
+            }
+        }
     }
 
     /*
@@ -241,7 +286,7 @@ public class Member {
 
                 case 2 -> this.updateTaskStatus(scanner);
 
-                case 3 -> this.writeDiscussionBox();
+                case 3 -> this.writeDiscussionBox(scanner);
 
                 default -> System.out.println("\n\tWrong value. Give correct input number!\n");
 

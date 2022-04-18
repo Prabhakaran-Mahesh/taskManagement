@@ -18,7 +18,7 @@ public class TeamLead extends Member{
 
     public static Scanner scanner = new Scanner(System.in);
 
-    Project project = new Project();
+    Project mainProject = new Project();
 
     public TeamLead(String name, String email, String password) {
         super(name, email, password);
@@ -26,7 +26,67 @@ public class TeamLead extends Member{
 
 
     public void setProject(Project project) {
-        this.project = project;
+        this.mainProject = project;
+    }
+
+
+    public int readDiscussionBox(){
+        System.out.println();
+        Ui.printLine();
+
+        System.out.println("\t\tCHAT BOX");
+        if(mainProject == null){
+            System.out.println("\t\tNo chatBoxes are available for you!");
+            return -1;
+        }
+        else if(mainProject.getChatBox().size() == 0){
+            System.out.println("\t\tChatbox is Empty");
+            return 1;
+        }
+        else{
+            for(String msg : mainProject.getChatBox()){
+                System.out.println("\t\t\t" + msg);
+            }
+            return 1;
+        }
+    }
+
+    public void writeDiscussionBox(Scanner scanner){
+
+        while(true){
+            int chatboxResult = readDiscussionBox();
+
+            if(chatboxResult == -1){
+                break;
+            }
+            else{
+                System.out.println("\n\t\t\t Enter 1 to Add a chat.");
+                System.out.println("\t\t\t Enter -1 to End chat");
+
+                int choice;
+                do {
+                    System.out.print("\n\t\tEnter your choice : ");
+                    choice = Validations.numberCheck(scanner);
+                } while (choice == -1);
+
+                if (choice == -2) {
+                    System.out.println();
+                    Ui.printLine();
+
+                    break;
+                } else if (choice == 1) {
+                    String chat;
+                    System.out.print("\n\t\tYour message : ");
+                    //scanner.nextLine();
+                    chat = scanner.nextLine();
+                    System.out.print("");
+
+                    mainProject.getChatBox().add("\t\t\t\tTeamLead -> " + this.name + " : " + chat);
+                } else {
+                    System.out.println("\t\tWrong number. check your Input!\n");
+                }
+            }
+        }
     }
 
 
@@ -99,7 +159,7 @@ public class TeamLead extends Member{
                 System.out.println("\t\t\tSelect Members for the task. Choose their S.no. Enter -1 to Stop");
                 i=0;
                 int mem;
-                for(Member m : project.getProjectMembers()){
+                for(Member m : mainProject.getProjectMembers()){
                     i++;
                     System.out.println("\t\t\tS.no. " + i + " Name : " + m.getName());
                 }
@@ -111,11 +171,11 @@ public class TeamLead extends Member{
                     if(mem == -1){
                         break;
                     }
-                    else if(mem <-1 || mem >project.getProjectMembers().size() || mem == 0){
+                    else if(mem <-1 || mem >mainProject.getProjectMembers().size() || mem == 0){
                         System.out.println("\n\t\t User not found! Enter the correct S.no");
                     }
                     else{
-                        project.getProjectMembers().get(mem-1).assignedTasks.add(task);
+                        mainProject.getProjectMembers().get(mem-1).assignedTasks.add(task);
                     }
                 }
 
@@ -124,11 +184,13 @@ public class TeamLead extends Member{
                 Ui.printLine();
             }
             else if(choice == -2){
-                System.out.println("Tasks Added to the task");
+                System.out.println("\t\tTasks Added to the task");
                 done = true;
-                project.setTaskArrayList(taskArrayList);
+                mainProject.setTaskArrayList(taskArrayList);
                 System.out.println();
                 Ui.printLine();
+            } else{
+                System.out.println("\t\tWrong number. check your Input!\n");
             }
 
         }
@@ -146,12 +208,12 @@ public class TeamLead extends Member{
        System.out.println("\t\tView the Project tasks");
        System.out.println();
 
-       if(project.getTaskArrayList().size() == 0){
+       if(mainProject.getTaskArrayList().size() == 0){
            System.out.println("\t\t\tNo task is assigned to you yet!");
        }
        else {
            int i = 0;
-           for (Task task : project.getTaskArrayList()) {
+           for (Task task : mainProject.getTaskArrayList()) {
                i++;
                System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
                System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
@@ -198,7 +260,7 @@ public class TeamLead extends Member{
 
                case 4 -> this.updateTaskStatus(scanner);
 
-               case 5 -> this.writeDiscussionBox();
+               case 5 -> this.writeDiscussionBox(scanner);
 
                default -> System.out.println("\n\tWrong value. Give correct input number!\n");
 
