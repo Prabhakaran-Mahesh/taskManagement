@@ -215,29 +215,31 @@ public class Member {
 
             switch (adminChoice){
 
-                case -1 : {
+                case -2 : {
                     this.exitVerification(scanner);
-                    continue;
+                    break;
                 }
 
                 case 0 : {
                     this.changePassword(scanner);
-                    adminChoice = -1;
                     break;
                 }
 
                 case 1 : {
                     this.viewAssignedTasks(scanner);
-                    adminChoice = -1;
                     break;
                 }
 
                 case 2 : {
                    this.updateTaskStatus(scanner);
-                   adminChoice = -1;
                    break;
                 }
+                default: {
+                    System.out.println("\n\tWrong value. Give correct input number!\n");
+                    break;
+                }
             }
+            adminChoice = -1;
 
         }
     }

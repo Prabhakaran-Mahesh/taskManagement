@@ -135,7 +135,6 @@ public class Manager extends Member{
                 continue;
             }
             else{
-                memberChoice = -1;
                 break;
             }
         }
@@ -228,34 +227,34 @@ public class Manager extends Member{
 
                 case -2 : {
                     this.exitVerification(scanner);
-                    adminChoice=-1;
-                    continue;
+                    break;
                 }
 
                 case 0 : {
                     this.changePassword(scanner);
-                    adminChoice=-1;
                     break;
                 }
 
                 case 1 : {
                     this.createUser(scanner);
-                    adminChoice=-1;
                     break;
                 }
 
                 case 2 : {
                     this.createProject(scanner);
-                    adminChoice=-1;
                     break;
                 }
 
                 case 3 : {
                     this.viewProjects(scanner);
-                    adminChoice=-1;
+                    break;
+                }
+                default: {
+                    System.out.println("\n\tWrong value. Give correct input number!\n");
                     break;
                 }
             }
+            adminChoice = -1;
 
         }
     }

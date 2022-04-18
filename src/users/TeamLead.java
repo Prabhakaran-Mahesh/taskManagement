@@ -206,28 +206,29 @@ public class TeamLead extends Member{
 
                case -2 : {
                    this.exitVerification(scanner);
-                   adminChoice  = -1;
-                   continue;
+                   break;
                }
 
                case 0 : {
                    this.changePassword(scanner);
-                   adminChoice  = -1;
                    break;
                }
 
                case 1 : {
                    this.createTasks();
-                   adminChoice  = -1;
                    break;
                }
 
                case 2 : {
                    this.viewTask();
-                   adminChoice  = -1;
+                   break;
+               }
+               default: {
+                   System.out.println("\n\tWrong value. Give correct input number!\n");
                    break;
                }
            }
+           adminChoice = -1;
 
        }
    }

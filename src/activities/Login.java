@@ -65,6 +65,9 @@ public class Login {
                 Ui.printLine();
                 System.exit(0);
             }
+            else if(limit<2){
+                System.out.println("\n\t\tYou have " + (limit+1) + " more attempts left\n");
+            }
 
             System.out.println();
             Ui.printLine();

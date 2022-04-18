@@ -64,7 +64,7 @@ public class LoginSignUpPage {
                 SignUp.signupMethod(scanner);
             }
             else{
-                System.out.print("\n\t\tEnter correct number");
+                System.out.println("\tEnter correct number\n");
             }
 
 

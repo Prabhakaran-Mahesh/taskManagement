@@ -51,7 +51,7 @@ public class Validations {
         String regex = "^[a-z0-9]+@[a-z]+\\.[a-z]{2,3}$";
 
         while(true){
-            System.out.print("\t\t\tEnter Email ID : ");
+            System.out.print("\t\tEnter Email ID : ");
             email = scanner.next();
 
             if(email.matches(regex)){

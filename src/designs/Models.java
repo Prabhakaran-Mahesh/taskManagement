@@ -14,6 +14,7 @@ public class Models {
     public static ArrayList<TeamLead> teamLeads = new ArrayList<>();
     public static ArrayList<String> status = new ArrayList<>();
     public static ArrayList<String> priority = new ArrayList<>();
+    public static ArrayList<String> discussionBox = new ArrayList<>();
 
     public static ArrayList<Manager> getManagers() {
         return managers;
@@ -76,5 +77,13 @@ public class Models {
         priority.add("Medium");
         priority.add("High");
         priority.add("Very High");
+    }
+
+    public static ArrayList<String> getDiscussionBox() {
+        return discussionBox;
+    }
+
+    public static void setDiscussionBox(ArrayList<String> discussionBox) {
+        Models.discussionBox = discussionBox;
     }
 }
