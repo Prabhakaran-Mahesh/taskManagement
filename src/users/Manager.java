@@ -59,7 +59,7 @@ public class Manager extends Member{
         String projectName, description, deadline;
         TeamLead teamLead;
         ArrayList<Member> memberArrayList = new ArrayList<>();
-        ArrayList<Task> taskArrayList;
+        //ArrayList<Task> taskArrayList;
 
         System.out.println();
         Ui.printLine();
@@ -82,7 +82,7 @@ public class Manager extends Member{
         }
 
 
-        System.out.print("\n\t\t\tEnter the ID number of the users you want for this project\n\t\t\tEnter 0 to stop. ");
+        System.out.print("\n\t\t\tEnter the ID number of the users you want for this project\n\t\t\tEnter -1 to stop. ");
         int i=0;
         for(Member m : Models.members){
             i++;
@@ -97,7 +97,7 @@ public class Manager extends Member{
                 memberChoice = Validations.numberCheck(scanner);;
             }
 
-            if(memberChoice == 0){
+            if(memberChoice == -2){
                 break;
             }
             else if(memberChoice<1 || memberChoice>Models.members.size()){

@@ -29,7 +29,7 @@ public class LoginSignUpPage {
         do{
             System.out.println("\t\tEnter 1 for Login");
             System.out.println("\t\tEnter 2 for Manager Registration");
-            System.out.println("\t\tEnter 0 for Exit\n");
+            System.out.println("\t\tEnter -1 for Exit\n");
 
             int isNumber = -1;
             while(isNumber == -1){
@@ -37,7 +37,7 @@ public class LoginSignUpPage {
                 isNumber = Validations.numberCheck(scanner);
             }
 
-            if(isNumber == 0){
+            if(isNumber == -2){
                 boolean correct = false;
                 System.out.print("Do you really want to exit? yes/no : ");
                 while(!correct){

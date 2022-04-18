@@ -128,7 +128,7 @@ public class Member {
     // view assigned task displays brief information on the tasks that are assigned for an user
     // this ia a read only function
      */
-    public void viewAssignedTasks(Scanner scanner){
+    public void viewAssignedTasks(){
         System.out.println();
         Ui.printLine();
 
@@ -156,7 +156,7 @@ public class Member {
      */
     public void updateTaskStatus(Scanner scanner){
 
-        viewAssignedTasks(scanner);
+        viewAssignedTasks();
 
         int choice;
         while(true){
@@ -164,6 +164,9 @@ public class Member {
             choice = Validations.numberCheck(scanner);
             if(choice != -1 && (choice>0 && choice<=assignedTasks.size())){
                 break;
+            }
+            else{
+                System.out.println("\t\tWrong input");
             }
         }
 
@@ -191,6 +194,28 @@ public class Member {
         Ui.printLine();
     }
 
+
+    public void readDiscussionBox(){
+        System.out.println();
+        Ui.printLine();
+
+        if(Models.getDiscussionBox().size() == 0){
+            System.out.println("\n\t\tEmpty Chat box");
+        }
+        else{
+            for(String chat : Models.getDiscussionBox()){
+                System.out.println("\t\t" + chat);
+            }
+        }
+
+        System.out.println();
+        Ui.printLine();
+    }
+
+    public void writeDiscussionBox(Scanner scanner){
+        readDiscussionBox();
+    }
+
     /*
     -> this function handles all the functions that are used by member
     -> this function is called once the member gets logged in
@@ -206,6 +231,7 @@ public class Member {
             System.out.println("\n\t\t\t Enter 0 to Change Password");
             System.out.println("\t\t\t Enter 1 to view Tasks Assigned");
             System.out.println("\t\t\t Enter 2 to Update task status");
+            System.out.println("\t\t\t Enter 3 for DiscussionBox");
             System.out.println("\t\t\t Enter -1 to Exit\n");
 
             while(adminChoice == -1){
@@ -226,13 +252,17 @@ public class Member {
                 }
 
                 case 1 : {
-                    this.viewAssignedTasks(scanner);
+                    this.viewAssignedTasks();
                     break;
                 }
 
                 case 2 : {
                    this.updateTaskStatus(scanner);
                    break;
+                }
+                case 3 : {
+                    this.writeDiscussionBox(scanner);
+                    break;
                 }
                 default: {
                     System.out.println("\n\tWrong value. Give correct input number!\n");

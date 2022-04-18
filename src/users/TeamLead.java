@@ -55,7 +55,7 @@ public class TeamLead extends Member{
         boolean done = false;
         while(!done){
             System.out.println("\t\t\t1. Add task");
-            System.out.println("\t\t\t0. Completed");
+            System.out.println("\t\t\t-1. Task Adding completed");
 
             int choice;
             while(true){
@@ -105,9 +105,8 @@ public class TeamLead extends Member{
                         priorityChoice = Validations.numberCheck(scanner);
                     }
 
-                    if (priorityChoice < 1 || priorityChoice > Models.getPriority().size() || priorityChoice == 0) {
+                    if (priorityChoice < 1 || priorityChoice > Models.getPriority().size()) {
                         System.out.println("\n\t\t S.no not found!");
-                        continue;
                     } else {
                         break;
                     }
@@ -142,7 +141,7 @@ public class TeamLead extends Member{
                 System.out.println();
                 Ui.printLine();
             }
-            else{
+            else if(choice == -2){
                 System.out.println("Tasks Added to the task");
                 done = true;
                 project.setTaskArrayList(taskArrayList);

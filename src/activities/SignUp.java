@@ -15,7 +15,7 @@ public class SignUp {
         Manager manager = new Manager();
 
 
-        String email="", password, name="";
+        String email, password, name;
         System.out.println();
         Ui.printLine();
 
