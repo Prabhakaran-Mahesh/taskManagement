@@ -97,4 +97,14 @@ public class Validations {
             return false;
         }
     }
+
+    public static boolean messageValidation(String msg){
+        if(msg.length() == 0){
+            System.out.println("\n\t\tCouldn't send your message! message should contain least one character!");
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }

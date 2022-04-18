@@ -81,7 +81,9 @@ public class TeamLead extends Member{
                     chat = scanner.nextLine();
                     System.out.print("");
 
-                    mainProject.getChatBox().add("\t\t\t\tTeamLead -> " + this.name + " : " + chat);
+                    if(Validations.messageValidation(chat)){
+                        mainProject.getChatBox().add("\t\t\t\tTeamLead -> " + this.name + " : " + chat);
+                    }
                 } else {
                     System.out.println("\t\tWrong number. check your Input!\n");
                 }
@@ -139,7 +141,7 @@ public class TeamLead extends Member{
                 System.out.println();
                 Ui.printLine();
 
-                System.out.print("\t\tChoose task Priority! Enter S.no :");
+                System.out.print("\t\tChoose task Priority! Enter");
                 int priorityChoice = -1;
                 while(true) {
                     while (priorityChoice == -1) {

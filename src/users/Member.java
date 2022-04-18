@@ -247,7 +247,9 @@ public class Member {
                     chat = scanner.nextLine();
                     System.out.print("");
 
-                    project.getChatBox().add("\t\t\t\t" + this.name + " : " + chat);
+                    if(Validations.messageValidation(chat)){
+                        project.getChatBox().add("\t\t\t\t" + this.name + " : " + chat);
+                    }
                 } else {
                     System.out.println("\t\tWrong number. check your Input!\n");
                 }

@@ -251,7 +251,10 @@ public class Manager extends Member{
                     chat = scanner.nextLine();
                     System.out.print("");
 
-                    pr.getChatBox().add("\t\t\t\tMANAGER -> " + this.name + " : " + chat);
+                    if(Validations.messageValidation(chat)){
+                        pr.getChatBox().add("\t\t\t\tMANAGER -> " + this.name + " : " + chat);
+                    }
+
                 } else {
                     System.out.println("\t\tWrong number. check your Input!\n");
                 }
@@ -311,7 +314,7 @@ public class Manager extends Member{
                         System.out.println();
                         Ui.printLine();
 
-                        System.out.print("\n\t\t Enter S.no :");
+                        System.out.print("\n\t\t Enter");
                         int chatboxChoice = -1;
                         while(true) {
 
