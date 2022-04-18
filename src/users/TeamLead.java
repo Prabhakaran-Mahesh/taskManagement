@@ -264,7 +264,7 @@ public class TeamLead extends Member{
 
                case 2 -> this.viewTask();
 
-               case 3 -> this.viewAssignedTasks();
+               case 3 -> this.viewAssignedTasks(scanner);
 
                case 4 -> this.updateTaskStatus(scanner);
 
