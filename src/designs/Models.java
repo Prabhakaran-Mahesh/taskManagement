@@ -3,6 +3,7 @@ package designs;
 import users.Manager;
 import users.Member;
 import users.TeamLead;
+import users.Tester;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class Models {
     public static ArrayList<TeamLead> teamLeads = new ArrayList<>();
     public static ArrayList<String> status = new ArrayList<>();
     public static ArrayList<String> priority = new ArrayList<>();
-    public static ArrayList<String> discussionBox = new ArrayList<>();
+    public static ArrayList<Tester> testers = new ArrayList<>();
 
     public static ArrayList<Manager> getManagers() {
         return managers;
@@ -72,7 +73,16 @@ public class Models {
         priority.add("Very High");
     }
 
-    public static ArrayList<String> getDiscussionBox() {
-        return discussionBox;
+    public static ArrayList<Tester> getTestingTeams() {
+        return testers;
+    }
+
+    public static void setTestingTeams() {
+        testers.add(new Tester("Team1", "team1@gmail.com", "team1"));
+        testers.add(new Tester("Team2", "team2@gmail.com", "team2"));
+        testers.add(new Tester("Team3", "team3@gmail.com", "team3"));
+        testers.add(new Tester("Team4", "team4@gmail.com", "team4"));
+        testers.add(new Tester("Team5", "team5@gmail.com", "team5"));
+
     }
 }

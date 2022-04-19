@@ -58,8 +58,9 @@ public class Manager extends Member{
     public void createProject(Scanner scanner){
 
         String projectName, description, deadline;
-        TeamLead teamLead;
+        ArrayList<TeamLead> teamLead = new ArrayList<>();
         ArrayList<Member> memberArrayList = new ArrayList<>();
+
         //ArrayList<Task> taskArrayList;
 
         System.out.println();
@@ -119,7 +120,43 @@ public class Manager extends Member{
         System.out.println();
         Ui.printLine();
 
-        System.out.print("\t\tChoose your ProjectLead! Enter their");
+        System.out.print("\t\tChoose your ProjectLead/ ProjectLeads! Enter their");
+        memberChoice = -1;
+        while(true){
+            while(memberChoice == -1){
+                System.out.print("\t\t S.no: ");
+                memberChoice = Validations.numberCheck(scanner);
+            }
+
+            if(memberChoice == -2){
+                break;
+            }
+            else if(memberChoice<1 || memberChoice>Models.members.size()){
+                System.out.println("\n\t\t S.no not found!");
+                memberChoice = -1;
+                continue;
+            }
+            Member mem = memberArrayList.get(memberChoice-1);
+            TeamLead lead = new TeamLead(mem.name, mem.email, mem.password);
+            teamLead.add(lead);
+            Models.teamLeads.add(lead);
+            memberChoice = -1;
+        }
+
+        System.out.println();
+        Ui.printLine();
+        System.out.println("\t\tMembers Added to the Project : ");
+
+        i = 0;
+        for(Member m : memberArrayList){
+            i++;
+            System.out.print("\n\t\t\t S.no : " + i + ". Name : " + m.getName());
+        }
+        System.out.println();
+        Ui.printLine();
+
+
+        System.out.print("\t\tChoose your Tester");
         memberChoice = -1;
         while(true){
             while(memberChoice == -1){
@@ -136,13 +173,17 @@ public class Manager extends Member{
             }
         }
         Member mem = memberArrayList.get(memberChoice-1);
-        teamLead = new TeamLead(mem.name, mem.email, mem.password);
-        Models.teamLeads.add(teamLead);
+        memberArrayList.remove(memberChoice-1);
+        Tester tester = new Tester(mem.name, mem.email, mem.password);
+        Models.testers.add(tester);
 
-        Project project = new Project(projectName, teamLead, memberArrayList, deadline, description);
+        Project project = new Project(projectName, teamLead, tester, memberArrayList, deadline, description);
 
         System.out.println("\n\t\tProject created!");
-        teamLead.setProject(project);
+        for(TeamLead lead : teamLead){
+            lead.setProject(project);
+        }
+
         projectArraylist.add(project);
 
         for(Member m : memberArrayList){

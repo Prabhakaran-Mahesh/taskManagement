@@ -2,6 +2,7 @@ package objects;
 
 import users.Member;
 import users.TeamLead;
+import users.Tester;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,8 @@ import java.util.ArrayList;
 // The project class is the structure of project objects.
 public class Project {
     private String projectName;
-    private TeamLead teamLead;
+    private ArrayList<TeamLead> teamLead;
+    private Tester tester;
     private ArrayList<Member> projectMembers;
     private String deadline;
     private String status;
@@ -27,7 +29,7 @@ public class Project {
         chatBox = new ArrayList<>();
     }
 
-    public Project(String projectName, TeamLead teamLead, ArrayList<Member> projectMembers, String deadline, String projectDescription) {
+    public Project(String projectName, ArrayList<TeamLead> teamLead, Tester tester, ArrayList<Member> projectMembers, String deadline, String projectDescription) {
         this.projectName = projectName;
         this.teamLead = teamLead;
         this.projectMembers = projectMembers;
@@ -35,6 +37,7 @@ public class Project {
         this.status = "Not yet started";
         this.taskArrayList = new ArrayList<>();
         this.projectDescription = projectDescription;
+        this.tester = tester;
 
         chatBox = new ArrayList<>();
     }
