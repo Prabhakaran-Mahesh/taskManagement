@@ -8,7 +8,9 @@ import objects.Project;
 import objects.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 
 // Member function is the parent class of all the user types in this project
@@ -127,81 +129,44 @@ public class Member {
     }
 
 
-    /*
-    -> this method is used to sort the assigned tasks according ly
-    -> it contains 4 divisions
-    -> i. displays all the assigned tasks - ALL
-    -> ii. displays all the tasks with high and very high priority - HIGH
-    -> iii. displays not yet started tasks - NOT YET STARTED
-    -> iv. displays all the tasks that are completed - COMPLETED
-     */
-    public void sortTaskAssignedViews(ArrayList<Task> assignTasks, int get){
+
+    public void sortTaskAssignedViews(ArrayList<Task> assignTasks, int get, Scanner scanner){
         int i = 0;
 
-        if(get == 1){
-            System.out.println("\n\tAll : ");
+        if(get==1){
+            for(Task task : assignTasks){
+                i++;
+                System.out.printf("\n\t\t%15s %15s %15s %15s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
+                System.out.printf("\t\t%15s %15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
+            }
 
-            for (Task task : assignedTasks) {
-                i++;
-                System.out.printf("\n\t\t%15s d%15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
-                System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
-            }
-            System.out.println();
         }
-        else if(get == 2){
-            int j=0;
-            System.out.println("\n\tNot yet started Tasks : ");
-            for (Task task : assignedTasks) {
-                i++;
-                if("Not yet started".equalsIgnoreCase(task.getStatus())){
-                    j++;
-                    System.out.printf("\n\t\t%15s d%15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
-                    System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
+        else{
+            System.out.print("\n\t\tEnter the value you want to Search : ");
+            String enteredSearchValue = scanner.nextLine();
+            System.out.print("");
+
+            List<Task> filteredTasks = new ArrayList<>();
+            for (Task task : assignTasks) {
+                if (task.getTaskName().equalsIgnoreCase(enteredSearchValue)) {
+                    filteredTasks.add(task);
+                } else if (task.getStatus().equalsIgnoreCase(enteredSearchValue)) {
+                    filteredTasks.add(task);
+                } else if (task.getPriority().equalsIgnoreCase(enteredSearchValue)) {
+                    filteredTasks.add(task);
                 }
             }
-            if(j == 0){
-                System.out.println("\t\t\tAll the tasks are in Progress\n");
-            }
-            else{
-                System.out.println();
-            }
-        }
-        else if(get == 3){
-            int j=0;
-            System.out.println("\n\tHigh Priority : ");
-            for (Task task : assignedTasks) {
+
+            for(Task task : filteredTasks){
                 i++;
-                if("Very High".equalsIgnoreCase(task.getStatus()) || "High".equalsIgnoreCase(task.getStatus())){
-                    j++;
-                    System.out.printf("\n\t\t%15s d%15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
-                    System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
-                }
+                System.out.printf("\n\t\t%15s %15s %15s %15s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
+                System.out.printf("\t\t%15s %15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
             }
-            if(j == 0){
-                System.out.println("\t\t\tNo tasks are assigned with High or Very High priority\n");
-            }
-            else{
-                System.out.println();
+            if(i==0){
+                System.out.println("\t\tNo tasks are found under the given criteria : " + enteredSearchValue);
             }
         }
-        else if(get == 4){
-            int j=0;
-            System.out.println("\n\tCompleted : ");
-            for (Task task : assignedTasks) {
-                i++;
-                if("Completed".equalsIgnoreCase(task.getStatus())){
-                    j++;
-                    System.out.printf("\n\t\t%15s d%15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
-                    System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
-                }
-            }
-            if(j == 0){
-                System.out.println("\t\t\tNo tasks are assigned with High or Very High priority\n");
-            }
-            else{
-                System.out.println();
-            }
-        }
+
     }
 
     /*
@@ -225,10 +190,16 @@ public class Member {
         }
         else {
             System.out.println("\t\t1. All tasks");
-            System.out.println("\t\t2. Not started tasks");
-            System.out.println("\t\t3. High and very High priority tasks");
-            System.out.println("\t\t4. Completed tasks");
-            System.out.println("\n\t\tEnter your Required Category number : ");
+            System.out.println("\t\t2. Search By criteria");
+            System.out.println("\t\t\t Key words that can be searched");
+            System.out.println("\t\t\t\tTask Name");
+            System.out.println("\t\t\t\tNot yet Started");
+            for(String stat : Models.getStatus()){
+                System.out.println("\t\t\t\t" + stat);
+            }
+            for(String prior : Models.getPriority()){
+                System.out.println("\t\t\t\t" + prior);
+            }
 
             int choice;
             do {
@@ -236,8 +207,8 @@ public class Member {
                 choice = Validations.numberCheck(scanner);
             } while (choice == -1);
 
-            if (choice > 0 && choice < 5) {
-                sortTaskAssignedViews(assignedTasks, choice);
+            if (choice == 1 || choice == 2) {
+                sortTaskAssignedViews(assignedTasks, choice, scanner);
             } else{
                 System.out.print("\n\t\tThe number input is incorrect!");
             }
