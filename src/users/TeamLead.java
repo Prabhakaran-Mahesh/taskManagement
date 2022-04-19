@@ -130,7 +130,7 @@ public class TeamLead extends Member{
                     System.out.print("\t\t\tTask Deadline (Date format : dd-MM-yyyy) : ");
                     taskDeadline = scanner.next();
 
-                } while (!Validations.dateValidation(taskDeadline));
+                } while (!Validations.deadlineDateValidation(mainProject.getDeadline(), taskDeadline));
 
                 System.out.println("\t\tPriority List : ");
 
@@ -265,7 +265,7 @@ public class TeamLead extends Member{
                         System.out.print("\t\t\tTask Deadline (Date format : dd-MM-yyyy) : ");
                         deadline = scanner.next();
 
-                    } while (!Validations.dateValidation(deadline));
+                    } while (!Validations.deadlineDateValidation(mainProject.getDeadline(), deadline));
 
                     selectedTask.setDeadline(deadline);
                 }

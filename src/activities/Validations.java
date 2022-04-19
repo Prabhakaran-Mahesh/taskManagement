@@ -47,7 +47,7 @@ public class Validations {
 
     /*
     -> email validation
-    -> email verification is used to check whether correct format of email is passed as input
+    -> email verification is used to check whether correct format of email is passed as inputc
      */
     public static String emailValidation(Scanner scanner) {
         String email;
@@ -94,6 +94,31 @@ public class Validations {
             }
         } catch (ParseException e) {
             System.out.println("\t\tWrong date or Wrong format!\n");
+            return false;
+        }
+    }
+
+    public static Boolean deadlineDateValidation(String projectDeadline, String date){
+        if(dateValidation(date)){
+            try {
+                DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+                df.setLenient(false);
+                df.parse(date);
+                df.parse(projectDeadline);
+                boolean result = dateToLocalDate(df.parse(date)).isBefore(dateToLocalDate(df.parse(projectDeadline)));
+                if(result){
+                    return true;
+                }
+                else{
+                    System.out.println("\t\tThe mentioned Date should be before the Project deadline");
+                    return false;
+                }
+            } catch (ParseException e) {
+                System.out.println("\t\tWrong date or Wrong format!\n");
+                return false;
+            }
+        }
+        else{
             return false;
         }
     }
