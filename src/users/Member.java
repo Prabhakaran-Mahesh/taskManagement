@@ -359,7 +359,7 @@ public class Member {
             System.out.println("\n\t\tWhat would you like to do :");
 
             System.out.println("\n\t\t\t Enter 0 to Change Password");
-            System.out.println("\t\t\t Enter 1 to View/Update Tasks Assigned");
+            System.out.println("\t\t\t Enter 1 to View/Update status of Tasks Assigned");
             System.out.println("\t\t\t Enter 2 for DiscussionBox");
             System.out.println("\t\t\t Enter -1 to Exit\n");
 

@@ -206,6 +206,117 @@ public class TeamLead extends Member{
 
    }
 
+    private void updateTaskDetails(Scanner scanner){
+        int choice;
+
+        while(true){
+            System.out.print("\n\t\tEnter the s.no of the Project which you want to update : ");
+            choice = Validations.numberCheck(scanner);
+            if(choice>0 && choice<=mainProject.getTaskArrayList().size()){
+                break;
+            }
+            else{
+                System.out.println("\t\tWrong input");
+            }
+        }
+
+        Task selectedTask = mainProject.getTaskArrayList().get(choice-1);
+
+        boolean update = true;
+        while(update){
+            System.out.println("\n\t\t\tEnter the s.no of credential you want to change!");
+            System.out.println("\t\t\t Enter 1 to Task Name ");
+            System.out.println("\t\t\t Enter 2 to Task Deadline");
+            System.out.println("\t\t\t Enter 3 to Task Description");
+            System.out.println("\t\t\t Enter 4 to Task Priority ");
+            System.out.println("\t\t\t Enter -1 to Exit\n");
+
+            int updateChoice = -1;
+            while(updateChoice == -1){
+                System.out.print("\t\t\t Enter your Choice : ");
+                updateChoice = Validations.numberCheck(scanner);
+            }
+
+            switch (updateChoice){
+                case -2 -> {
+                    update = false;
+
+                    System.out.println();
+                    Ui.printLine();
+                }
+
+                case 1 -> {
+                    System.out.println("\n\t\tCurrent Name : " + selectedTask.getTaskName());
+                    System.out.print("\t\tEnter the new Task Name : ");
+                    String chat;
+                    //scanner.nextLine();
+                    chat = scanner.nextLine();
+                    System.out.print("");
+
+                    if(Validations.messageValidation(chat)){
+                        selectedTask.setTaskName(chat);
+                    }
+                }
+
+                case 2 -> {
+                    System.out.println("\n\t\tCurrent Deadline : " + selectedTask.getDeadline());
+                    String deadline;
+                    do {
+                        System.out.print("\t\t\tTask Deadline (Date format : dd-MM-yyyy) : ");
+                        deadline = scanner.next();
+
+                    } while (!Validations.dateValidation(deadline));
+
+                    selectedTask.setDeadline(deadline);
+                }
+
+                case 3 -> {
+                    System.out.println("\n\t\tCurrent Description : " + selectedTask.getTaskDescription());
+                    System.out.print("\t\tEnter the new Project Name : ");
+                    String description;
+                    //scanner.nextLine();
+                    description = scanner.nextLine();
+                    System.out.print("");
+
+                    selectedTask.setTaskDescription(description);
+                }
+
+                case 4 -> {
+                    System.out.println("\n\t\tCurrent Priority : " + selectedTask.getTaskDescription());
+                    System.out.print("\t\tEnter the new New Priority S.no : ");
+
+                    int i = 0;
+                    for(String m : Models.getPriority()){
+                        i++;
+                        System.out.print("\n\t\t\t S.no : " + i + ". " + m);
+                    }
+                    System.out.println();
+                    Ui.printLine();
+
+                    System.out.print("\t\tChoose task Priority! Enter");
+                    int priorityChoice = -1;
+                    while(true) {
+                        while (priorityChoice == -1) {
+                            System.out.print("\t\t S.no: ");
+                            priorityChoice = Validations.numberCheck(scanner);
+                        }
+
+                        if (priorityChoice < 1 || priorityChoice > Models.getPriority().size()) {
+                            System.out.println("\n\t\t S.no not found!");
+                        } else {
+                            break;
+                        }
+                    }
+
+                    selectedTask.setPriority(Models.getPriority().get(priorityChoice-1));
+                }
+
+                default -> System.out.println("\n\tWrong value. Give correct input number!\n");
+            }
+        }
+
+    }
+
     /*
      // view task displays brief information on the tasks.
      // this ia a read only function
@@ -227,9 +338,26 @@ public class TeamLead extends Member{
                i++;
                System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
            }
+
+           Ui.printLine();
+
+           System.out.println("\n\t\tDo you want to update Task Details? Enter 1 to yes, Enter -1 to no");
+           int ver;
+           while(true){
+               System.out.print("\t\tEnter your choice : ");
+               ver = Validations.numberCheck(scanner);
+               if(ver == -2 || ver == 1) {
+                   break;
+               }
+               else{
+                   System.out.println("\t\tWrong input");
+               }
+           }
+
+           if(ver == 1){
+               updateTaskDetails(scanner);
+           }
        }
-       System.out.println();
-       Ui.printLine();
    }
 
     /*
@@ -237,16 +365,16 @@ public class TeamLead extends Member{
      -> this function is called once the teamlead gets logged in
       */
    public void workOfTeamLead(){
-       int adminChoice  = -1;
        System.out.println("\n\t\tWelcome back Teamlead : " + name.toUpperCase());
 
        while(true){
+           int adminChoice  = -1;
            System.out.println("\n\t\tWhat would you like to do :");
 
            System.out.println("\n\t\t\t Enter 0 to Change Password");
            System.out.println("\t\t\t Enter 1 to Add tasks to the Project");
-           System.out.println("\t\t\t Enter 2 to View Project Tasks status");
-           System.out.println("\t\t\t Enter 3 to View/Update Tasks Assigned");
+           System.out.println("\t\t\t Enter 2 to View/Update details of Tasks status");
+           System.out.println("\t\t\t Enter 3 to View/Update status of Tasks Assigned");
            System.out.println("\t\t\t Enter 4 for DiscussionBox");
            System.out.println("\t\t\t Enter -1 to Exit\n");
 
@@ -273,7 +401,6 @@ public class TeamLead extends Member{
                default -> System.out.println("\n\tWrong value. Give correct input number!\n");
 
            }
-           adminChoice = -1;
 
        }
    }

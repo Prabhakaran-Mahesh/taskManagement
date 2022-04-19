@@ -153,7 +153,7 @@ public class Manager extends Member{
 
     }
 
-    private void updateProjectStatus(Scanner scanner){
+    private void updateProjectDetails(Scanner scanner){
         int choice;
 
         while(true){
@@ -184,7 +184,12 @@ public class Manager extends Member{
             }
 
             switch (updateChoice){
-                case -2 -> update = false;
+                case -2 -> {
+                    update = false;
+
+                    System.out.println();
+                    Ui.printLine();
+                }
 
                 case 1 -> {
                     System.out.println("\n\t\tCurrent Name : " + selectedProject.getProjectName());
@@ -224,8 +229,6 @@ public class Manager extends Member{
 
                 default -> System.out.println("\n\tWrong value. Give correct input number!\n");
             }
-
-            updateChoice = -1;
         }
 
     }
@@ -287,7 +290,7 @@ public class Manager extends Member{
             }
 
             if(ver == 1){
-                updateProjectStatus(scanner);
+                updateProjectDetails(scanner);
             }
         }
 
@@ -379,7 +382,7 @@ public class Manager extends Member{
             System.out.println("\n\t\t\t Enter 0 to Change Password");
             System.out.println("\t\t\t Enter 1 to Add a User to your team");
             System.out.println("\t\t\t Enter 2 to Create a new Project");
-            System.out.println("\t\t\t Enter 3 to View Projects");
+            System.out.println("\t\t\t Enter 3 to View/Update Details of Projects");
             System.out.println("\t\t\t Enter 4 for DiscussionBox");
             System.out.println("\t\t\t Enter -1 to Exit\n");
 
