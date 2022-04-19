@@ -153,11 +153,88 @@ public class Manager extends Member{
 
     }
 
+    private void updateProjectStatus(Scanner scanner){
+        int choice;
+
+        while(true){
+            System.out.print("\n\t\tEnter the s.no of the Project which you want to update : ");
+            choice = Validations.numberCheck(scanner);
+            if(choice>0 && choice<=projectArraylist.size()){
+                break;
+            }
+            else{
+                System.out.println("\t\tWrong input");
+            }
+        }
+
+        Project selectedProject = projectArraylist.get(choice-1);
+
+        boolean update = true;
+        while(update){
+            System.out.println("\n\t\t\tEnter the s.no of credential you want to change!");
+            System.out.println("\t\t\t Enter 1 to Project Name ");
+            System.out.println("\t\t\t Enter 2 to Project Deadline");
+            System.out.println("\t\t\t Enter 3 to Project Description");
+            System.out.println("\t\t\t Enter -1 to Exit\n");
+
+            int updateChoice = -1;
+            while(updateChoice == -1){
+                System.out.print("\t\t\t Enter your Choice : ");
+                updateChoice = Validations.numberCheck(scanner);
+            }
+
+            switch (updateChoice){
+                case -2 -> update = false;
+
+                case 1 -> {
+                    System.out.println("\n\t\tCurrent Name : " + selectedProject.getProjectName());
+                    System.out.print("\t\tEnter the new Project Name : ");
+                    String chat;
+                    //scanner.nextLine();
+                    chat = scanner.nextLine();
+                    System.out.print("");
+
+                    if(Validations.messageValidation(chat)){
+                        selectedProject.setProjectName(chat);
+                    }
+                }
+
+                case 2 -> {
+                    System.out.println("\n\t\tCurrent Deadline : " + selectedProject.getDeadline());
+                    String deadline;
+                    do {
+                        System.out.print("\t\t\tProject Deadline (Date format : dd-MM-yyyy) : ");
+                        deadline = scanner.next();
+
+                    } while (!Validations.dateValidation(deadline));
+
+                    selectedProject.setDeadline(deadline);
+                }
+
+                case 3 -> {
+                    System.out.println("\n\t\tCurrent Description : " + selectedProject.getProjectDescription());
+                    System.out.print("\t\tEnter the new Project Name : ");
+                    String description;
+                    //scanner.nextLine();
+                    description = scanner.nextLine();
+                    System.out.print("");
+
+                    selectedProject.setProjectDescription(description);
+                }
+
+                default -> System.out.println("\n\tWrong value. Give correct input number!\n");
+            }
+
+            updateChoice = -1;
+        }
+
+    }
+
     /*
     // using this function the manager can view the projects that he owns
     // he can also see the current status of the project
      */
-    public void viewProjects(){
+    public void viewProjects(Scanner scanner){
         System.out.println();
         Ui.printLine();
 
@@ -168,7 +245,7 @@ public class Manager extends Member{
             Ui.printLine();
         }
         else{
-            System.out.printf("\n\t\t%15s %15s %15s %25s %35s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
+            System.out.printf("\n\t\t%15s %15s %15s %25s %35s\n", "S.no", "ProjectName", "Deadline", "Status", "Description");
 
             for(Project project : projectArraylist){
 
@@ -195,6 +272,23 @@ public class Manager extends Member{
                 System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
             }
             Ui.printLine();
+
+            System.out.println("\n\t\tDo you want to update Project Details? Enter 1 to yes, Enter -1 to no");
+            int ver;
+            while(true){
+                System.out.print("\t\tEnter your choice : ");
+                ver = Validations.numberCheck(scanner);
+                if(ver == -2 || ver == 1) {
+                    break;
+                }
+                else{
+                    System.out.println("\t\tWrong input");
+                }
+            }
+
+            if(ver == 1){
+                updateProjectStatus(scanner);
+            }
         }
 
     }
@@ -276,7 +370,7 @@ public class Manager extends Member{
     -> this function is called once the manager gets logged in
      */
     public void workOfManager(Scanner scanner){
-        int adminChoice=-1;
+
         System.out.println("\n\t\tWelcome back Manager : " + name.toUpperCase());
 
         while(true){
@@ -289,6 +383,7 @@ public class Manager extends Member{
             System.out.println("\t\t\t Enter 4 for DiscussionBox");
             System.out.println("\t\t\t Enter -1 to Exit\n");
 
+            int adminChoice=-1;
             while(adminChoice == -1){
                 System.out.print("\t\t\t Enter your Choice : ");
                 adminChoice = Validations.numberCheck(scanner);
@@ -303,7 +398,7 @@ public class Manager extends Member{
 
                 case 2 -> this.createProject(scanner);
 
-                case 3 -> this.viewProjects();
+                case 3 -> this.viewProjects(scanner);
 
                 case 4-> {
                     System.out.println();
@@ -348,8 +443,6 @@ public class Manager extends Member{
                 default -> System.out.println("\n\tWrong value. Give correct input number!\n");
 
             }
-            adminChoice = -1;
-
         }
     }
 }

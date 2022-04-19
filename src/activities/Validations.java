@@ -105,7 +105,7 @@ public class Validations {
      */
     public static boolean messageValidation(String msg){
         if(msg.length() == 0){
-            System.out.println("\n\t\tCouldn't send your message! message should contain least one character!");
+            System.out.println("\n\t\tInput String cannot be Empty!");
             return false;
         }
         else{

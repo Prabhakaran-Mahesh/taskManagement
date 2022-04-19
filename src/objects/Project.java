@@ -43,12 +43,20 @@ public class Project {
         return projectName;
     }
 
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
     public ArrayList<Member> getProjectMembers() {
         return projectMembers;
     }
 
     public String getDeadline() {
         return deadline;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
     }
 
     public String getStatus() {
@@ -69,6 +77,10 @@ public class Project {
 
     public String getProjectDescription() {
         return projectDescription;
+    }
+
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
     }
 
     public ArrayList<String> getChatBox() {

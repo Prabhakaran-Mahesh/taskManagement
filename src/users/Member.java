@@ -135,9 +135,9 @@ public class Member {
         ArrayList<Task> filteredTasks = new ArrayList<>();
 
         if(get==1){
+            System.out.printf("\n\t\t%15s %15s %15s %15s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
             for(Task task : assignTasks){
                 i++;
-                System.out.printf("\n\t\t%15s %15s %15s %15s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
                 System.out.printf("\t\t%15s %15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
             }
 
@@ -168,14 +168,18 @@ public class Member {
                 }
             }
 
-            for(Task task : filteredTasks){
-                i++;
-                System.out.printf("\n\t\t%15s %15s %15s %15s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
-                System.out.printf("\t\t%15s %15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
-            }
-            if(i==0){
+            if(filteredTasks.size()==0){
                 System.out.println("\t\tNo tasks are found under the given criteria : " + enteredSearchValue);
             }
+            else{
+                System.out.printf("\n\t\t%15s %15s %15s %15s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
+                for(Task task : filteredTasks){
+                    i++;
+                    System.out.printf("\t\t%15s %15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
+                }
+            }
+
+
         }
 
         System.out.println("\n\t\tDo you want to update status of any task? Enter 1 to yes, Enter -1 to no");
