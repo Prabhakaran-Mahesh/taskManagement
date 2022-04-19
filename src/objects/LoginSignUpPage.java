@@ -43,7 +43,7 @@ public class LoginSignUpPage {
 
             if(isNumber == -2){
                 boolean correct = false;
-                System.out.print("Do you really want to exit? yes/no : ");
+                System.out.print("\t\tDo you really want to exit? yes/no : ");
                 while(!correct){
 
                     String decision = scanner.next();

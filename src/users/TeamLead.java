@@ -246,9 +246,8 @@ public class TeamLead extends Member{
            System.out.println("\n\t\t\t Enter 0 to Change Password");
            System.out.println("\t\t\t Enter 1 to Add tasks to the Project");
            System.out.println("\t\t\t Enter 2 to View Project Tasks status");
-           System.out.println("\t\t\t Enter 3 to view Tasks Assigned");
-           System.out.println("\t\t\t Enter 4 to Update task status");
-           System.out.println("\t\t\t Enter 5 for DiscussionBox");
+           System.out.println("\t\t\t Enter 3 to View/Update Tasks Assigned");
+           System.out.println("\t\t\t Enter 4 for DiscussionBox");
            System.out.println("\t\t\t Enter -1 to Exit\n");
 
            while(adminChoice == -1){
@@ -267,7 +266,7 @@ public class TeamLead extends Member{
 
                case 3 -> this.viewAssignedTasks(scanner);
 
-               case 4 -> this.updateTaskStatus(scanner);
+               case 4 -> this.updateTaskStatus(scanner, assignedTasks);
 
                case 5 -> this.writeDiscussionBox(scanner);
 

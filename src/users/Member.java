@@ -130,8 +130,9 @@ public class Member {
 
 
 
-    public void sortTaskAssignedViews(ArrayList<Task> assignTasks, int get, Scanner scanner){
+    public void filterTaskAssignedViews(ArrayList<Task> assignTasks, int get, Scanner scanner){
         int i = 0;
+        ArrayList<Task> filteredTasks = new ArrayList<>();
 
         if(get==1){
             for(Task task : assignTasks){
@@ -142,11 +143,21 @@ public class Member {
 
         }
         else{
+            System.out.println("\t\t\t Key words that can be searched");
+            System.out.println("\t\t\t\tTask Name");
+            System.out.println("\t\t\t\tNot yet Started");
+            for(String stat : Models.getStatus()){
+                System.out.println("\t\t\t\t" + stat);
+            }
+            for(String prior : Models.getPriority()){
+                System.out.println("\t\t\t\t" + prior);
+            }
+
             System.out.print("\n\t\tEnter the value you want to Search : ");
             String enteredSearchValue = scanner.nextLine();
             System.out.print("");
 
-            List<Task> filteredTasks = new ArrayList<>();
+
             for (Task task : assignTasks) {
                 if (task.getTaskName().equalsIgnoreCase(enteredSearchValue)) {
                     filteredTasks.add(task);
@@ -167,6 +178,24 @@ public class Member {
             }
         }
 
+        System.out.println("\n\t\tDo you want to update status of any task? Enter 1 to yes, Enter -1 to no");
+        int ver;
+        while(true){
+            System.out.print("\t\tEnter your choice : ");
+            ver = Validations.numberCheck(scanner);
+            if(ver == -2 || ver == 1) {
+                break;
+            }
+            else{
+                System.out.println("\t\tWrong input");
+            }
+        }
+
+        if(ver == 1 && get == 1){
+            updateTaskStatus(scanner, assignTasks);
+        } else if(ver == 1 && filteredTasks.size() != 0){
+            updateTaskStatus(scanner, filteredTasks);
+        }
     }
 
     /*
@@ -191,15 +220,6 @@ public class Member {
         else {
             System.out.println("\t\t1. All tasks");
             System.out.println("\t\t2. Search By criteria");
-            System.out.println("\t\t\t Key words that can be searched");
-            System.out.println("\t\t\t\tTask Name");
-            System.out.println("\t\t\t\tNot yet Started");
-            for(String stat : Models.getStatus()){
-                System.out.println("\t\t\t\t" + stat);
-            }
-            for(String prior : Models.getPriority()){
-                System.out.println("\t\t\t\t" + prior);
-            }
 
             int choice;
             do {
@@ -208,7 +228,7 @@ public class Member {
             } while (choice == -1);
 
             if (choice == 1 || choice == 2) {
-                sortTaskAssignedViews(assignedTasks, choice, scanner);
+                filterTaskAssignedViews(assignedTasks, choice, scanner);
             } else{
                 System.out.print("\n\t\tThe number input is incorrect!");
             }
@@ -221,78 +241,42 @@ public class Member {
     }
 
     /*
-    -> view assigned task displays brief information on the tasks that are assigned for an user
-    -> this ia a read only function
-    -> this view every assignedTasks
-    -> this function is used mainly for updates
-     */
-    public int viewTaskWithoutSorting(){
-        System.out.println();
-        Ui.printLine();
-
-        System.out.println("\t\tView the Project tasks");
-        System.out.println();
-
-        if(assignedTasks.size() == 0){
-            System.out.println("\t\t\tNo task is created yet!");
-            System.out.println();
-            Ui.printLine();
-            return 0;
-        }
-        else {
-            int i = 0;
-            for (Task task : assignedTasks) {
-                i++;
-                System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
-                System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
-            }
-            System.out.println();
-            Ui.printLine();
-            return 1;
-        }
-    }
-
-    /*
     // update task status is the actual work of the user
     // the user should keep updating the status of the task given to him
      */
-    public void updateTaskStatus(Scanner scanner){
+    public void updateTaskStatus(Scanner scanner, ArrayList<Task> assignTasks){
 
-        int size = viewTaskWithoutSorting();
 
         int choice;
-        if(size != 0){
-            while(true){
-                System.out.print("\t\tEnter the s.no : ");
-                choice = Validations.numberCheck(scanner);
-                if(choice != -1 && (choice>0 && choice<=assignedTasks.size())){
-                    break;
-                }
-                else{
-                    System.out.println("\t\tWrong input");
-                }
+
+        while(true){
+            System.out.print("\n\t\tEnter the s.no of the task which you want to update : ");
+            choice = Validations.numberCheck(scanner);
+            if(choice>0 && choice<=assignTasks.size()){
+                break;
             }
-
-            Task selectedTask = assignedTasks.get(choice-1);
-            System.out.println("\t\t"+selectedTask.getTaskName()+"\n");
-
-            System.out.println("\t\tStatus list : ");
-            int i=0;
-            for(String status : Models.getStatus()){
-                i++;
-                System.out.println("\t\t\t"+i+". "+ status);
+            else{
+                System.out.println("\t\tWrong input");
             }
-            do {
-                System.out.print("\t\tPick a status using S.no of the task to update: ");
-                choice = Validations.numberCheck(scanner);
-            } while (choice == -1 || (choice <= 0 || choice > Models.getStatus().size()));
-
-            selectedTask.setStatus(Models.getStatus().get(choice-1));
-            System.out.println("\n\t\tTask Status Updated");
-
-            System.out.println();
-            Ui.printLine();
         }
+
+        Task selectedTask = assignTasks.get(choice-1);
+        System.out.println("\t\t"+selectedTask.getTaskName()+"\n");
+
+        System.out.println("\t\tStatus list : ");
+        int i=0;
+        for(String status : Models.getStatus()){
+            i++;
+            System.out.println("\t\t\t"+i+". "+ status);
+        }
+        do {
+            System.out.print("\t\tPick a status using S.no of the task to update: ");
+            choice = Validations.numberCheck(scanner);
+        } while (choice == -1 || (choice <= 0 || choice > Models.getStatus().size()));
+
+        selectedTask.setStatus(Models.getStatus().get(choice-1));
+        System.out.println("\n\t\tTask Status Updated");
+
     }
 
 
@@ -371,9 +355,8 @@ public class Member {
             System.out.println("\n\t\tWhat would you like to do :");
 
             System.out.println("\n\t\t\t Enter 0 to Change Password");
-            System.out.println("\t\t\t Enter 1 to view Tasks Assigned");
-            System.out.println("\t\t\t Enter 2 to Update task status");
-            System.out.println("\t\t\t Enter 3 for DiscussionBox");
+            System.out.println("\t\t\t Enter 1 to View/Update Tasks Assigned");
+            System.out.println("\t\t\t Enter 2 for DiscussionBox");
             System.out.println("\t\t\t Enter -1 to Exit\n");
 
             while(adminChoice == -1){
@@ -388,7 +371,7 @@ public class Member {
 
                 case 1 -> this.viewAssignedTasks(scanner);
 
-                case 2 -> this.updateTaskStatus(scanner);
+                case 2 -> this.updateTaskStatus(scanner, assignedTasks);
 
                 case 3 -> this.writeDiscussionBox(scanner);
 
