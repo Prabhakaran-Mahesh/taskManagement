@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
+/*
+-> this class is Helps us to display the welcome screen for the program
+ */
 public class LoginSignUpPage {
 
     /*
@@ -20,6 +23,7 @@ public class LoginSignUpPage {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("E dd MMM, yyyy  hh:mm");
 
+        // Display today's date and time.
         System.out.print("\n\tWelcome User".toUpperCase(Locale.ROOT));
         System.out.printf("%83s Today's Date and Time:    %s\n", " ", dateFormat.format(date));
         System.out.println("\n\tLogin/SignUp\n\n");

@@ -29,7 +29,7 @@ public class TeamLead extends Member{
         this.mainProject = project;
     }
 
-
+    //readDiscussionBox displays all the chat that happened in the discussionBox.
     public int readDiscussionBox(){
         System.out.println();
         Ui.printLine();
@@ -51,6 +51,7 @@ public class TeamLead extends Member{
         }
     }
 
+    // this writeDiscussionBox helps to chat in the discussionBox.
     public void writeDiscussionBox(Scanner scanner){
 
         while(true){

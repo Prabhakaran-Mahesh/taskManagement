@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class Manager extends Member{
 
+    // contains all the project created by the manager
     ArrayList<Project> projectArraylist = new ArrayList<>();
 
     public Manager() {
@@ -198,6 +199,10 @@ public class Manager extends Member{
 
     }
 
+    /*
+    -> this readDiscussionBox is used to display the chat content
+    -> this shows all the messages that are chatted that day
+     */
     public int readDiscussionBox(Project pr){
         System.out.println();
         Ui.printLine();
@@ -221,6 +226,10 @@ public class Manager extends Member{
         }
     }
 
+    /*
+    -> the writeDiscussion box initially calls the readDiscussionBox and displays the previous chat
+    -> and then it allows you to send your message to the discussion box
+     */
     public void writeDiscussionBox(Scanner scanner, Project pr){
 
         while(true){

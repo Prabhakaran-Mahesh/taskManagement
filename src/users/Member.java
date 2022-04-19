@@ -127,6 +127,14 @@ public class Member {
     }
 
 
+    /*
+    -> this method is used to sort the assigned tasks according ly
+    -> it contains 4 divisions
+    -> i. displays all the assigned tasks - ALL
+    -> ii. displays all the tasks with high and very high priority - HIGH
+    -> iii. displays not yet started tasks - NOT YET STARTED
+    -> iv. displays all the tasks that are completed - COMPLETED
+     */
     public void sortTaskAssignedViews(ArrayList<Task> assignTasks, int get){
         int i = 0;
 
@@ -176,11 +184,30 @@ public class Member {
                 System.out.println();
             }
         }
+        else if(get == 4){
+            int j=0;
+            System.out.println("\n\tCompleted : ");
+            for (Task task : assignedTasks) {
+                i++;
+                if("Completed".equalsIgnoreCase(task.getStatus())){
+                    j++;
+                    System.out.printf("\n\t\t%15s d%15s %15s %25s %25s\n", "S.no", "TaskName", "Deadline", "Status", "Description");
+                    System.out.printf("\t\t%15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getDeadline(), task.getStatus(), task.getTaskDescription());
+                }
+            }
+            if(j == 0){
+                System.out.println("\t\t\tNo tasks are assigned with High or Very High priority\n");
+            }
+            else{
+                System.out.println();
+            }
+        }
     }
 
     /*
-    // view assigned task displays brief information on the tasks that are assigned for an user
-    // this ia a read only function
+    -> view assigned task displays brief information on the tasks that are assigned for an user
+    -> this ia a read only function]
+    -> this view occurs according to the sorting option chosen
      */
     public int viewAssignedTasks(Scanner scanner){
         System.out.println();
@@ -200,6 +227,7 @@ public class Member {
             System.out.println("\t\t1. All tasks");
             System.out.println("\t\t2. Not started tasks");
             System.out.println("\t\t3. High and very High priority tasks");
+            System.out.println("\t\t4. Completed tasks");
             System.out.println("\n\t\tEnter your Required Category number : ");
 
             int choice;
@@ -208,7 +236,7 @@ public class Member {
                 choice = Validations.numberCheck(scanner);
             } while (choice == -1);
 
-            if (choice == 1 || choice == 2 || choice == 3) {
+            if (choice > 0 && choice < 5) {
                 sortTaskAssignedViews(assignedTasks, choice);
             } else{
                 System.out.print("\n\t\tThe number input is incorrect!");
@@ -221,6 +249,12 @@ public class Member {
         }
     }
 
+    /*
+    -> view assigned task displays brief information on the tasks that are assigned for an user
+    -> this ia a read only function
+    -> this view every assignedTasks
+    -> this function is used mainly for updates
+     */
     public int viewTaskWithoutSorting(){
         System.out.println();
         Ui.printLine();

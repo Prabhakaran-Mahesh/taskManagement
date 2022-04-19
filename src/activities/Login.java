@@ -13,6 +13,7 @@ public class Login {
     /*
     -> login verification method is used to verify the login credentials of the user.
     -> this method is used to check the credentials, ie. name, password
+    -> the method takes in email and password and search all the arraylist accordingly to find the user type.
      */
     private static boolean loginVerification(String email, String password){
 
@@ -82,6 +83,7 @@ public class Login {
     /*
     ->after verification of credentials
     -> credentials are passed to this method to make the user move into their respective field
+    -> according to user credentials user is searched in every arraylist till the user is found
      */
     public static void moveToChoiceDecider(String email, Scanner scanner) {
 

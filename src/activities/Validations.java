@@ -98,6 +98,11 @@ public class Validations {
         }
     }
 
+    /*
+    -> if a message is about to send by any user this message validation function is invoked
+    -> this validation returns true is if the message contains content
+    -> else if the message is empty, false is returned
+     */
     public static boolean messageValidation(String msg){
         if(msg.length() == 0){
             System.out.println("\n\t\tCouldn't send your message! message should contain least one character!");

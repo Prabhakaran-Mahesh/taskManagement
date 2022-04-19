@@ -6,6 +6,9 @@ import users.TeamLead;
 
 import java.util.ArrayList;
 
+/*
+-> As the project doesn't use any database, Model class is used
+-> In this class all the data arraylist are stored */
 public class Models {
     public static ArrayList<Manager> managers = new ArrayList<>();
     public static ArrayList<Member> members = new ArrayList<>();
