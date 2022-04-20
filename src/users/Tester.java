@@ -54,6 +54,10 @@ public class Tester extends Member{
     }
 
     public void testTask(){
+        //Todo:
+        for(Task testTask : tasksAssignedForTesting){
+            System.out.println("\t\t" + testTask.getTaskName());
+        }
         return;
     }
 

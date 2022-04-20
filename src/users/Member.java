@@ -8,9 +8,7 @@ import objects.Project;
 import objects.Task;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 
 // Member function is the parent class of all the user types in this project
@@ -130,7 +128,7 @@ public class Member {
 
 
 
-    public void filterTaskAssignedViews(ArrayList<Task> assignTasks, int get, Scanner scanner){
+    public void filterTaskAssignedViews(ArrayList<Task> assignTasks, int get, Scanner scanner, Project project){
         int i = 0;
         ArrayList<Task> filteredTasks = new ArrayList<>();
 
@@ -196,9 +194,9 @@ public class Member {
         }
 
         if(ver == 1 && get == 1){
-            updateTaskStatus(scanner, assignTasks);
+            updateTaskStatus(scanner, assignTasks, project);
         } else if(ver == 1 && filteredTasks.size() != 0){
-            updateTaskStatus(scanner, filteredTasks);
+            updateTaskStatus(scanner, filteredTasks, project);
         }
     }
 
@@ -207,7 +205,7 @@ public class Member {
     -> this ia a read only function]
     -> this view occurs according to the sorting option chosen
      */
-    public int viewAssignedTasks(Scanner scanner){
+    public int viewAssignedTasks(Scanner scanner, Project project){
         System.out.println();
         Ui.printLine();
 
@@ -232,7 +230,7 @@ public class Member {
             } while (choice == -1);
 
             if (choice == 1 || choice == 2) {
-                filterTaskAssignedViews(assignedTasks, choice, scanner);
+                filterTaskAssignedViews(assignedTasks, choice, scanner, project);
             } else{
                 System.out.print("\n\t\tThe number input is incorrect!");
             }
@@ -248,7 +246,7 @@ public class Member {
     // update task status is the actual work of the user
     // the user should keep updating the status of the task given to him
      */
-    public void updateTaskStatus(Scanner scanner, ArrayList<Task> assignTasks){
+    public void updateTaskStatus(Scanner scanner, ArrayList<Task> assignTasks, Project project){
 
 
         int choice;
@@ -279,6 +277,11 @@ public class Member {
         } while (choice == -1 || (choice <= 0 || choice > Models.getStatus().size()));
 
         selectedTask.setStatus(Models.getStatus().get(choice-1));
+        if(choice == Models.getStatus().size()){
+
+            // sending the task to tester if submitted
+            project.getTester().getTasksAssignedForTesting().add(selectedTask);
+        }
         System.out.println("\n\t\tTask Status Updated");
 
     }
@@ -373,7 +376,7 @@ public class Member {
 
                 case 0 -> this.changePassword(scanner);
 
-                case 1 -> this.viewAssignedTasks(scanner);
+                case 1 -> this.viewAssignedTasks(scanner, project);
 
                 case 2 -> this.writeDiscussionBox(scanner);
 

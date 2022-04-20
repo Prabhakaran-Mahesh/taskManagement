@@ -55,11 +55,12 @@ public class Models {
     }
 
     public static void setStatus() {
+        status.add("Not yet Started");
         status.add("RequirementAnalysing");
         status.add("Design stage");
         status.add("Implementation");
         status.add("Debugging");
-        status.add("Completed");
+        status.add("Submitted for test");
     }
 
     public static ArrayList<String> getPriority() {

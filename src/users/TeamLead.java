@@ -392,7 +392,7 @@ public class TeamLead extends Member{
 
                case 2 -> this.viewTask();
 
-               case 3 -> this.viewAssignedTasks(scanner);
+               case 3 -> this.viewAssignedTasks(scanner, mainProject);
 
                case 4 -> this.writeDiscussionBox(scanner);
 
