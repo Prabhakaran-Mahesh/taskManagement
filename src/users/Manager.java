@@ -61,6 +61,8 @@ public class Manager extends Member{
         ArrayList<TeamLead> teamLead = new ArrayList<>();
         ArrayList<Member> memberArrayList = new ArrayList<>();
 
+        ArrayList<Member> memberEligibleForTester = new ArrayList<>();
+
         //ArrayList<Task> taskArrayList;
 
         System.out.println();
@@ -105,6 +107,7 @@ public class Manager extends Member{
                 continue;
             }
             memberArrayList.add(Models.members.get(memberChoice-1));
+            memberEligibleForTester.add(Models.members.get(memberChoice-1));
             memberChoice = -1;
         }
 
@@ -137,6 +140,8 @@ public class Manager extends Member{
                 continue;
             }
             Member mem = memberArrayList.get(memberChoice-1);
+            memberEligibleForTester.remove(mem);
+
             TeamLead lead = new TeamLead(mem.name, mem.email, mem.password);
             teamLead.add(lead);
             Models.teamLeads.add(lead);
@@ -145,10 +150,10 @@ public class Manager extends Member{
 
         System.out.println();
         Ui.printLine();
-        System.out.println("\t\tMembers Added to the Project : ");
+        System.out.println("\t\tMembers Added to the Project Except TeamLeaders: ");
 
         i = 0;
-        for(Member m : memberArrayList){
+        for(Member m : memberEligibleForTester){
             i++;
             System.out.print("\n\t\t\t S.no : " + i + ". Name : " + m.getName());
         }
@@ -164,7 +169,7 @@ public class Manager extends Member{
                 memberChoice = Validations.numberCheck(scanner);
             }
 
-            if(memberChoice<1 || memberChoice>memberArrayList.size()){
+            if(memberChoice<1 || memberChoice>memberEligibleForTester.size()){
                 System.out.println("\n\t\t S.no not found!");
                 memberChoice = -1;
             }
@@ -172,8 +177,9 @@ public class Manager extends Member{
                 break;
             }
         }
-        Member mem = memberArrayList.get(memberChoice-1);
-        memberArrayList.remove(memberChoice-1);
+        //System.out.println(memberChoice);
+        Member mem = memberEligibleForTester.get(memberChoice-1);
+        memberArrayList.remove(mem);
         Tester tester = new Tester(mem.name, mem.email, mem.password);
         Models.testers.add(tester);
 
@@ -272,6 +278,108 @@ public class Manager extends Member{
             }
         }
 
+    }
+
+    private void addUsersToTheProject(Scanner scanner){
+        System.out.println();
+        Ui.printLine();
+
+        System.out.println("\t\tProject Details\n");
+
+        if(projectArraylist.size() == 0){
+            System.out.print("\t\tNo Projects found!\n");
+            Ui.printLine();
+        }
+        else {
+            System.out.printf("\n\t\t%15s %15s %15s %25s %35s\n", "S.no", "ProjectName", "Deadline", "Status", "Description");
+
+            for (Project project : projectArraylist) {
+
+                int i = 0, j = 0;
+                for (Task projectTask : project.getTaskArrayList()) {
+                    if (projectTask.getStatus().equalsIgnoreCase("Not yet started")) {
+                        i++;
+                    } else if (projectTask.getStatus().equalsIgnoreCase("Completed")) {
+                        j++;
+                    }
+                }
+
+                if (i == project.getTaskArrayList().size()) {
+                    project.setStatus("Not yet started");
+                } else if (j == project.getTaskArrayList().size()) {
+                    project.setStatus("Completed");
+                } else {
+                    project.setStatus("Implementation");
+                }
+                i++;
+                System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
+            }
+            Ui.printLine();
+
+            int choice;
+
+            while(true){
+                System.out.print("\n\t\tEnter the s.no of the Project which you want to add user : ");
+                choice = Validations.numberCheck(scanner);
+                if(choice>0 && choice<=projectArraylist.size()){
+                    break;
+                }
+                else{
+                    System.out.println("\t\tWrong input");
+                }
+            }
+
+            Project selectedProject = projectArraylist.get(choice-1);
+
+            ArrayList<Member> additionMemberArrayList = Models.getMembers();
+            Tester tester = selectedProject.getTester();
+
+            for(Member member : selectedProject.getProjectMembers()) {
+                additionMemberArrayList.remove(member);
+            }
+            for(Member member : additionMemberArrayList){
+                if(tester.getTeamEmail().equalsIgnoreCase(member.getEmail())){
+                    additionMemberArrayList.remove(member);
+                    break;
+                }
+            }
+
+
+            System.out.print("\n\t\t\tEnter the ID number of the users you want for this project\n\t\t\tEnter -1 to stop. ");
+            int i=0;
+            for(Member m : additionMemberArrayList){
+
+                i++;
+                System.out.print("\n\t\t S.no : " + i + ". Name : " + m.getName());
+
+
+            }
+
+            System.out.println("\n\t\tEnter your choices\n");
+            int memberChoice = -1;
+            while(true){
+                while(memberChoice == -1){
+                    System.out.print("\t\t S.no: ");
+                    memberChoice = Validations.numberCheck(scanner);
+                }
+
+                if(memberChoice == -2){
+                    break;
+                }
+                else if(memberChoice<1 || memberChoice>additionMemberArrayList.size()){
+                    System.out.println("\n\t\t S.no not found!");
+                    memberChoice = -1;
+                    continue;
+                }
+                selectedProject.getProjectMembers().add(additionMemberArrayList.get(memberChoice-1));
+                memberChoice = -1;
+            }
+            System.out.println("\n\t\tMembers Added to the Project!");
+
+            System.out.println();
+            Ui.printLine();
+
+        }
     }
 
     /*
@@ -423,8 +531,9 @@ public class Manager extends Member{
             System.out.println("\n\t\t\t Enter 0 to Change Password");
             System.out.println("\t\t\t Enter 1 to Add a User to your team");
             System.out.println("\t\t\t Enter 2 to Create a new Project");
-            System.out.println("\t\t\t Enter 3 to View/Update Details of Projects");
-            System.out.println("\t\t\t Enter 4 for DiscussionBox");
+            System.out.println("\t\t\t Enter 3 to Add a User to your Project");
+            System.out.println("\t\t\t Enter 4 to View/Update Details of Projects");
+            System.out.println("\t\t\t Enter 5 for DiscussionBox");
             System.out.println("\t\t\t Enter -1 to Exit\n");
 
             int adminChoice=-1;
@@ -442,9 +551,11 @@ public class Manager extends Member{
 
                 case 2 -> this.createProject(scanner);
 
-                case 3 -> this.viewProjects(scanner);
+                case 3 -> this.addUsersToTheProject(scanner);
 
-                case 4-> {
+                case 4 -> this.viewProjects(scanner);
+
+                case 5-> {
                     System.out.println();
                     Ui.printLine();
 

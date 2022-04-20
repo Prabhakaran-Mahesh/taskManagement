@@ -93,4 +93,12 @@ public class Project {
     public void setChatBox(ArrayList<String> chatBox) {
         this.chatBox = chatBox;
     }
+
+    public Tester getTester() {
+        return tester;
+    }
+
+    public void setTester(Tester tester) {
+        this.tester = tester;
+    }
 }
