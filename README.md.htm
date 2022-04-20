@@ -1,0 +1,1973 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="README.md_files/filelist.xml">
+<link rel=Edit-Time-Data href="README.md_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Task Management System – Console Application</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>admin</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>admin</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>392</o:TotalTime>
+  <o:LastPrinted>2022-04-20T12:00:00Z</o:LastPrinted>
+  <o:Created>2022-04-20T12:31:00Z</o:Created>
+  <o:LastSaved>2022-04-20T12:32:00Z</o:LastSaved>
+  <o:Pages>5</o:Pages>
+  <o:Words>1042</o:Words>
+  <o:Characters>5941</o:Characters>
+  <o:Lines>49</o:Lines>
+  <o:Paragraphs>13</o:Paragraphs>
+  <o:CharactersWithSpaces>6970</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel=dataStoreItem href="README.md_files/item0026.xml"
+target="README.md_files/props0027.xml">
+<link rel=themeData href="README.md_files/themedata.thmx">
+<link rel=colorSchemeMapping href="README.md_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="--"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<link rel=plchdr href="README.md_files/plchdr.htm">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Century;
+	panose-1:2 4 6 4 5 5 5 2 3 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1107305727 0 0 415 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073743103 0 0 415 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1073786111 1 0 415 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+h3
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:13.5pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-priority:99;
+	mso-style-link:"Header Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-priority:99;
+	mso-style-link:"Footer Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Header;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Footer;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:13.5pt;
+	mso-bidi-font-size:13.5pt;
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+.MsoPapDefault
+	{mso-style-type:export-only;
+	margin-bottom:10.0pt;
+	line-height:115%;}
+ /* Page Definitions */
+ @page
+	{mso-footnote-separator:url("README.md_files/header.htm") fs;
+	mso-footnote-continuation-separator:url("README.md_files/header.htm") fcs;
+	mso-endnote-separator:url("README.md_files/header.htm") es;
+	mso-endnote-continuation-separator:url("README.md_files/header.htm") ecs;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-header:url("README.md_files/header.htm") h1;
+	mso-footer:url("README.md_files/header.htm") f1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:7484932;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2037337574 640469468 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:139150048;
+	mso-list-type:hybrid;
+	mso-list-template-ids:577650878 1333968214 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:265046631;
+	mso-list-type:hybrid;
+	mso-list-template-ids:722643124 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l2:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:335234950;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1012669594 371367246 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l3:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:379747422;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1382453158 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l4:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5
+	{mso-list-id:421026439;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1267678942 1266977548 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l5:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;}
+@list l6
+	{mso-list-id:606470547;
+	mso-list-type:hybrid;
+	mso-list-template-ids:904967210 -954851774 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l6:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;}
+@list l7
+	{mso-list-id:671220116;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1974499332 788708662 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l7:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;}
+@list l8
+	{mso-list-id:684289453;
+	mso-list-type:hybrid;
+	mso-list-template-ids:597222048 -1697757620 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l8:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	mso-ascii-font-family:Century;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Century;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+@list l9
+	{mso-list-id:1158350314;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1153668668 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l9:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l10
+	{mso-list-id:1301689034;
+	mso-list-type:hybrid;
+	mso-list-template-ids:2011099364 -319638372 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l10:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l11
+	{mso-list-id:1317420716;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2037337574 640469468 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l11:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l12
+	{mso-list-id:1541162990;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1944047798 -615973980 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l12:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l13
+	{mso-list-id:1680540812;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1714710502 1998476118 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l13:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;
+	mso-ansi-font-weight:bold;}
+@list l14
+	{mso-list-id:1880780103;
+	mso-list-type:hybrid;
+	mso-list-template-ids:624208484 1893869716 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l14:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l15
+	{mso-list-id:2011908302;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1632700638 2105936956 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l15:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-.25in;}
+@list l16
+	{mso-list-id:2080247022;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1910436246 646712618 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l16:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l17
+	{mso-list-id:2099327360;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1886325722 827647030 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l17:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin-top:0in;
+	mso-para-margin-right:0in;
+	mso-para-margin-bottom:10.0pt;
+	mso-para-margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="4098"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><u><span
+style='font-size:16.0pt;line-height:115%;font-family:"Century","serif"'>Introduction:<o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal><span style='font-size:16.0pt;line-height:115%;font-family:
+"Century","serif"'><span style='mso-tab-count:1'>        </span></span><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif"'>To
+construct a fully functioning console based task management application, using
+object oriented programming concepts of Java. <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;font-family:
+"Century","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><u><span
+style='font-size:16.0pt;line-height:115%;font-family:"Century","serif"'>Requirement
+Analysis:<o:p></o:p></span></u></b></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:.75in;mso-add-space:auto;
+text-indent:-.25in;mso-list:l10 level1 lfo2'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>Language : java 17.0.2 <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.75in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l10 level1 lfo2'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>Operating System : Windows 10 Operating system<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.75in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l10 level1 lfo2'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>Development : Intellij Idea Java IDE<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.75in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l10 level1 lfo2'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>Design : Draw.io<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:.75in;mso-add-space:auto;
+text-indent:-.25in;mso-list:l10 level1 lfo2'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>Backup : Github<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;font-family:
+"Century","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><u><span
+style='font-size:16.0pt;line-height:115%;font-family:"Century","serif"'>Background
+Theory:<o:p></o:p></span></u></b></p>
+
+<p style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;margin-left:
+0in;line-height:16.95pt;background:#FDFCFB'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:16.0pt;font-family:"Century","serif"'><span
+style='mso-tab-count:1'>       </span></span></b><span style='font-family:"Century","serif";
+mso-bidi-font-family:Arial;color:#090911'>Task management tools address a
+general need to organize, prioritize and visualize work. Through analysis, you
+learn how to get things done in more effective ways.<o:p></o:p></span></p>
+
+<p style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;margin-left:
+0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-family:"Century","serif";mso-bidi-font-family:Arial;color:#090911'>At
+its most basic level, a task management tool is used to help individuals, teams
+or businesses stay organized. Part of being organized includes setting
+priorities for tasks, visualizing the progress of tasks as they pass through
+stages of completion and compiling analysis or reports to direct future tasks
+and workflows</span><span style='font-size:11.0pt;font-family:"Arial","sans-serif";
+color:#090911'>.<o:p></o:p></span></p>
+
+<p class=MsoListParagraph style='margin-top:9.7pt;margin-right:0in;margin-bottom:
+9.7pt;margin-left:.5in;mso-add-space:auto;text-indent:-.25in;line-height:16.95pt;
+mso-list:l9 level1 lfo3;background:#FDFCFB'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:Century;
+mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span></b><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>Prioritization:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>A task board lets
+you&nbsp;</span><a
+href="https://www.planview.com/resources/articles/what-is-task-board/"
+title="Article about task boards"><span style='font-size:12.0pt;font-family:
+"Century","serif";mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Arial;color:windowtext;text-decoration:none;text-underline:none'>organize your
+tasks by priority</span></a><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911'>&nbsp;so you can ensure that the most important things are
+completed first. That being said, task management tools are easy to update. By
+prioritizing tasks we are able to focus on how work should be attacked, rather
+than jumping from one item to another without any direction.<o:p></o:p></span></p>
+
+<p class=MsoListParagraph style='margin-top:9.7pt;margin-right:0in;margin-bottom:
+9.7pt;margin-left:.5in;mso-add-space:auto;text-indent:-.25in;line-height:16.95pt;
+mso-list:l9 level1 lfo3;background:#FDFCFB'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:Century;
+mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp; </span></span></span></b><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;mso-bidi-font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>Visualization :<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Not only will
+visualizing tasks help you remember what you need to do, but it helps you
+better understand a project as a whole. This means task management tools are
+easily accessible by everyone. When every item is laid out in a way that is
+easy to comprehend, dependencies become clear and collaboration is natural.<o:p></o:p></span></p>
+
+<p class=MsoListParagraph style='margin-top:9.7pt;margin-right:0in;margin-bottom:
+9.7pt;margin-left:.5in;mso-add-space:auto;text-indent:-.25in;line-height:16.95pt;
+mso-list:l9 level1 lfo3;background:#FDFCFB'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;font-family:
+"Century","serif";mso-fareast-font-family:Century;mso-bidi-font-family:Century;
+color:#090911'><span style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;
+</span></span></span></b><![endif]><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Analysis:<span
+style='mso-tab-count:1'>  </span><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Task management
+tools always provide for some form of analysis, whether it is a formula that
+you have created or something built into the tool.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><b style='mso-bidi-font-weight:
+normal'><u><span style='font-size:16.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911'>Document Scope and Purpose:<o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:16.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><span
+style='mso-tab-count:1'>       </span></span></b><span style='font-size:12.0pt;
+font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>This document provides a description
+of the technical design for Summer Intern in Zoho-Corporation – Task Management
+System. This document’s primary purpose is to describe the architectural
+overview of the system. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><span style='mso-tab-count:1'>          </span>Please
+note that this is a baseline document and may be updated as development
+progresses.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:16.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><b style='mso-bidi-font-weight:
+normal'><u><span style='font-size:16.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911'>Target Audience<o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:16.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><span
+style='mso-tab-count:1'>       </span></span></b><span style='font-size:12.0pt;
+font-family:"Century","serif"'>This document is targeted (but not limited) to
+technical stakeholders:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:1.0in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:Symbol;mso-ascii-font-family:Century;
+mso-hansi-font-family:Century;mso-char-type:symbol;mso-symbol-font-family:Symbol'><span
+style='mso-char-type:symbol;mso-symbol-font-family:Symbol'>·</span></span><span
+style='font-size:12.0pt;font-family:"Century","serif"'> <span
+style='mso-spacerun:yes'> </span>IT Management<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:"Century","serif"'><span
+style='mso-spacerun:yes'> </span>It is assumed that the reader has a technical
+background in software design and development<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
+"Century","serif";mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Arial;color:#090911'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><b style='mso-bidi-font-weight:
+normal'><u><span style='font-size:16.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911'>Overview: <o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:16.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><span
+style='mso-tab-count:1'>       </span></span></b><span style='font-size:12.0pt;
+font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>In this task management system
+project, We are going to implement the uses of task management system in
+console using object oriented programming concepts of Java.<span
+style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><span style='mso-tab-count:1'>          </span>The
+project will be open to all such that any individual/ organization can create
+their account and use this task management system. The person who gives his
+credentials and logins into the account will be the Manager of his account.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><span style='mso-tab-count:1'>          </span>The
+manager can add members under his organization to his account members, so that
+those members can be assigned to projects. He gives them the member access, so
+that the members can login and update their status.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>The manager will
+create a project and put members to the project. He assigns the team Lead/Leads
+to the project and he also assigns a Quality Assurance Engineer (QA) to the
+project. Instantly a chat Group is created so that the members of the group can
+interact with other group members.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>The manager has the
+rights to deploy a completed project or to deploy a beta version. The manager
+can fully deploy a project, if all the tasks under the project are in “fully
+completed” stage or in “completed with reports” stage.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>The Functionalities of <b
+style='mso-bidi-font-weight:normal'>Manager </b>are, <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l14 level1 lfo4;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Manager creates his
+task management system account for the organization<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l14 level1 lfo4;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Manager adds all
+the workers to the system, so that he can include them in projects later.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l14 level1 lfo4;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Manager can use the
+settings to change his password. <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l14 level1 lfo4;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Manager can create projects
+and add members to the project<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l14 level1 lfo4;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Manager can edit
+the details of the project.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l14 level1 lfo4;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>6.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Manager can add
+more users to a particular project later after creating.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l14 level1 lfo4;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>7.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Manager can decide
+the Deployment status of the Project<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l14 level1 lfo4;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>8.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Join chats in group
+chat box<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>A project contains:<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l0 level1 lfo17;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Project Name<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l0 level1 lfo17;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Project Description<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l0 level1 lfo17;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Project Deadline<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l0 level1 lfo17;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Project chat Group<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l0 level1 lfo17;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Project Status<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l0 level1 lfo17;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>6.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Project Deployment
+Status<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>After the creation
+of the project, the team lead/leads have the right to create tasks under the
+projects. They create projects and appoint members to the tasks from the given
+list of members for the project. Functionalities of a <b style='mso-bidi-font-weight:
+normal'>Team lead</b> are,<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:.75in;mso-add-space:auto;
+text-indent:-.25in;mso-list:l12 level1 lfo5'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>As everyone except the Manager has a temporary
+password initially set by manager. Thus, they have change password option.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.75in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l12 level1 lfo5'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>Team lead can create several tasks under the
+assigned projects and divide the project members among the tasks<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.75in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l12 level1 lfo5'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>They have projects assigned to themselves, thus
+they can alter the status of the tasks assigned to them.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.75in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l12 level1 lfo5'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>They can view and alter the details of the tasks
+they created.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l12 level1 lfo5;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Join chats in group
+chat box<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>A Task contains:<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l11 level1 lfo18;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Task Name<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l11 level1 lfo18;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Task Description<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l11 level1 lfo18;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Task Deadline<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l11 level1 lfo18;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Task Status<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l11 level1 lfo18;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Task Priority<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:12.0pt;
+line-height:115%;font-family:"Century","serif"'>Now, the organization has its
+project and the corresponding tasks ready, now the members of the project, can
+start doing their tasks and update the tasks of the status. Functionalities of <b
+style='mso-bidi-font-weight:normal'>Members</b> are,<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:.75in;mso-add-space:auto;
+text-indent:-.25in;mso-list:l16 level1 lfo7'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>They can change their user password.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:.75in;mso-add-space:
+auto;text-indent:-.25in;mso-list:l16 level1 lfo7'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif"'>They can progress on their assigned tasks and
+update the status of the respective tasks.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:.75in;mso-add-space:auto;
+text-indent:-.25in;mso-list:l16 level1 lfo7'><![if !supportLists]><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif";
+mso-fareast-font-family:Century;mso-bidi-font-family:Century'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:12.0pt;line-height:115%;
+font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>Join chats in group chat box</span><span
+style='font-size:12.0pt;line-height:115%;font-family:"Century","serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>When a member, completes
+his work on the tasks, He will update the status of the task to “submitted for
+test”. These tasks will be sent to the QA. He and his team will run tests on
+the tasks and complete all the testing to get into one of the two following results.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l3 level1 lfo8;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Task Test Success<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l3 level1 lfo8;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Task Test Failure<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l1 level1 lfo9;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>a.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Minor Failure<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l1 level1 lfo9;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>b.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Major Failure<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;text-indent:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>When the Test is
+success it is sent back as “Completed”, If it has a minor failure, then the
+task is sent as “Completed with Reports”. When a major failure is encountered,
+the task is reverted as “Issue Reported”<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><span style='mso-tab-count:1'>          </span></span><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;font-family:
+"Century","serif";mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Arial;color:#090911'>Status :<o:p></o:p></span></b></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.5in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l4 level1 lfo11;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Project Status :<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l6 level1 lfo12;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>a.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Not yet started<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l6 level1 lfo12;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>b.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Implementation<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l6 level1 lfo12;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>c.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Testing<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l6 level1 lfo12;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>d.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Completed<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l6 level1 lfo12;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>e.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Completed with
+Reports<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.5in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l4 level1 lfo11;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Deployment Status :<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l15 level1 lfo16;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>a.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Not yet Deployed<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l15 level1 lfo16;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>b.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Beta version
+Deployed<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l15 level1 lfo16;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>c.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Deployed<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.5in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l4 level1 lfo11;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Tasks Status:<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l5 level1 lfo13;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>a.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Not yet Started<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l5 level1 lfo13;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>b.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Requirement
+Analysis<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l5 level1 lfo13;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>c.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Designing<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l5 level1 lfo13;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>d.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Implementation<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l5 level1 lfo13;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>e.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Optimization<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l5 level1 lfo13;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>f.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Submitted for Test<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l5 level1 lfo13;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>g.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Issue Reported<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l5 level1 lfo13;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>h.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Completed <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l5 level1 lfo13;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>i.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Completed with
+Reports<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.5in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l4 level1 lfo11;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Task status after
+Bug tracking :<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l7 level1 lfo14;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>a.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Completed with Bug Analyzing<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l7 level1 lfo14;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>b.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Completed with Bug
+Correction<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:1.25in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l7 level1 lfo14;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>c.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>Completed Bug
+submitted for test<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><b style='mso-bidi-font-weight:
+normal'><u><span style='font-size:16.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911'>Code Organization:<o:p></o:p></span></u></b></p>
+
+<p class=MsoNormal align=center style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:0in;text-align:center;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911;mso-no-proof:yes'><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_0" o:spid="_x0000_i1033" type="#_x0000_t75"
+ alt="Screenshot (20).png" style='width:322.2pt;height:161.4pt;visibility:visible;
+ mso-wrap-style:square'>
+ <v:imagedata src="README.md_files/image001.png" o:title="Screenshot (20)"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=430 height=215
+src="README.md_files/image019.gif" alt="Screenshot (20).png" v:shapes="Picture_x0020_0"><![endif]></span><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l17 level1 lfo15;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
+"Century","serif";mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Arial;color:#090911'>Main.java</span></b><span style='font-size:12.0pt;
+font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>:<span style='mso-tab-count:1'>       </span>
+The main.java file is the igniter of the project. The project runs from here.
+All model invokes are done in this file. <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l17 level1 lfo15;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
+"Century","serif";mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Arial;color:#090911'>Activities package</span></b><span style='font-size:12.0pt;
+font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>:<span style='mso-tab-count:1'>   </span>The
+activities package contains the common activities which are used by all the
+Objects inside the project. For example, Login, Signup and Validations.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l17 level1 lfo15;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
+"Century","serif";mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Arial;color:#090911'>Designs package</span></b><span style='font-size:12.0pt;
+font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'>:<span style='mso-tab-count:1'>      </span>The
+designs package contains the model class which contains all the static details
+used in the project.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle><span style='font-size:12.0pt;line-height:
+115%;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l17 level1 lfo15;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
+"Century","serif";mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Arial;color:#090911'>Objects package:<span style='mso-tab-count:1'>     </span></span></b><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>The objects package
+contains the objects that are used in the project. For example, the Project,
+the Task, and the Bugs.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle><span style='font-size:12.0pt;line-height:
+115%;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;text-indent:-.25in;
+line-height:16.95pt;mso-list:l17 level1 lfo15;background:#FDFCFB'><![if !supportLists]><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+Century;mso-bidi-font-family:Century;color:#090911'><span style='mso-list:Ignore'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:12.0pt;font-family:
+"Century","serif";mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+Arial;color:#090911'>Users package:<span style='mso-tab-count:2'>                 </span></span></b><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'>The users package
+contains all objects of the users of this task management system. This includes
+the Manager, Team Lead, Member, and the Tester<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle><span style='font-size:12.0pt;line-height:
+115%;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:.75in;mso-add-space:auto;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><b style='mso-bidi-font-weight:
+normal'><u><span style='font-size:16.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911'>Sample Screenshots:</span></u></b><span style='font-size:16.0pt;
+font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:0in;text-align:center;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_1"
+ o:spid="_x0000_i1032" type="#_x0000_t75" alt="Screenshot (21).png" style='width:468pt;
+ height:263.4pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="README.md_files/image003.png" o:title="Screenshot (21)"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=351
+src="README.md_files/image020.gif" alt="Screenshot (21).png" v:shapes="Picture_x0020_1"><![endif]></span><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:0in;text-align:center;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_2"
+ o:spid="_x0000_i1031" type="#_x0000_t75" alt="Screenshot (22).png" style='width:468pt;
+ height:263.4pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="README.md_files/image005.png" o:title="Screenshot (22)"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=351
+src="README.md_files/image021.gif" alt="Screenshot (22).png" v:shapes="Picture_x0020_2"><![endif]></span><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:0in;text-align:center;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_3"
+ o:spid="_x0000_i1030" type="#_x0000_t75" alt="Screenshot (23).png" style='width:468pt;
+ height:263.4pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="README.md_files/image007.png" o:title="Screenshot (23)"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=351
+src="README.md_files/image022.gif" alt="Screenshot (23).png" v:shapes="Picture_x0020_3"><![endif]></span><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:0in;text-align:center;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_4"
+ o:spid="_x0000_i1029" type="#_x0000_t75" alt="Screenshot (24).png" style='width:468pt;
+ height:263.4pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="README.md_files/image009.png" o:title="Screenshot (24)"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=351
+src="README.md_files/image023.gif" alt="Screenshot (24).png" v:shapes="Picture_x0020_4"><![endif]></span><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:0in;text-align:center;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_5"
+ o:spid="_x0000_i1028" type="#_x0000_t75" alt="Screenshot (25).png" style='width:468pt;
+ height:263.4pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="README.md_files/image011.png" o:title="Screenshot (25)"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=351
+src="README.md_files/image024.gif" alt="Screenshot (25).png" v:shapes="Picture_x0020_5"><![endif]></span><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:0in;text-align:center;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_6"
+ o:spid="_x0000_i1027" type="#_x0000_t75" alt="Screenshot (26).png" style='width:468pt;
+ height:263.4pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="README.md_files/image013.png" o:title="Screenshot (26)"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=351
+src="README.md_files/image025.gif" alt="Screenshot (26).png" v:shapes="Picture_x0020_6"><![endif]></span><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:0in;text-align:center;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_7"
+ o:spid="_x0000_i1026" type="#_x0000_t75" alt="Screenshot (27).png" style='width:468pt;
+ height:263.4pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="README.md_files/image015.png" o:title="Screenshot (27)"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=351
+src="README.md_files/image026.gif" alt="Screenshot (27).png" v:shapes="Picture_x0020_7"><![endif]></span><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='margin-top:9.7pt;margin-right:0in;
+margin-bottom:9.7pt;margin-left:0in;text-align:center;line-height:16.95pt;
+background:#FDFCFB'><span style='font-size:12.0pt;font-family:"Century","serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial;
+color:#090911;mso-no-proof:yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_8"
+ o:spid="_x0000_i1025" type="#_x0000_t75" alt="Screenshot (28).png" style='width:468pt;
+ height:263.4pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="README.md_files/image017.png" o:title="Screenshot (28)"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=351
+src="README.md_files/image027.gif" alt="Screenshot (28).png" v:shapes="Picture_x0020_8"><![endif]></span><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:0in;line-height:16.95pt;background:#FDFCFB'><span style='font-size:
+12.0pt;font-family:"Century","serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:Arial;color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.7pt;margin-right:0in;margin-bottom:9.7pt;
+margin-left:.5in;line-height:16.95pt;background:#FDFCFB'><span
+style='font-size:12.0pt;font-family:"Century","serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:Arial;color:#090911'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
