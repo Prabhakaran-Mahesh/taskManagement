@@ -196,6 +196,8 @@ public class Manager extends Member{
             m.setProject(project);
         }
 
+        tester.setMainProject(project);
+
         Ui.printLine();
 
     }

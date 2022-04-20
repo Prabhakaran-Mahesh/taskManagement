@@ -5,6 +5,7 @@ import designs.Ui;
 import users.Manager;
 import users.Member;
 import users.TeamLead;
+import users.Tester;
 
 import java.util.Scanner;
 
@@ -25,6 +26,12 @@ public class Login {
 
         for (TeamLead x : Models.teamLeads) {
             if (x.getPassword().equals(password) && x.getEmail().equals(email)) {
+                return true;
+            }
+        }
+
+        for (Tester x : Models.testers) {
+            if (x.getTeamPassword().equals(password) && x.getTeamEmail().equals(email)) {
                 return true;
             }
         }
@@ -99,6 +106,12 @@ public class Login {
             for (TeamLead teamLead : Models.getTeamLeads()) {
                 if (teamLead.getEmail().equals(email)) {
                     teamLead.workOfTeamLead();
+                    return;
+                }
+            }
+            for (Tester tester : Models.getTestingTeams()) {
+                if (tester.getTeamEmail().equals(email)) {
+                    tester.workOfTester(scanner);
                     return;
                 }
             }

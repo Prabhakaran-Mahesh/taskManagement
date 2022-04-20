@@ -17,7 +17,6 @@ public class Main {
         Models.setMembers();
         Models.setStatus();
         Models.setPriority();
-        Models.setTestingTeams();
 
         //title card and loginPage
         Ui.printTitle();

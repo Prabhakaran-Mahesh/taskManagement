@@ -394,9 +394,7 @@ public class TeamLead extends Member{
 
                case 3 -> this.viewAssignedTasks(scanner);
 
-               case 4 -> this.updateTaskStatus(scanner, assignedTasks);
-
-               case 5 -> this.writeDiscussionBox(scanner);
+               case 4 -> this.writeDiscussionBox(scanner);
 
                default -> System.out.println("\n\tWrong value. Give correct input number!\n");
 

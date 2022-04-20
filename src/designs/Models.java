@@ -76,13 +76,4 @@ public class Models {
     public static ArrayList<Tester> getTestingTeams() {
         return testers;
     }
-
-    public static void setTestingTeams() {
-        testers.add(new Tester("Team1", "team1@gmail.com", "team1"));
-        testers.add(new Tester("Team2", "team2@gmail.com", "team2"));
-        testers.add(new Tester("Team3", "team3@gmail.com", "team3"));
-        testers.add(new Tester("Team4", "team4@gmail.com", "team4"));
-        testers.add(new Tester("Team5", "team5@gmail.com", "team5"));
-
-    }
 }

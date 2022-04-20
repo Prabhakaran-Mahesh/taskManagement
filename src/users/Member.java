@@ -375,9 +375,7 @@ public class Member {
 
                 case 1 -> this.viewAssignedTasks(scanner);
 
-                case 2 -> this.updateTaskStatus(scanner, assignedTasks);
-
-                case 3 -> this.writeDiscussionBox(scanner);
+                case 2 -> this.writeDiscussionBox(scanner);
 
                 default -> System.out.println("\n\tWrong value. Give correct input number!\n");
 
