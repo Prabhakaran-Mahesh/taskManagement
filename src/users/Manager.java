@@ -129,7 +129,7 @@ public class Manager extends TeamMember{
         projectName = scanner.nextLine();
         System.out.print("");
         System.out.print("\t\t\tProduct Description : ");
-        scanner.nextLine();
+        //scanner.nextLine();
         description = scanner.nextLine();
         System.out.print("");
 
@@ -453,19 +453,41 @@ public class Manager extends TeamMember{
                         System.out.println("\t\t" + i + ". " + stat);
                     }
 
-                    int status=-1;
-                    while(status == -1){
+                    System.out.println("\n\t\tCurrent Status : " + selectedProject.getProjectStatus());
+
+                    System.out.println("\n\t\tEnter 1 to select a Status. Enter 2 to add Custom Status");
+                    int select = -1;
+                    while(select == -1){
                         System.out.print("\t\t\t Enter your Choice : ");
-                        status = Validation.numberCheck(scanner);
-                        if(status > DataModel.getModelProjectStatus().size() || status < 1){
-                            System.out.println("\t\t Wrong input!");
+                        select = Validation.numberCheck(scanner);
+                        if(select < 1 || select > 2){
+                            System.out.println("\t\tWrong input! Enter 1 or 2");
+                            select = -1;
                         }
                     }
+                    if(select == 1){
+                        int status=-1;
+                        while(status == -1){
+                            System.out.print("\t\t\t Enter your Choice of Status : ");
+                            status = Validation.numberCheck(scanner);
+                            if(status > DataModel.getModelProjectStatus().size() || status < 1){
+                                System.out.println("\t\t Wrong input!");
+                            }
+                        }
+                        //System.out.print("\t\tEnter the S.no :");
+                        selectedProject.setProjectStatus(DataModel.getModelProjectStatus().get(status-1));
+                    }
+                    else{
+                        System.out.print("\t\tEnter the custom Status : ");
+                        String chat;
+                        //scanner.nextLine();
+                        chat = scanner.nextLine();
+                        System.out.print("");
 
-                    System.out.println("\n\t\tCurrent Status : " + selectedProject.getProjectStatus());
-                    System.out.print("\t\tEnter the S.no :");
+                        DataModel.getModelProjectStatus().add(chat);
+                        selectedProject.setProjectStatus(chat);
+                    }
 
-                    selectedProject.setProjectStatus(DataModel.getModelProjectStatus().get(status-1));
                 }
 
                 default -> System.out.println("\n\tWrong value. Give correct input number!\n");

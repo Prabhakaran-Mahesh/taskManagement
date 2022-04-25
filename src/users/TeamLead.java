@@ -443,26 +443,49 @@ public class TeamLead extends TeamMember{
                     System.out.println();
                     DesignModel.printLine();
 
-                    System.out.print("\t\tChoose task Priority! Enter");
-                    int priorityChoice = -1;
-                    while(true) {
-                        while (priorityChoice == -1) {
-                            System.out.print("\t\t S.no: ");
-                            priorityChoice = Validation.numberCheck(scanner);
-                        }
-
-                        if (priorityChoice < 1 || priorityChoice > DataModel.getTaskStatus().size()) {
-                            System.out.println("\n\t\t S.no not found!");
-                        } else {
-                            break;
+                    System.out.println("\n\t\tEnter 1 to select a Status. Enter 2 to add Custom Status");
+                    int select = -1;
+                    while(select == -1){
+                        System.out.print("\t\t\t Enter your Choice : ");
+                        select = Validation.numberCheck(scanner);
+                        if(select < 1 || select > 2){
+                            System.out.println("\t\tWrong input! Enter 1 or 2");
+                            select = -1;
                         }
                     }
+                    if(select == 1){
+                        System.out.print("\t\tChoose task Status! Enter");
+                        int priorityChoice = -1;
+                        while(true) {
+                            while (priorityChoice == -1) {
+                                System.out.print("\t\t S.no: ");
+                                priorityChoice = Validation.numberCheck(scanner);
+                            }
 
-                    selectedTask.setTaskStatus(DataModel.getTaskStatus().get(priorityChoice-1));
-                    selectedProject.getProgressArrayList().add(selectedTask);
-                    if(DataModel.getTaskStatus().get(priorityChoice-1).equalsIgnoreCase("Submitted for test")){
-                        selectedProject.getTester().getAssignedTasks().add(selectedTask);
+                            if (priorityChoice < 1 || priorityChoice > DataModel.getTaskStatus().size()) {
+                                System.out.println("\n\t\t S.no not found!");
+                            } else {
+                                break;
+                            }
+                        }
+
+                        selectedTask.setTaskStatus(DataModel.getTaskStatus().get(priorityChoice-1));
+                        selectedProject.getProgressArrayList().add(selectedTask);
+                        if(DataModel.getTaskStatus().get(priorityChoice-1).equalsIgnoreCase("Submitted for test")){
+                            selectedProject.getTester().getAssignedTasks().add(selectedTask);
+                        }
                     }
+                    else{
+                        System.out.print("\t\tEnter the custom Status : ");
+                        String chat;
+                        //scanner.nextLine();
+                        chat = scanner.nextLine();
+                        System.out.print("");
+
+                        DataModel.getTaskStatus().add(chat);
+                        selectedTask.setTaskStatus(chat);
+                    }
+
                 }
 
                 default -> System.out.println("\n\tWrong value. Give correct input number!\n");
@@ -656,25 +679,47 @@ public class TeamLead extends TeamMember{
                     System.out.println();
                     DesignModel.printLine();
 
-                    System.out.print("\t\tChoose Issue Status! Enter");
-                    int priorityChoice = -1;
-                    while(true) {
-                        while (priorityChoice == -1) {
-                            System.out.print("\t\t S.no: ");
-                            priorityChoice = Validation.numberCheck(scanner);
-                        }
-
-                        if (priorityChoice < 1 || priorityChoice > DataModel.getIssueStatus().size()) {
-                            System.out.println("\n\t\t S.no not found!");
-                        } else {
-                            break;
+                    System.out.println("\n\t\tEnter 1 to select a Status. Enter 2 to add Custom Status");
+                    int select = -1;
+                    while(select == -1){
+                        System.out.print("\t\t\t Enter your Choice : ");
+                        select = Validation.numberCheck(scanner);
+                        if(select < 1 || select > 2){
+                            System.out.println("\t\tWrong input! Enter 1 or 2");
+                            select = -1;
                         }
                     }
+                    if(select ==1){
+                        System.out.print("\t\tChoose Issue Status! Enter");
+                        int priorityChoice = -1;
+                        while(true) {
+                            while (priorityChoice == -1) {
+                                System.out.print("\t\t S.no: ");
+                                priorityChoice = Validation.numberCheck(scanner);
+                            }
 
-                    selectedTask.setIssueStatus(DataModel.getIssueStatus().get(priorityChoice-1));
-                    if(DataModel.getIssueStatus().get(priorityChoice-1).equalsIgnoreCase("Submitted for test")){
-                        selectedProject.getTester().getAssignedTasks().add(selectedTask);
+                            if (priorityChoice < 1 || priorityChoice > DataModel.getIssueStatus().size()) {
+                                System.out.println("\n\t\t S.no not found!");
+                            } else {
+                                break;
+                            }
+                        }
+
+                        selectedTask.setIssueStatus(DataModel.getIssueStatus().get(priorityChoice-1));
+                        if(DataModel.getIssueStatus().get(priorityChoice-1).equalsIgnoreCase("Submitted for test")){
+                            selectedProject.getTester().getAssignedTasks().add(selectedTask);
+                        }
+                    } else{
+                        System.out.print("\t\tEnter the custom Status : ");
+                        String chat;
+                        //scanner.nextLine();
+                        chat = scanner.nextLine();
+                        System.out.print("");
+
+                        DataModel.getIssueStatus().add(chat);
+                        selectedTask.setIssueStatus(chat);
                     }
+
                 }
 
                 default -> System.out.println("\n\tWrong value. Give correct input number!\n");
@@ -924,9 +969,9 @@ public class TeamLead extends TeamMember{
         System.out.println("\n\t\tWorkFlow : \n");
 
         for(Task task : selectedProject.getProgressArrayList()){
-            System.out.printf("\t\t\t\tName : %15s \tPriority : %15s \tStatus : %20s\n", task.getTaskName(), task.getTaskPriority(), task.getTaskStatus());
-            System.out.println("\t\t\t\t\t|");
-            System.out.println("\t\t\t\t\tv");
+            System.out.printf("\t\t\t\tName : %s \tPriority : %s \tStatus : %s\n", task.getTaskName(), task.getTaskPriority(), task.getTaskStatus());
+            char arrow = '\u2193';
+            System.out.println("\t\t\t\t\t"+arrow);
         }
     }
 
