@@ -1,15 +1,17 @@
 package activities;
 
-import designs.Models;
-import designs.Ui;
+
+import models.DataModel;
+import models.DesignModel;
 import users.Manager;
-import users.Member;
 import users.TeamLead;
+import users.TeamMember;
 import users.Tester;
 
 import java.util.Scanner;
 
 public class Login {
+    static Scanner scanner = new Scanner(System.in);
 
     /*
     -> login verification method is used to verify the login credentials of the user.
@@ -18,39 +20,53 @@ public class Login {
      */
     private static boolean loginVerification(String email, String password){
 
-        for (Manager x : Models.getManagers()) {
-            if (x.getPassword().equals(password) && x.getEmail().equals(email)) {
+        for (Manager manager : DataModel.getManagerArrayList()) {
+            if (manager.getMemberPassword().equals(password) && manager.getMemberEmail().equals(email)) {
+                manager.managerWorks();
                 return true;
             }
-        }
-
-        for (TeamLead x : Models.teamLeads) {
-            if (x.getPassword().equals(password) && x.getEmail().equals(email)) {
-                return true;
+            else if(manager.getMemberEmail().equals(email)){
+                System.out.println("\n\t\tIncorrect Password");
+                return false;
             }
         }
+        System.out.print("\t\tEnter Organization name : ");
+        String org = scanner.next();
+        for (Manager manager : DataModel.getManagerArrayList()) {
+            if (manager.getOrganisationName().equalsIgnoreCase(org)) {
+                for(TeamLead teamLead : manager.getTeamLeads()){
+                    if (teamLead.getMemberPassword().equals(password) && teamLead.getMemberEmail().equals(email)) {
+                        teamLead.teamLeadWork();
+                        return true;
+                    }
+                }
 
-        for (Tester x : Models.testers) {
-            if (x.getTeamPassword().equals(password) && x.getTeamEmail().equals(email)) {
-                return true;
+                Tester tester = manager.getTester();
+                if (tester.getMemberPassword().equals(password) && tester.getMemberEmail().equals(email)) {
+                    tester.testerWorks();
+                    return true;
+                }
+
+                for(TeamMember teamMember : manager.getCompanyMembers()){
+                    if (teamMember.getMemberPassword().equals(password) && teamMember.getMemberEmail().equals(email)) {
+                        teamMember.teamMemberWork();
+                        return true;
+                    }
+                }
+                System.out.println("\n\t\tCheck your organisation Name! If correct, check your Credentials");
+                return false;
             }
         }
-
-        for (Member x : Models.members) {
-            if (x.getPassword().equals(password) && x.getEmail().equals(email)) {
-                return true;
-            }
-        }
-
-        System.out.println("\t\tCheck Your Email and Password");
+        System.out.println("\n\t\tCheck your Credentials");
         return false;
+
     }
 
     /*
     -> this is the main login method.
     -> gets input and checks input and process are done
      */
-    public static void loginMethod(Scanner scanner) {
+    public static void loginMethod() {
         boolean verification = false; // for calling loginVerification function
         int limit = 3; // if the user hits wrong credentials for 3 times. the application ends
 
@@ -63,15 +79,15 @@ public class Login {
             limit--;
             if(limit == -1){
                 System.out.println("\n\t\tYou have attempted 3 times with wrong credentials!\n");
-                Ui.printLine();
+                DesignModel.printLine();
                 System.exit(0);
             }
             else if(limit<2){
-                System.out.println("\n\t\tYou have " + (limit+1) + " more attempts left\n");
+                System.out.println("\t\tYou have " + (limit+1) + " more attempts left\n");
             }
 
             System.out.println();
-            Ui.printLine();
+            DesignModel.printLine();
             System.out.println();
 
             System.out.print("\t\tEnter Email ID : ");
@@ -84,44 +100,7 @@ public class Login {
             verification = loginVerification(email, password);
 
         }
-        moveToChoiceDecider(email, scanner);
-    }
-
-    /*
-    ->after verification of credentials
-    -> credentials are passed to this method to make the user move into their respective field
-    -> according to user credentials user is searched in every arraylist till the user is found
-     */
-    public static void moveToChoiceDecider(String email, Scanner scanner) {
-
-        System.out.println();
-        Ui.printLine();
-
-            for (Manager manager : Models.getManagers()) {
-                if (manager.getEmail().equals(email)) {
-                    manager.workOfManager(scanner);
-                    return;
-                }
-            }
-            for (TeamLead teamLead : Models.getTeamLeads()) {
-                if (teamLead.getEmail().equals(email)) {
-                    teamLead.workOfTeamLead();
-                    return;
-                }
-            }
-            for (Tester tester : Models.getTestingTeams()) {
-                if (tester.getTeamEmail().equals(email)) {
-                    tester.workOfTester(scanner);
-                    return;
-                }
-            }
-            for (Member users : Models.getMembers()) {
-                if (users.getEmail().equals(email)) {
-                    users.workOfMember(scanner);
-                    return;
-                }
-
-            }
     }
 
 }
+

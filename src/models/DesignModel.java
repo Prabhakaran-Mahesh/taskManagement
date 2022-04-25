@@ -1,4 +1,4 @@
-package designs;
+package models;
 
 /*
 -> This class is used for the designing of the console Application.
@@ -6,7 +6,7 @@ package designs;
 -> The ui part of the application is not very engaging
 -> thus adding some minimal designs can make the application look better
  */
-public class Ui {
+public class DesignModel {
     // Lines are used to differentiate each sections of the application
     public static void printLine(){
         for(int i=0; i<150; i++){
@@ -19,11 +19,12 @@ public class Ui {
     // This function is called only once ie; called at the top of the main function and not inside the loop
     public static void printTitle(){
         System.out.println();
-        printLine();
 
+        printLine();
         System.out.printf("*%148s*\n", " ");
         System.out.printf("*%85s%63s*\n", "Task Management System", " ");
         System.out.printf("*%148s*\n", " ");
         printLine();
     }
 }
+

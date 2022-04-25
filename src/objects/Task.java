@@ -1,21 +1,22 @@
 package objects;
 
+import java.util.ArrayList;
 
-//Task class is the important class of the projecy
-// the task class is the blue print of all task objects that makes up a project
 public class Task {
     String taskName;
+    String description;
     String deadline;
-    String status;
-    String taskDescription;
-    String priority;
+    String taskStatus;
+    String taskPriority;
 
-    public Task(String taskName, String deadline, String taskDescription, String priority) {
+    ArrayList<String> comments = new ArrayList<>();
+
+    public Task(String taskName, String description, String deadline, String taskPriority) {
         this.taskName = taskName;
+        this.description = description;
         this.deadline = deadline;
-        this.taskDescription = taskDescription;
-        this.status = "Not yet Started";
-        this.priority = priority;
+        this.taskPriority = taskPriority;
+        this.taskStatus = "Not yet Started";
     }
 
     public String getTaskName() {
@@ -26,36 +27,43 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public void setDeadline(String deadline) {
-        this.deadline = deadline;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTaskDescription(String taskDescription) {
-        this.taskDescription = taskDescription;
-    }
-
-    public void setPriority(String priority) {
-        this.priority = priority;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDeadline() {
         return deadline;
     }
 
-    public String getStatus() {
-        return status;
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public String getTaskStatus() {
+        return taskStatus;
     }
 
-    public String getTaskDescription() {
-        return taskDescription;
+    public void setTaskStatus(String taskStatus) {
+        this.taskStatus = taskStatus;
     }
 
-    public String getPriority() {
-        return priority;
+    public String getTaskPriority() {
+        return taskPriority;
     }
 
+    public void setTaskPriority(String taskPriority) {
+        this.taskPriority = taskPriority;
+    }
+
+    public ArrayList<String> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList<String> comments) {
+        this.comments = comments;
+    }
 }

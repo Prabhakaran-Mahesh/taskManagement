@@ -1,6 +1,7 @@
 package activities;
 
-import designs.Ui;
+
+import models.DesignModel;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -10,7 +11,9 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Validations {
+public class Validation {
+
+    static Scanner scanner = new Scanner(System.in);
 
     //date format which should be given as input
     final static String DATE_FORMAT = "dd-MM-yyyy";
@@ -38,7 +41,7 @@ public class Validations {
             System.out.println("\n\t\tInvalid input.\n");
             // Advances the scanner to prevent input errors
             scanner.nextLine();
-            Ui.printLine();
+            DesignModel.printLine();
             System.out.println("\n");
             return -1;
         }
@@ -49,7 +52,7 @@ public class Validations {
     -> email validation
     -> email verification is used to check whether correct format of email is passed as inputc
      */
-    public static String emailValidation(Scanner scanner) {
+    public static String emailValidation() {
         String email;
 
         while(true){
@@ -138,3 +141,4 @@ public class Validations {
         }
     }
 }
+

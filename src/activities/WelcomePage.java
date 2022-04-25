@@ -1,9 +1,7 @@
-package objects;
+package activities;
 
-import activities.Login;
-import activities.SignUp;
-import activities.Validations;
-import designs.Ui;
+
+import models.DesignModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,13 +11,15 @@ import java.util.Scanner;
 /*
 -> this class is Helps us to display the welcome screen for the program
  */
-public class LoginSignUpPage {
+public class WelcomePage {
+
+    static Scanner scanner = new Scanner(System.in);
 
     /*
     -> this function is used to display the login page categories
     -> login, signup, exit
      */
-    public static void loginDisplay(Scanner scanner){
+    public static void loginDisplay(){
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("E dd MMM, yyyy  hh:mm");
 
@@ -38,7 +38,7 @@ public class LoginSignUpPage {
             int isNumber = -1;
             while(isNumber == -1){
                 System.out.print("\t\tEnter your choice : ");
-                isNumber = Validations.numberCheck(scanner);
+                isNumber = Validation.numberCheck(scanner);
             }
 
             if(isNumber == -2){
@@ -49,7 +49,7 @@ public class LoginSignUpPage {
                     String decision = scanner.next();
                     if(decision.equalsIgnoreCase("yes")){
                         correct = true;
-                        Ui.printLine();
+                        DesignModel.printLine();
                         exit = true;
                     }
                     else if(decision.equalsIgnoreCase("no")){
@@ -62,10 +62,10 @@ public class LoginSignUpPage {
             }
 
             else if(isNumber == 1){
-                Login.loginMethod(scanner);
+                Login.loginMethod();
             }
             else if(isNumber == 2){
-                SignUp.signupMethod(scanner);
+                Registration.signupMethod();
             }
             else{
                 System.out.println("\tEnter correct number\n");
@@ -75,3 +75,4 @@ public class LoginSignUpPage {
         }while (!exit);
     }
 }
+
