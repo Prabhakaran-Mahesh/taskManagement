@@ -7,6 +7,7 @@ import objects.Issue;
 import objects.Project;
 import objects.Task;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -933,6 +934,7 @@ public class TeamLead extends TeamMember{
             }
             else{
                 System.out.println("\n\t\t\t Enter 1 to Add a File.");
+                System.out.println("\n\t\t\t Enter 2 to Download a File.");
                 System.out.println("\t\t\t Enter -1 to Close");
 
                 int choice;
@@ -954,7 +956,40 @@ public class TeamLead extends TeamMember{
                     System.out.print("");
 
                     if(Validation.messageValidation(chat)){
-                        getProjectArrayList().get(chatboxResult).getFileFolder().add("\t\t\t\tTeamLead -> " + this.memberName + " : " + chat);
+                        File file = new File("E:/Java/projects/taskManagement/src/files/"+chat);
+                        if(file.exists()) {
+                            System.out.println("\t\tFile Uploaded Successfully");
+                            getProjectArrayList().get(chatboxResult).getFileFolder().add("\t\t\t\tTeamLead -> " + this.memberName + " : " + chat);
+                        }
+                        else{
+                            System.out.println("\t\tFile not Found in your Directory");
+                        }
+                    }
+                } else if (choice == 2) {
+                    int size = getProjectArrayList().get(chatboxResult).getFileFolder().size();
+                    if(size == 0)
+                        System.out.println("\t\t\tNo Files are found!");
+                    else{
+                        int i=0;
+                        for(String string : getProjectArrayList().get(chatboxResult).getFileFolder()){
+                            i++;
+                            System.out.printf("\t\t%s. %s\n", i, string);
+                        }
+
+                        int file = 0;
+
+                        while(true){
+                            System.out.print("\n\t\tEnter the s.no of the file you want to download : ");
+                            file = Validation.numberCheck(scanner);
+                            if(file>0 && file<=getProjectArrayList().get(chatboxResult).getFileFolder().size()){
+                                break;
+                            }
+                            else{
+                                System.out.println("\t\tWrong input");
+                            }
+                        }
+
+                        System.out.println("\n\t\t\t" + getProjectArrayList().get(chatboxResult).getFileFolder().get(file-1) + " file Downloaded");
                     }
                 } else {
                     System.out.println("\t\tWrong number. check your Input!\n");

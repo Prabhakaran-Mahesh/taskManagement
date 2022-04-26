@@ -8,6 +8,7 @@ import objects.Issue;
 import objects.Project;
 import objects.Task;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -208,42 +209,35 @@ public class TeamMember {
         if (getAssignedTasks().size() == 0) {
             System.out.println("\t\t\tNo task is created yet!");
         } else {
+            int i = 0;
+            System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
+            for (Task task : getAssignedTasks()) {
+                i++;
+                System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
+            }
 
-            System.out.println("\t\t1. All tasks");
-            System.out.println("\t\t2. Search By criteria");
+            DesignModel.printLine();
 
-            int choice;
-            do {
-                System.out.print("\n\t\tEnter your choice : ");
-                choice = Validation.numberCheck(scanner);
-            } while (choice == -1);
+            //System.out.println("\n\t\tDo you want to update Task Details? Enter 1 to yes, Enter -1 to no");
+            System.out.println("\t\t1. Update Tasks");
+            System.out.println("\t\t2. Search Task By Criteria");
+            System.out.println("\t\t3. Go back");
 
-            if (choice == 1) {
-                int i = 0;
-                System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
-                for (Task task : getAssignedTasks()) {
-                    i++;
-                    System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
+            int ver;
+            while (true) {
+                System.out.print("\t\tEnter your choice : ");
+                ver = Validation.numberCheck(scanner);
+                if (ver == -2 || ver == 1 || ver == 2) {
+                    break;
+                } else {
+                    System.out.println("\t\tWrong input");
                 }
+            }
 
-                DesignModel.printLine();
-
-                System.out.println("\n\t\tDo you want to update Task Details? Enter 1 to yes, Enter -1 to no");
-                int ver;
-                while (true) {
-                    System.out.print("\t\tEnter your choice : ");
-                    ver = Validation.numberCheck(scanner);
-                    if (ver == -2 || ver == 1) {
-                        break;
-                    } else {
-                        System.out.println("\t\tWrong input");
-                    }
-                }
-
-                if (ver == 1) {
-                    updateAssignedTaskDetails(getAssignedTasks());
-                }
-            } else if(choice == 2){
+            if (ver == 1) {
+                updateAssignedTaskDetails(getAssignedTasks());
+            }
+            else if(ver == 2){
                 ArrayList<Task> filteredTasks = new ArrayList<>();
 
                 System.out.println("\t\t\t Key words that can be searched");
@@ -275,33 +269,31 @@ public class TeamMember {
                     System.out.println("\t\tNo tasks are found under the given criteria : " + enteredSearchValue);
                 }
                 else{
-                    int i=0;
+                    i=0;
                     System.out.printf("\n\t\t%15s %15s %15s %15s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
                     for(Task task : filteredTasks){
                         i++;
                         System.out.printf("\t\t%15s %15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
                     }
-                }
-                System.out.println("\n\t\tDo you want to update Task Details? Enter 1 to yes, Enter -1 to no");
-                int ver;
-                while (true) {
-                    System.out.print("\t\tEnter your choice : ");
-                    ver = Validation.numberCheck(scanner);
-                    if (ver == -2 || ver == 1) {
-                        break;
-                    } else {
-                        System.out.println("\t\tWrong input");
+
+                    System.out.println("\n\t\tDo you want to update Task Details? Enter 1 to yes, Enter -1 to no");
+
+                    while (true) {
+                        System.out.print("\t\tEnter your choice : ");
+                        ver = Validation.numberCheck(scanner);
+                        if (ver == -2 || ver == 1) {
+                            break;
+                        } else {
+                            System.out.println("\t\tWrong input");
+                        }
+                    }
+
+                    if (ver == 1) {
+                        updateAssignedTaskDetails(filteredTasks);
                     }
                 }
 
-                if (ver == 1) {
-                    updateAssignedTaskDetails(filteredTasks);
-                }
-
-            } else{
-                System.out.print("\n\t\tThe number input is incorrect!");
             }
-
             System.out.println();
             DesignModel.printLine();
 
@@ -808,7 +800,14 @@ public class TeamMember {
                     System.out.print("");
 
                     if(Validation.messageValidation(chat)){
-                        getProjectArrayList().get(chatboxResult).getFileFolder().add("\t\t\t\t" + this.memberName + " : " + chat);
+                        File file = new File("E:/Java/projects/taskManagement/src/files/"+chat);
+                        if(file.exists()) {
+                            System.out.println("\t\tFile Uploaded Successfully");
+                            getProjectArrayList().get(chatboxResult).getFileFolder().add("\t\t\t\tTeamLead -> " + this.memberName + " : " + chat);
+                        }
+                        else{
+                            System.out.println("\t\tFile not Found in your Directory");
+                        }
                     }
                 } else if (choice == 2) {
                     int size = getProjectArrayList().get(chatboxResult).getFileFolder().size();
@@ -824,7 +823,7 @@ public class TeamMember {
                         int file = 0;
 
                         while(true){
-                            System.out.print("\n\t\tEnter the s.no of the Task which you want to update : ");
+                            System.out.print("\n\t\tEnter the s.no of the file you want to download : ");
                             file = Validation.numberCheck(scanner);
                             if(file>0 && file<=getProjectArrayList().get(chatboxResult).getFileFolder().size()){
                                 break;
