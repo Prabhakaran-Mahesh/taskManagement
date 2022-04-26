@@ -30,9 +30,40 @@ public class Login {
                 return false;
             }
         }
-        System.out.print("\t\tEnter Organization name : ");
-        String org = scanner.next();
-        for (Manager manager : DataModel.getManagerArrayList()) {
+
+        for (Tester tester : DataModel.getTesters()) {
+            if (tester.getMemberPassword().equals(password) && tester.getMemberEmail().equals(email)) {
+                tester.testerWorks();
+                return true;
+            }
+            else if(tester.getMemberEmail().equals(email)){
+                System.out.println("\n\t\tIncorrect Password");
+                return false;
+            }
+        }
+
+        for (TeamLead teamLead : DataModel.getTeamLeads()) {
+            if (teamLead.getMemberPassword().equals(password) && teamLead.getMemberEmail().equals(email)) {
+                teamLead.teamLeadWork();
+                return true;
+            }
+            else if(teamLead.getMemberEmail().equals(email)){
+                System.out.println("\n\t\tIncorrect Password");
+                return false;
+            }
+        }
+        for (TeamMember teamMember : DataModel.getTeamMembers()) {
+            if (teamMember.getMemberPassword().equals(password) && teamMember.getMemberEmail().equals(email)) {
+                teamMember.teamMemberWork();
+                return true;
+            }
+            else if(teamMember.getMemberEmail().equals(email)){
+                System.out.println("\n\t\tIncorrect Password");
+                return false;
+            }
+        }
+
+        /*for (Manager manager : DataModel.getManagerArrayList()) {
             if (manager.getOrganisationName().equalsIgnoreCase(org)) {
                 for(TeamLead teamLead : manager.getTeamLeads()){
                     if (teamLead.getMemberPassword().equals(password) && teamLead.getMemberEmail().equals(email)) {
@@ -56,7 +87,7 @@ public class Login {
                 System.out.println("\n\t\tCheck your organisation Name! If correct, check your Credentials");
                 return false;
             }
-        }
+        }*/
         System.out.println("\n\t\tCheck your Credentials");
         return false;
 

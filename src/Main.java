@@ -13,6 +13,7 @@ public class Main {
         DataModel.setTaskStatus();
         DataModel.setMemberIssueStatus();
         DataModel.setMemberTaskStatus();
+        DataModel.setTeamMembers();
 
         DesignModel.printTitle();
         WelcomePage.loginDisplay();

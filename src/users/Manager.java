@@ -107,7 +107,7 @@ public class Manager extends TeamMember{
         password = scanner.next();
 
         TeamMember member = new TeamMember(name, email, password);
-        this.getCompanyMembers().add(member);
+        DataModel.getTeamMembers().add(member);
         System.out.println("\t\tUser added to the Organisation");
         DesignModel.printLine();
     }
@@ -142,7 +142,7 @@ public class Manager extends TeamMember{
 
         System.out.print("\n\t\t\tEnter the ID number of the users you want for this project\n\t\t\tEnter -1 to stop. ");
         int i=0;
-        for(TeamMember m : getCompanyMembers()){
+        for(TeamMember m : DataModel.getTeamMembers()){
             i++;
             System.out.print("\n\t\t S.no : " + i + ". Name : " + m.getMemberName());
         }
@@ -158,14 +158,14 @@ public class Manager extends TeamMember{
             if(memberChoice == -2){
                 break;
             }
-            else if(memberChoice<1 || memberChoice>getCompanyMembers().size()){
+            else if(memberChoice<1 || memberChoice>DataModel.getTeamMembers().size()){
                 System.out.println("\n\t\t S.no not found!");
                 memberChoice = -1;
                 continue;
             }
-            memberArrayList.add(getCompanyMembers().get(memberChoice-1));
-            memberEligibleForTester.add(getCompanyMembers().get(memberChoice-1));
-            getCompanyMembers().get(memberChoice-1).setMemberStatus("Closed");
+            memberArrayList.add(DataModel.getTeamMembers().get(memberChoice-1));
+            memberEligibleForTester.add(DataModel.getTeamMembers().get(memberChoice-1));
+            DataModel.getTeamMembers().get(memberChoice-1).setMemberStatus("Closed");
             memberChoice = -1;
         }
 
@@ -209,6 +209,7 @@ public class Manager extends TeamMember{
                 TeamLead lead = new TeamLead(mem);
                 //teamLeads.add(lead);
                 getTeamLeads().add(lead);
+                DataModel.getTeamLeads().add(lead);
                 memberChoice = -1;
             }
 
@@ -262,6 +263,7 @@ public class Manager extends TeamMember{
             memberArrayList.remove(mem);
             Tester test = new Tester(mem);
             this.setTester(test);
+            DataModel.getTesters().add(test);
         }
 
 
@@ -319,7 +321,7 @@ public class Manager extends TeamMember{
 
             Project selectedProject = projectArrayList.get(choice-1);
 
-            ArrayList<TeamMember> additionMemberArrayList = getCompanyMembers();
+            ArrayList<TeamMember> additionMemberArrayList = DataModel.getTeamMembers();
             Tester tester = selectedProject.getTester();
 
             for(TeamMember member : selectedProject.getTeamMemberArrayList()) {
@@ -982,16 +984,6 @@ public class Manager extends TeamMember{
 
 
     public void managerWorks(){
-        companyMembers.add(new TeamMember("member1", "member1@gmail.com", "member1"));
-        companyMembers.add(new TeamMember("member2", "member2@gmail.com", "member2"));
-        companyMembers.add(new TeamMember("member3", "member3@gmail.com", "member3"));
-        companyMembers.add(new TeamMember("member4", "member4@gmail.com", "member4"));
-        companyMembers.add(new TeamMember("member5", "member5@gmail.com", "member5"));
-        companyMembers.add(new TeamMember("member6", "member6@gmail.com", "member6"));
-        companyMembers.add(new TeamMember("member7", "member7@gmail.com", "member7"));
-        companyMembers.add(new TeamMember("member8", "member8@gmail.com", "member8"));
-        companyMembers.add(new TeamMember("member9", "member9@gmail.com", "member9"));
-        companyMembers.add(new TeamMember("member10", "member10@gmail.com", "member10"));
 
         System.out.println("\n\t\tWelcome Manager : " + this.getMemberName().toUpperCase());
 

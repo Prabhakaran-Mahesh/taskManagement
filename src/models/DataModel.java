@@ -1,12 +1,18 @@
 package models;
 
 import users.Manager;
+import users.TeamLead;
+import users.TeamMember;
+import users.Tester;
 
 import java.util.ArrayList;
 
 public class DataModel {
 
     static ArrayList<Manager> managerArrayList = new ArrayList<>();
+    static ArrayList<TeamMember> teamMembers = new ArrayList<>();
+    static ArrayList<TeamLead> teamLeads = new ArrayList<>();
+    static ArrayList<Tester> testers = new ArrayList<>();
     static ArrayList<String> projectStatus = new ArrayList<>();
     static ArrayList<String> priority = new ArrayList<>();
     static ArrayList<String> taskStatus = new ArrayList<>();
@@ -101,5 +107,38 @@ public class DataModel {
         memberIssueStatus.add("Optimization");
         memberIssueStatus.add("Submitted for Test");
         memberIssueStatus.add("Delayed");
+    }
+
+    public static ArrayList<TeamMember> getTeamMembers() {
+        return teamMembers;
+    }
+
+    public static void setTeamMembers() {
+        teamMembers.add(new TeamMember("member1", "member1@gmail.com", "member1"));
+        teamMembers.add(new TeamMember("member2", "member2@gmail.com", "member2"));
+        teamMembers.add(new TeamMember("member3", "member3@gmail.com", "member3"));
+        teamMembers.add(new TeamMember("member4", "member4@gmail.com", "member4"));
+        teamMembers.add(new TeamMember("member5", "member5@gmail.com", "member5"));
+        teamMembers.add(new TeamMember("member6", "member6@gmail.com", "member6"));
+        teamMembers.add(new TeamMember("member7", "member7@gmail.com", "member7"));
+        teamMembers.add(new TeamMember("member8", "member8@gmail.com", "member8"));
+        teamMembers.add(new TeamMember("member9", "member9@gmail.com", "member9"));
+        teamMembers.add(new TeamMember("member10", "member10@gmail.com", "member10"));
+    }
+
+    public static ArrayList<TeamLead> getTeamLeads() {
+        return teamLeads;
+    }
+
+    public static void setTeamLeads(ArrayList<TeamLead> teamLeads) {
+        DataModel.teamLeads = teamLeads;
+    }
+
+    public static ArrayList<Tester> getTesters() {
+        return testers;
+    }
+
+    public static void setTesters(ArrayList<Tester> testers) {
+        DataModel.testers = testers;
     }
 }
