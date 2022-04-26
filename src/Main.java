@@ -14,6 +14,7 @@ public class Main {
         DataModel.setMemberIssueStatus();
         DataModel.setMemberTaskStatus();
         DataModel.setTeamMembers();
+        DataModel.setRecurringTaskType();
 
         DesignModel.printTitle();
         WelcomePage.loginDisplay();

@@ -1,10 +1,12 @@
 package users;
 
+import activities.Registration;
 import activities.Validation;
 import models.DataModel;
 import models.DesignModel;
 import objects.Issue;
 import objects.Project;
+import objects.RecurringTask;
 import objects.Task;
 
 import java.io.File;
@@ -17,6 +19,8 @@ public class Manager extends TeamMember{
     ArrayList<TeamMember> companyMembers = new ArrayList<>();
     ArrayList<Task> createdTasks = new ArrayList<>();
     ArrayList<Issue> createdIssue = new ArrayList<>();
+
+    ArrayList<RecurringTask> recurringTaskArrayList = new ArrayList<>();
 
     ArrayList<TeamLead> teamLeads = new ArrayList<>();
     Tester tester = new Tester("", "", "");
@@ -678,6 +682,170 @@ public class Manager extends TeamMember{
 
     }
 
+    public void createRecurringTask(){
+        //ArrayList<Task> taskArrayList = new ArrayList<>();
+
+        System.out.println();
+        DesignModel.printLine();
+
+        if(projectArrayList.size() == 0){
+            System.out.print("\t\tNo Projects found!\n");
+            DesignModel.printLine();
+        }
+        else {
+            System.out.printf("\n\t\t%15s %15s %15s %25s %35s\n", "S.no", "ProjectName", "Deadline", "Status", "Description");
+            int i = 0;
+            for (Project project : projectArrayList) {
+                i++;
+                System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getProjectStatus(), project.getDescription());
+            }
+            DesignModel.printLine();
+
+            int choice;
+
+            while(true){
+                System.out.print("\n\t\tEnter the s.no of the Project which you want to add Recurring Tasks : ");
+                choice = Validation.numberCheck(scanner);
+                if(choice>0 && choice<=projectArrayList.size()){
+                    break;
+                }
+                else{
+                    System.out.println("\t\tWrong input");
+                }
+            }
+
+            Project selectedProject = projectArrayList.get(choice-1);
+
+
+
+            System.out.println("\t\tAdd tasks to the Project");
+
+            boolean done = false;
+            while (!done) {
+                System.out.println("\t\t\t1. Add task");
+                System.out.println("\t\t\t-1. Task Adding completed");
+                do {
+                    System.out.print("\n\t\tEnter your choice : ");
+                    choice = Validation.numberCheck(scanner);
+                } while (choice == -1);
+
+                if (choice == 1) {
+                    RecurringTask task;
+
+                    String taskName, taskDescription, taskDeadline;
+
+                    System.out.print("\t\t\tEnter Name of the Task : ");
+                    taskName = scanner.next();
+                    System.out.print("\t\t\tTask Description : ");
+                    scanner.nextLine();
+                    taskDescription = scanner.nextLine();
+                    System.out.print("");
+
+                    /*do {
+                        System.out.print("\t\t\tTask Deadline (Date format : dd-MM-yyyy) : ");
+                        taskDeadline = scanner.next();
+
+                    } while (!Validation.deadlineDateValidation(selectedProject.getDeadline(), taskDeadline));*/
+
+                    System.out.println("\t\tPriority List : ");
+
+                    i = 0;
+                    for (String m : DataModel.getPriority()) {
+                        i++;
+                        System.out.print("\n\t\t\t S.no : " + i + ". " + m);
+                    }
+                    System.out.println();
+                    DesignModel.printLine();
+
+                    System.out.print("\t\tChoose task Priority! Enter");
+                    int priorityChoice = -1;
+                    while (true) {
+                        while (priorityChoice == -1) {
+                            System.out.print("\t\t S.no: ");
+                            priorityChoice = Validation.numberCheck(scanner);
+                        }
+
+                        if (priorityChoice < 1 || priorityChoice > DataModel.getPriority().size()) {
+                            System.out.println("\n\t\t S.no not found!");
+                            priorityChoice = -1;
+                        } else {
+                            break;
+                        }
+                    }
+
+                    System.out.println("\t\tRecurring Type List : ");
+
+                    i = 0;
+                    for (String m : DataModel.getRecurringTaskType()) {
+                        i++;
+                        System.out.print("\n\t\t\t S.no : " + i + ". " + m);
+                    }
+                    System.out.println();
+                    DesignModel.printLine();
+
+                    System.out.print("\t\tChoose Recurring Task Type! Enter");
+                    int typeChoice = -1;
+                    while (true) {
+                        while (typeChoice == -1) {
+                            System.out.print("\t\t S.no: ");
+                            typeChoice = Validation.numberCheck(scanner);
+                        }
+
+                        if (typeChoice < 1 || typeChoice > DataModel.getRecurringTaskType().size()) {
+                            System.out.println("\n\t\t S.no not found!");
+                            priorityChoice = -1;
+                        } else {
+                            break;
+                        }
+                    }
+
+                    task = new RecurringTask(taskName, taskDescription, DataModel.getPriority().get(priorityChoice - 1), DataModel.getRecurringTaskType().get(typeChoice-1));
+                    selectedProject.getRecurringTaskArrayList().add(task);
+                    this.recurringTaskArrayList.add(task);
+
+                    System.out.println();
+                    DesignModel.printLine();
+                } else if (choice == -2) {
+                    System.out.println("\t\tTasks Added to the task");
+                    done = true;
+                    System.out.println();
+                    DesignModel.printLine();
+                }
+
+            }
+        }
+
+    }
+
+    public void taskTypeDecider(){
+        System.out.println("\t\t\tCreate Tasks:");
+        System.out.println("\n\t\t\tEnter 1 to Create a Regular Task");
+        System.out.println("\t\t\tEnter 2 to Create a Recurring Task");
+        System.out.println("\t\t\tEnter -1 to Go back\n");
+
+        int choice;
+
+        while(true){
+            System.out.print("\n\t\tEnter the s.no of Type of Task Tasks : ");
+            choice = Validation.numberCheck(scanner);
+            if(choice==-2 || choice==1 || choice==2){
+                break;
+            }
+            else{
+                System.out.println("\t\tWrong input");
+            }
+        }
+
+        if(choice ==1){
+            this.createTasks();
+        } else if(choice == 2){
+            this.createRecurringTask();
+        } else{
+            System.out.println();
+            DesignModel.printLine();
+        }
+    }
+
     public void createIssues(){
         //ArrayList<Task> taskArrayList = new ArrayList<>();
 
@@ -1017,6 +1185,32 @@ public class Manager extends TeamMember{
         }
     }
 
+    public void showListOfProjects(){
+        System.out.println("\n\t\t\tCurrently working Projects : \n");
+
+        int i=0;
+        for(Project task : getProjectArrayList()){
+            i++;
+
+            System.out.printf("\t\t\t\t%15s %15s %15s %15s %25s\n", "S.no", "ProjectName", "Deadline", "ProjectStatus", "Description");
+            System.out.printf("\t\t\t\t%15s %15s %15s %15s %25s\n", i, task.getProjectName(), task.getDeadline(), task.getProjectStatus(), task.getDescription());
+
+        }
+    }
+
+    public void showRecurringTasks(){
+        System.out.println("\n\t\t\tRecurring Tasks : \n");
+
+        int i=0;
+        for(RecurringTask task : recurringTaskArrayList){
+            i++;
+
+            System.out.printf("\t\t\t\t%15s %15s %15s %15s %25s\n", "S.no", "Task Name", "Priority", "RecurringTyp", "Description");
+            System.out.printf("\t\t\t\t%15s %15s %15s %15s %25s\n", i, task.getRecurringTaskName(), task.getRecurringTaskPriority(), task.getRecurringTaskType(), task.getRecurringTaskDescription());
+
+        }
+    }
+
 
 
     public void managerWorks(){
@@ -1024,6 +1218,10 @@ public class Manager extends TeamMember{
         System.out.println("\n\t\tWelcome Manager : " + this.getMemberName().toUpperCase());
 
         while(true){
+            System.out.println("\t\tDashboard!\n");
+            this.showListOfProjects();
+            this.showRecurringTasks();
+            System.out.println();
             System.out.println("\n\t\tWhat would you like to do :");
 
             System.out.println("\n\t\t\t Enter 0 to Change Password");
@@ -1033,10 +1231,11 @@ public class Manager extends TeamMember{
             System.out.println("\t\t\t Enter 4 to View/Update Details of Projects");
             System.out.println("\t\t\t Enter 5 to Add Tasks");
             System.out.println("\t\t\t Enter 6 to Add Issues");
-            System.out.println("\t\t\t Enter 7 to Create Own Tasks");
-            System.out.println("\t\t\t Enter 8 to View/Update Own Tasks");
-            System.out.println("\t\t\t Enter 9 for DiscussionBox");
-            System.out.println("\t\t\t Enter 10 to Add Files");
+            //System.out.println("\t\t\t Enter 7 to update Recurring Task");
+            System.out.println("\t\t\t Enter 8 to Create Own Tasks");
+            System.out.println("\t\t\t Enter 9 to View/Update Own Tasks");
+            System.out.println("\t\t\t Enter 10 for DiscussionBox");
+            System.out.println("\t\t\t Enter 11 to Add Files");
             System.out.println("\t\t\t Enter -1 to Logout\n");
 
             int adminChoice=-1;
@@ -1054,12 +1253,12 @@ public class Manager extends TeamMember{
                 case 2 -> this.createProjects();
                 case 3 -> this.addMembersToProject();
                 case 4 -> this.viewProjects();
-                case 5 -> this.createTasks();
+                case 5 -> this.taskTypeDecider();
                 case 6 -> this.createIssues();
-                case 7 -> this.createOwnTasks();
-                case 8 ->this.viewOwnTasks();
-                case 9 -> this.writeDiscussionBox();
-                case 10 -> this.inputFiles();
+                case 8 -> this.createOwnTasks();
+                case 9 ->this.viewOwnTasks();
+                case 10 -> this.writeDiscussionBox();
+                case 11 -> this.inputFiles();
 
                 default -> System.out.println("\n\tWrong value. Give correct input number!\n");
 

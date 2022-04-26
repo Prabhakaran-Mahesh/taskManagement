@@ -16,6 +16,7 @@ public class Project {
     String projectStatus;
     ArrayList<String> workflow = new ArrayList<>();
     ArrayList<Task> taskArrayList = new ArrayList<>();
+    ArrayList<RecurringTask> recurringTaskArrayList = new ArrayList<>();
     ArrayList<Issue> issueArrayList = new ArrayList<>();
     ArrayList<TeamMember> teamMemberArrayList = new ArrayList<>();
     ArrayList<TeamLead> teamLeadArrayList = new ArrayList<>();
@@ -102,6 +103,14 @@ public class Project {
 
     public void setTaskArrayList(ArrayList<Task> taskArrayList) {
         this.taskArrayList = taskArrayList;
+    }
+
+    public ArrayList<RecurringTask> getRecurringTaskArrayList() {
+        return recurringTaskArrayList;
+    }
+
+    public void setRecurringTaskArrayList(ArrayList<RecurringTask> recurringTaskArrayList) {
+        this.recurringTaskArrayList = recurringTaskArrayList;
     }
 
     public ArrayList<Issue> getIssueArrayList() {

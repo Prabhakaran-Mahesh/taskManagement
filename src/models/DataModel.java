@@ -20,6 +20,7 @@ public class DataModel {
 
     static ArrayList<String> memberTaskStatus = new ArrayList<>();
     static ArrayList<String> memberIssueStatus = new ArrayList<>();
+    static ArrayList<String> recurringTaskType = new ArrayList<>();
 
     static public ArrayList<Manager> getManagerArrayList() {
         return managerArrayList;
@@ -140,5 +141,17 @@ public class DataModel {
 
     public static void setTesters(ArrayList<Tester> testers) {
         DataModel.testers = testers;
+    }
+
+    public static ArrayList<String> getRecurringTaskType() {
+        return recurringTaskType;
+    }
+
+    public static void setRecurringTaskType() {
+        recurringTaskType.add("Daily");
+        recurringTaskType.add("Weekly");
+        recurringTaskType.add("BiWeekly");
+        recurringTaskType.add("Monthly");
+        recurringTaskType.add("Annually");
     }
 }
