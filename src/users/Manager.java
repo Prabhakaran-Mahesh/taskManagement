@@ -1205,8 +1205,8 @@ public class Manager extends TeamMember{
         for(RecurringTask task : recurringTaskArrayList){
             i++;
 
-            System.out.printf("\t\t\t\t%15s %15s %15s %15s %25s\n", "S.no", "Task Name", "Priority", "RecurringTyp", "Description");
-            System.out.printf("\t\t\t\t%15s %15s %15s %15s %25s\n", i, task.getRecurringTaskName(), task.getRecurringTaskPriority(), task.getRecurringTaskType(), task.getRecurringTaskDescription());
+            System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s\n", "S.no", "Task Name", "Priority", "RecurringTyp", "Description");
+            System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s\n", i, task.getRecurringTaskName(), task.getRecurringTaskPriority(), task.getRecurringTaskType(), task.getRecurringTaskDescription());
 
         }
     }
