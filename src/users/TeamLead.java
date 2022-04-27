@@ -5,18 +5,15 @@ import models.DataModel;
 import models.DesignModel;
 import objects.Issue;
 import objects.Project;
-import objects.RecurringTask;
 import objects.Task;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TeamLead extends TeamMember{
     ArrayList<Task> createdTasks = new ArrayList<>();
     ArrayList<Issue> createdIssue = new ArrayList<>();
 
-    ArrayList<RecurringTask> recurringTaskArrayList = new ArrayList<>();
 
     ArrayList<Project> projectArrayList = new ArrayList<>();
 
@@ -68,7 +65,7 @@ public class TeamLead extends TeamMember{
             for (Project project : projectArrayList) {
 
                 i++;
-                System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getProjectStatus(), project.getDescription());
+                System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
             }
             DesignModel.printLine();
 
@@ -143,7 +140,7 @@ public class TeamLead extends TeamMember{
                             break;
                         }
                     }
-                    task = new Task(taskName, taskDeadline, taskDescription, DataModel.getPriority().get(priorityChoice - 1));
+                    task = new Task(taskName, this.getMemberName(), taskDeadline, taskDescription, DataModel.getPriority().get(priorityChoice - 1));
                     selectedProject.getTaskArrayList().add(task);
 
                     System.out.println("\t\t\tSelect Members for the task. Choose their S.no. Enter -1 to Stop");
@@ -191,170 +188,6 @@ public class TeamLead extends TeamMember{
 
     }
 
-    public void createRecurringTask(){
-        //ArrayList<Task> taskArrayList = new ArrayList<>();
-
-        System.out.println();
-        DesignModel.printLine();
-
-        if(projectArrayList.size() == 0){
-            System.out.print("\t\tNo Projects found!\n");
-            DesignModel.printLine();
-        }
-        else {
-            System.out.printf("\n\t\t%15s %15s %15s %25s %35s\n", "S.no", "ProjectName", "Deadline", "Status", "Description");
-            int i = 0;
-            for (Project project : projectArrayList) {
-                i++;
-                System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getProjectStatus(), project.getDescription());
-            }
-            DesignModel.printLine();
-
-            int choice;
-
-            while(true){
-                System.out.print("\n\t\tEnter the s.no of the Project which you want to add Recurring Tasks : ");
-                choice = Validation.numberCheck(scanner);
-                if(choice>0 && choice<=projectArrayList.size()){
-                    break;
-                }
-                else{
-                    System.out.println("\t\tWrong input");
-                }
-            }
-
-            Project selectedProject = projectArrayList.get(choice-1);
-
-
-
-            System.out.println("\t\tAdd tasks to the Project");
-
-            boolean done = false;
-            while (!done) {
-                System.out.println("\t\t\t1. Add task");
-                System.out.println("\t\t\t-1. Task Adding completed");
-                do {
-                    System.out.print("\n\t\tEnter your choice : ");
-                    choice = Validation.numberCheck(scanner);
-                } while (choice == -1);
-
-                if (choice == 1) {
-                    RecurringTask task;
-
-                    String taskName, taskDescription, taskDeadline;
-
-                    System.out.print("\t\t\tEnter Name of the Task : ");
-                    taskName = scanner.next();
-                    System.out.print("\t\t\tTask Description : ");
-                    scanner.nextLine();
-                    taskDescription = scanner.nextLine();
-                    System.out.print("");
-
-                    /*do {
-                        System.out.print("\t\t\tTask Deadline (Date format : dd-MM-yyyy) : ");
-                        taskDeadline = scanner.next();
-
-                    } while (!Validation.deadlineDateValidation(selectedProject.getDeadline(), taskDeadline));*/
-
-                    System.out.println("\t\tPriority List : ");
-
-                    i = 0;
-                    for (String m : DataModel.getPriority()) {
-                        i++;
-                        System.out.print("\n\t\t\t S.no : " + i + ". " + m);
-                    }
-                    System.out.println();
-                    DesignModel.printLine();
-
-                    System.out.print("\t\tChoose task Priority! Enter");
-                    int priorityChoice = -1;
-                    while (true) {
-                        while (priorityChoice == -1) {
-                            System.out.print("\t\t S.no: ");
-                            priorityChoice = Validation.numberCheck(scanner);
-                        }
-
-                        if (priorityChoice < 1 || priorityChoice > DataModel.getPriority().size()) {
-                            System.out.println("\n\t\t S.no not found!");
-                            priorityChoice = -1;
-                        } else {
-                            break;
-                        }
-                    }
-
-                    System.out.println("\t\tRecurring Type List : ");
-
-                    i = 0;
-                    for (String m : DataModel.getRecurringTaskType()) {
-                        i++;
-                        System.out.print("\n\t\t\t S.no : " + i + ". " + m);
-                    }
-                    System.out.println();
-                    DesignModel.printLine();
-
-                    System.out.print("\t\tChoose Recurring Task Type! Enter");
-                    int typeChoice = -1;
-                    while (true) {
-                        while (typeChoice == -1) {
-                            System.out.print("\t\t S.no: ");
-                            typeChoice = Validation.numberCheck(scanner);
-                        }
-
-                        if (typeChoice < 1 || typeChoice > DataModel.getRecurringTaskType().size()) {
-                            System.out.println("\n\t\t S.no not found!");
-                            priorityChoice = -1;
-                        } else {
-                            break;
-                        }
-                    }
-
-                    task = new RecurringTask(taskName, taskDescription, DataModel.getPriority().get(priorityChoice - 1), DataModel.getRecurringTaskType().get(typeChoice-1));
-                    selectedProject.getRecurringTaskArrayList().add(task);
-                    this.recurringTaskArrayList.add(task);
-
-                    System.out.println();
-                    DesignModel.printLine();
-                } else if (choice == -2) {
-                    System.out.println("\t\tTasks Added to the task");
-                    done = true;
-                    System.out.println();
-                    DesignModel.printLine();
-                }
-
-            }
-        }
-
-    }
-
-    public void taskTypeDecider(){
-        System.out.println("\t\t\tCreate Tasks:");
-        System.out.println("\n\t\t\tEnter 1 to Create a Regular Task");
-        System.out.println("\t\t\tEnter 2 to Create a Recurring Task");
-        System.out.println("\t\t\tEnter -1 to Go back\n");
-
-        int choice;
-
-        while(true){
-            System.out.print("\n\t\tEnter the s.no of Type of Task Tasks : ");
-            choice = Validation.numberCheck(scanner);
-            if(choice==-2 || choice==1 || choice==2){
-                break;
-            }
-            else{
-                System.out.println("\t\tWrong input");
-            }
-        }
-
-        if(choice ==1){
-            this.createTasks();
-        } else if(choice == 2){
-            this.createRecurringTask();
-        } else{
-            System.out.println();
-            DesignModel.printLine();
-        }
-    }
-
     public void createIssues(){
         //ArrayList<Task> taskArrayList = new ArrayList<>();
 
@@ -371,7 +204,7 @@ public class TeamLead extends TeamMember{
             for (Project project : projectArrayList) {
 
                 i++;
-                System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getProjectStatus(), project.getDescription());
+                System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
             }
             DesignModel.printLine();
 
@@ -447,7 +280,7 @@ public class TeamLead extends TeamMember{
                         }
                     }
                     issue = new Issue(taskName, taskDeadline, taskDescription, DataModel.getPriority().get(priorityChoice - 1));
-                    selectedProject.getIssueArrayList().add(issue);
+                    //selectedProject.getIssueArrayList().add(issue);
 
                     System.out.println("\t\t\tSelect Members for the task. Choose their S.no. Enter -1 to Stop");
                     i = 0;
@@ -570,7 +403,7 @@ public class TeamLead extends TeamMember{
                 }
 
                 case 4 -> {
-                    System.out.println("\n\t\tCurrent Priority : " + selectedTask.getTaskPriority());
+                    System.out.println("\n\t\tCurrent Priority : " + selectedTask.getPriority());
                     System.out.print("\t\tEnter the new New Priority S.no : ");
 
                     int i = 0;
@@ -596,11 +429,11 @@ public class TeamLead extends TeamMember{
                         }
                     }
 
-                    selectedTask.setTaskPriority(DataModel.getPriority().get(priorityChoice-1));
+                    selectedTask.setPriority(DataModel.getPriority().get(priorityChoice-1));
                 }
 
                 case 5 -> {
-                    System.out.println("\n\t\tCurrent Status : " + selectedTask.getTaskStatus());
+                    System.out.println("\n\t\tCurrent Status : " + selectedTask.getStatus());
                     System.out.print("\t\tEnter the new New Priority S.no : ");
 
                     int i = 0;
@@ -637,8 +470,8 @@ public class TeamLead extends TeamMember{
                             }
                         }
 
-                        selectedTask.setTaskStatus(DataModel.getTaskStatus().get(priorityChoice-1));
-                        selectedProject.getProgressArrayList().add(selectedTask);
+                        selectedTask.setStatus(DataModel.getTaskStatus().get(priorityChoice-1));
+                        //selectedProject.getProgressArrayList().add(selectedTask);
                         if(DataModel.getTaskStatus().get(priorityChoice-1).equalsIgnoreCase("Submitted for test")){
                             selectedProject.getTester().getAssignedTasks().add(selectedTask);
                         }
@@ -651,7 +484,7 @@ public class TeamLead extends TeamMember{
                         System.out.print("");
 
                         DataModel.getTaskStatus().add(chat);
-                        selectedTask.setTaskStatus(chat);
+                        selectedTask.setStatus(chat);
                     }
 
                 }
@@ -679,7 +512,7 @@ public class TeamLead extends TeamMember{
             for (Project project : projectArrayList) {
 
                 i++;
-                System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getProjectStatus(), project.getDescription());
+                System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
             }
             DesignModel.printLine();
 
@@ -705,7 +538,7 @@ public class TeamLead extends TeamMember{
                 System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
                 for (Task task : selectedProject.getTaskArrayList()) {
                     i++;
-                    System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
+                    System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getDescription());
                 }
 
                 DesignModel.printLine();
@@ -729,7 +562,7 @@ public class TeamLead extends TeamMember{
         }
     }
 
-    private void updateIssueDetails(Project selectedProject){
+    /*private void updateIssueDetails(Project selectedProject){
         int choice;
 
         while(true){
@@ -806,7 +639,7 @@ public class TeamLead extends TeamMember{
                 }
 
                 case 4 -> {
-                    System.out.println("\n\t\tCurrent Priority : " + selectedTask.getTaskPriority());
+                    System.out.println("\n\t\tCurrent Priority : " + selectedTask.getPriority());
                     System.out.print("\t\tEnter the new New Priority S.no : ");
 
                     int i = 0;
@@ -832,7 +665,7 @@ public class TeamLead extends TeamMember{
                         }
                     }
 
-                    selectedTask.setTaskPriority(DataModel.getPriority().get(priorityChoice-1));
+                    selectedTask.setPriority(DataModel.getPriority().get(priorityChoice-1));
                 }
 
                 case 5 -> {
@@ -939,7 +772,7 @@ public class TeamLead extends TeamMember{
                 System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
                 for (Issue task : selectedProject.getIssueArrayList()) {
                     i++;
-                    System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getIssueStatus(), task.getDescription());
+                    System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getIssueStatus(), task.getDescription());
                 }
 
                 DesignModel.printLine();
@@ -961,7 +794,7 @@ public class TeamLead extends TeamMember{
                 }
             }
         }
-    }
+    }*/
 
     public int readDiscussionBox(){
         System.out.println();
@@ -977,7 +810,7 @@ public class TeamLead extends TeamMember{
         for (Project project : projectArrayList) {
 
             i++;
-            System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getProjectStatus(), project.getDescription());
+            System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
         }
         DesignModel.printLine();
 
@@ -995,11 +828,11 @@ public class TeamLead extends TeamMember{
         }
 
         Project selectedProject = projectArrayList.get(choice-1);
-        if(selectedProject.getChatBox().size() == 0){
+        if(selectedProject.getChatGroup().size() == 0){
             System.out.println("\t\tChatbox is Empty");
         }
         else{
-            for(String msg : selectedProject.getChatBox()){
+            for(String msg : selectedProject.getChatGroup()){
                 System.out.println("\t\t\t" + msg);
             }
         }
@@ -1038,7 +871,7 @@ public class TeamLead extends TeamMember{
                     System.out.print("");
 
                     if(Validation.messageValidation(chat)){
-                        getProjectArrayList().get(chatboxResult).getChatBox().add("\t\t\t\tTeamLead -> " + this.memberName + " : " + chat);
+                        getProjectArrayList().get(chatboxResult).getChatGroup().add("\t\t\t\tTeamLead -> " + this.memberName + " : " + chat);
                     }
                 } else {
                     System.out.println("\t\tWrong number. check your Input!\n");
@@ -1061,7 +894,7 @@ public class TeamLead extends TeamMember{
         for (Project project : projectArrayList) {
 
             i++;
-            System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getProjectStatus(), project.getDescription());
+            System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
         }
         DesignModel.printLine();
 
@@ -1079,11 +912,11 @@ public class TeamLead extends TeamMember{
         }
 
         Project selectedProject = projectArrayList.get(choice-1);
-        if(selectedProject.getFileFolder().size() == 0){
+        if(selectedProject.getFileManager().size() == 0){
             System.out.println("\t\tFileFolder is Empty");
         }
         else{
-            for(String msg : selectedProject.getFileFolder()){
+            for(String msg : selectedProject.getFileManager()){
                 System.out.println("\t\t\t" + msg + "\t\tDownload!");
             }
         }
@@ -1126,19 +959,19 @@ public class TeamLead extends TeamMember{
                         File file = new File("E:/Java/projects/taskManagement/src/files/"+chat);
                         if(file.exists()) {
                             System.out.println("\t\tFile Uploaded Successfully");
-                            getProjectArrayList().get(chatboxResult).getFileFolder().add("\t\t\t\tTeamLead -> " + this.memberName + " : " + chat);
+                            getProjectArrayList().get(chatboxResult).getFileManager().add("\t\t\t\tTeamLead -> " + this.memberName + " : " + chat);
                         }
                         else{
                             System.out.println("\t\tFile not Found in your Directory");
                         }
                     }
                 } else if (choice == 2) {
-                    int size = getProjectArrayList().get(chatboxResult).getFileFolder().size();
+                    int size = getProjectArrayList().get(chatboxResult).getFileManager().size();
                     if(size == 0)
                         System.out.println("\t\t\tNo Files are found!");
                     else{
                         int i=0;
-                        for(String string : getProjectArrayList().get(chatboxResult).getFileFolder()){
+                        for(String string : getProjectArrayList().get(chatboxResult).getFileManager()){
                             i++;
                             System.out.printf("\t\t%s. %s\n", i, string);
                         }
@@ -1148,7 +981,7 @@ public class TeamLead extends TeamMember{
                         while(true){
                             System.out.print("\n\t\tEnter the s.no of the file you want to download : ");
                             file = Validation.numberCheck(scanner);
-                            if(file>0 && file<=getProjectArrayList().get(chatboxResult).getFileFolder().size()){
+                            if(file>0 && file<=getProjectArrayList().get(chatboxResult).getFileManager().size()){
                                 break;
                             }
                             else{
@@ -1156,7 +989,7 @@ public class TeamLead extends TeamMember{
                             }
                         }
 
-                        System.out.println("\n\t\t\t" + getProjectArrayList().get(chatboxResult).getFileFolder().get(file-1) + " file Downloaded");
+                        System.out.println("\n\t\t\t" + getProjectArrayList().get(chatboxResult).getFileManager().get(file-1) + " file Downloaded");
                     }
                 } else {
                     System.out.println("\t\tWrong number. check your Input!\n");
@@ -1165,17 +998,17 @@ public class TeamLead extends TeamMember{
         }
     }
 
-    public void workFlow() {
+    /*public void workFlow() {
         Project selectedProject = getProjectArrayList().get(0);
 
         System.out.println("\n\t\tWorkFlow : \n");
 
         for(Task task : selectedProject.getProgressArrayList()){
-            System.out.printf("\t\t\t\tName : %s \tPriority : %s \tStatus : %s\n", task.getTaskName(), task.getTaskPriority(), task.getTaskStatus());
+            System.out.printf("\t\t\t\tName : %s \tPriority : %s \tStatus : %s\n", task.getTaskName(), task.getPriority(), task.getStatus());
             char arrow = '\u2193';
             System.out.println("\t\t\t\t\t"+arrow);
         }
-    }
+    }*/
 
     public void viewDashboard(){
         System.out.println("\n\t\tDashboard!\n");
@@ -1184,9 +1017,9 @@ public class TeamLead extends TeamMember{
         int i=0;
         for(Task task : getProjectArrayList().get(0).getTaskArrayList()){
             i++;
-            if(task.getTaskStatus().equalsIgnoreCase("Implementation") || task.getTaskStatus().equalsIgnoreCase("Optimization") || task.getTaskStatus().equalsIgnoreCase("Designing") || task.getTaskStatus().equalsIgnoreCase("Requirement Analysis")){
+            if(task.getStatus().equalsIgnoreCase("Implementation") || task.getStatus().equalsIgnoreCase("Optimization") || task.getStatus().equalsIgnoreCase("Designing") || task.getStatus().equalsIgnoreCase("Requirement Analysis")){
                 System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
-                System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
+                System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getDescription());
             }
         }
 
@@ -1194,23 +1027,16 @@ public class TeamLead extends TeamMember{
         System.out.println("\n\t\t\t Not Started Tasks : \n");
         for(Task task : getProjectArrayList().get(0).getTaskArrayList()){
             i++;
-            if(task.getTaskStatus().equalsIgnoreCase("Not yet Started")){
+            if(task.getStatus().equalsIgnoreCase("Not yet Started")){
                 System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
-                System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
+                System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getDescription());
             }
         }
 
-        i = 0;
-        System.out.println("\n\t\t\t Recurring Tasks : \n");
-        for(RecurringTask task : recurringTaskArrayList){
-            i++;
+        //i = 0;
+        //System.out.println("\n\t\t\t Recurring Tasks : \n");
 
-            System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s\n", "S.no", "Task Name", "Priority", "RecurringTyp", "Description");
-            System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s\n", i, task.getRecurringTaskName(), task.getRecurringTaskPriority(), task.getRecurringTaskType(), task.getRecurringTaskDescription());
-
-        }
-
-        this.workFlow();
+        //this.workFlow();
     }
 
 
@@ -1225,7 +1051,7 @@ public class TeamLead extends TeamMember{
             System.out.println("\t\t\t Enter 1 to Add tasks to the Project");
             System.out.println("\t\t\t Enter 2 to Add Issues to the Project");
             System.out.println("\t\t\t Enter 3 to View/Update details of Tasks");
-            System.out.println("\t\t\t Enter 4 to View/Update details of Issues");
+            //System.out.println("\t\t\t Enter 4 to View/Update details of Issues");
             System.out.println("\t\t\t Enter 5 to Create Own Tasks");
             System.out.println("\t\t\t Enter 6 to View/Update Own Tasks");
             System.out.println("\t\t\t Enter 7 for DiscussionBox");
@@ -1245,7 +1071,7 @@ public class TeamLead extends TeamMember{
                 case 1 -> this.createTasks();
                 case 2 -> this.createIssues();
                 case 3 -> this.viewTask();
-                case 4 -> this.viewIssue();
+                //case 4 -> this.viewIssue();
                 case 5 -> this.createOwnTasks();
                 case 6 -> this.viewOwnTasks();
                 case 7 -> this.writeDiscussionBox();

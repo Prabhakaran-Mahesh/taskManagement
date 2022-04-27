@@ -16,7 +16,9 @@ public class DataModel {
     static ArrayList<String> projectStatus = new ArrayList<>();
     static ArrayList<String> priority = new ArrayList<>();
     static ArrayList<String> taskStatus = new ArrayList<>();
-    static ArrayList<String> issueStatus = new ArrayList<>();
+    static  ArrayList<String> issueStatus = new ArrayList<>();
+    static ArrayList<String> issueSeverity = new ArrayList<>();
+    static ArrayList<String> issueClassification = new ArrayList<>();
 
     static ArrayList<String> memberTaskStatus = new ArrayList<>();
     static ArrayList<String> memberIssueStatus = new ArrayList<>();
@@ -39,7 +41,7 @@ public class DataModel {
         projectStatus.add("Implementation");
         projectStatus.add("Beta version Deployed");
         projectStatus.add("Deployed");
-        projectStatus.add("On Hold");
+        projectStatus.add("Closed");
     }
 
     public static ArrayList<String> getPriority() {
@@ -47,6 +49,7 @@ public class DataModel {
     }
 
     public static void setPriority() {
+        priority.add("None");
         priority.add("Low");
         priority.add("Medium");
         priority.add("High");
@@ -63,11 +66,11 @@ public class DataModel {
         taskStatus.add("Designing");
         taskStatus.add("Implementation");
         taskStatus.add("Optimization");
+        taskStatus.add("On hold");
+        taskStatus.add("Delayed");
         taskStatus.add("Submitted for test");
         taskStatus.add("Issue Reported");
         taskStatus.add("Completed");
-        taskStatus.add("On hold");
-        taskStatus.add("Delayed");
     }
 
     public static ArrayList<String> getIssueStatus() {
@@ -105,9 +108,11 @@ public class DataModel {
     public static void setMemberIssueStatus() {
         memberIssueStatus.add("Analysis");
         memberIssueStatus.add("Implementation");
-        memberIssueStatus.add("Optimization");
-        memberIssueStatus.add("Submitted for Test");
+        memberIssueStatus.add("On hold");
         memberIssueStatus.add("Delayed");
+        memberIssueStatus.add("Submitted for Test");
+        memberIssueStatus.add("Issue Reported");
+        memberIssueStatus.add("Committed");
     }
 
     public static ArrayList<TeamMember> getTeamMembers() {
@@ -148,10 +153,35 @@ public class DataModel {
     }
 
     public static void setRecurringTaskType() {
+        recurringTaskType.add("None");
         recurringTaskType.add("Daily");
         recurringTaskType.add("Weekly");
         recurringTaskType.add("BiWeekly");
         recurringTaskType.add("Monthly");
         recurringTaskType.add("Annually");
+    }
+
+    public static ArrayList<String> getIssueSeverity() {
+        return issueSeverity;
+    }
+
+    public static void setIssueSeverity() {
+        issueSeverity.add("Critical");
+        issueSeverity.add("Major");
+        issueSeverity.add("Minor");
+    }
+
+    public static ArrayList<String> getIssueClassification() {
+        return issueClassification;
+    }
+
+    public static void setIssueClassification() {
+        issueClassification.add("Security");
+        issueClassification.add("Crash/Hang");
+        issueClassification.add("Data Loss");
+        issueClassification.add("Performance");
+        issueClassification.add("UI/Usability");
+        issueClassification.add("Enhancement");
+        issueClassification.add("Other bugs");
     }
 }

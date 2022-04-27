@@ -106,6 +106,16 @@ public class Validation {
             try {
                 DateFormat df = new SimpleDateFormat(DATE_FORMAT);
                 df.setLenient(false);
+                LocalDate localDate1 = LocalDate.now();
+                df.parse(projectDeadline);
+            } catch (ParseException e) {
+                //System.out.println("\t\tWrong date or Wrong format!\n");
+                return true;
+            }
+
+            try {
+                DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+                df.setLenient(false);
                 df.parse(date);
                 df.parse(projectDeadline);
                 boolean result = dateToLocalDate(df.parse(date)).isBefore(dateToLocalDate(df.parse(projectDeadline)));

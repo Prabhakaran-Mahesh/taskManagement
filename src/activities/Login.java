@@ -63,31 +63,6 @@ public class Login {
             }
         }
 
-        /*for (Manager manager : DataModel.getManagerArrayList()) {
-            if (manager.getOrganisationName().equalsIgnoreCase(org)) {
-                for(TeamLead teamLead : manager.getTeamLeads()){
-                    if (teamLead.getMemberPassword().equals(password) && teamLead.getMemberEmail().equals(email)) {
-                        teamLead.teamLeadWork();
-                        return true;
-                    }
-                }
-
-                Tester tester = manager.getTester();
-                if (tester.getMemberPassword().equals(password) && tester.getMemberEmail().equals(email)) {
-                    tester.testerWorks();
-                    return true;
-                }
-
-                for(TeamMember teamMember : manager.getCompanyMembers()){
-                    if (teamMember.getMemberPassword().equals(password) && teamMember.getMemberEmail().equals(email)) {
-                        teamMember.teamMemberWork();
-                        return true;
-                    }
-                }
-                System.out.println("\n\t\tCheck your organisation Name! If correct, check your Credentials");
-                return false;
-            }
-        }*/
         System.out.println("\n\t\tCheck your Credentials");
         return false;
 

@@ -7,46 +7,54 @@ import users.Tester;
 import java.util.ArrayList;
 
 public class Project {
+    String projectId;
     String projectName;
-    String description;
+    String projectDescription;
     String deadline;
-
-    ArrayList<String> chatBox = new ArrayList<>();
-    ArrayList<String> fileFolder = new ArrayList<>();
-    String projectStatus;
-    ArrayList<String> workflow = new ArrayList<>();
-    ArrayList<Task> taskArrayList = new ArrayList<>();
-    ArrayList<RecurringTask> recurringTaskArrayList = new ArrayList<>();
-    ArrayList<Issue> issueArrayList = new ArrayList<>();
+    String duration;
+    String status;
     ArrayList<TeamMember> teamMemberArrayList = new ArrayList<>();
     ArrayList<TeamLead> teamLeadArrayList = new ArrayList<>();
-    ArrayList<Task> progressArrayList = new ArrayList<>();
     Tester tester;
+    ArrayList<String> chatGroup = new ArrayList<>();
+    ArrayList<String> fileManager = new ArrayList<>();
+    ArrayList<Task> taskArrayList = new ArrayList<>();
+    ArrayList<String> workflow = new ArrayList<>();
+    ArrayList<Object> recycleBin = new ArrayList<>();
+    ArrayList<String> materials = new ArrayList<>();
 
-    public Project(String projectName, String description, String deadline) {
+    public Project(String projectName, String projectDescription, String deadline) {
         this.projectName = projectName;
-        this.description = description;
+        this.projectDescription = projectDescription;
         this.deadline = deadline;
-        this.projectStatus = "Not yet Started";
+        this.status = "Not yet started";
     }
 
-    public Project(String projectName, String description, String deadline, ArrayList<TeamMember> teamMemberArrayList, ArrayList<TeamLead> teamLeadArrayList) {
+    public Project(String projectName, String projectDescription, String deadline, ArrayList<TeamMember> teamMemberArrayList, ArrayList<TeamLead> teamLeadArrayList, Tester tester) {
         this.projectName = projectName;
-        this.description = description;
+        this.projectDescription = projectDescription;
         this.deadline = deadline;
-        this.teamMemberArrayList = teamMemberArrayList;
-        this.teamLeadArrayList = teamLeadArrayList;
-        this.projectStatus = "Not yet Started";
-    }
-
-    public Project(String projectName, String description, String deadline, ArrayList<TeamMember> teamMemberArrayList, ArrayList<TeamLead> teamLeadArrayList, Tester tester) {
-        this.projectName = projectName;
-        this.description = description;
-        this.deadline = deadline;
-        this.projectStatus = "Not yet Started";
+        this.status = "Not yet Started";
         this.teamMemberArrayList = teamMemberArrayList;
         this.teamLeadArrayList = teamLeadArrayList;
         this.tester = tester;
+    }
+
+    public Project(String projectName, String projectDescription, String deadline, ArrayList<TeamMember> teamMemberArrayList, ArrayList<TeamLead> teamLeadArrayList) {
+        this.projectName = projectName;
+        this.projectDescription = projectDescription;
+        this.deadline = deadline;
+        this.status = "Not yet Started";
+        this.teamMemberArrayList = teamMemberArrayList;
+        this.teamLeadArrayList = teamLeadArrayList;
+    }
+
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
     }
 
     public String getProjectName() {
@@ -57,12 +65,12 @@ public class Project {
         this.projectName = projectName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getProjectDescription() {
+        return projectDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
     }
 
     public String getDeadline() {
@@ -73,52 +81,20 @@ public class Project {
         this.deadline = deadline;
     }
 
-    public ArrayList<String> getChatBox() {
-        return chatBox;
+    public String getDuration() {
+        return duration;
     }
 
-    public void setChatBox(ArrayList<String> chatBox) {
-        this.chatBox = chatBox;
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
-    public String getProjectStatus() {
-        return projectStatus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setProjectStatus(String projectStatus) {
-        this.projectStatus = projectStatus;
-    }
-
-    public ArrayList<String> getWorkflow() {
-        return workflow;
-    }
-
-    public void setWorkflow(ArrayList<String> workflow) {
-        this.workflow = workflow;
-    }
-
-    public ArrayList<Task> getTaskArrayList() {
-        return taskArrayList;
-    }
-
-    public void setTaskArrayList(ArrayList<Task> taskArrayList) {
-        this.taskArrayList = taskArrayList;
-    }
-
-    public ArrayList<RecurringTask> getRecurringTaskArrayList() {
-        return recurringTaskArrayList;
-    }
-
-    public void setRecurringTaskArrayList(ArrayList<RecurringTask> recurringTaskArrayList) {
-        this.recurringTaskArrayList = recurringTaskArrayList;
-    }
-
-    public ArrayList<Issue> getIssueArrayList() {
-        return issueArrayList;
-    }
-
-    public void setIssueArrayList(ArrayList<Issue> issueArrayList) {
-        this.issueArrayList = issueArrayList;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public ArrayList<TeamMember> getTeamMemberArrayList() {
@@ -137,14 +113,6 @@ public class Project {
         this.teamLeadArrayList = teamLeadArrayList;
     }
 
-    public ArrayList<String> getFileFolder() {
-        return fileFolder;
-    }
-
-    public void setFileFolder(ArrayList<String> fileFolder) {
-        this.fileFolder = fileFolder;
-    }
-
     public Tester getTester() {
         return tester;
     }
@@ -153,11 +121,51 @@ public class Project {
         this.tester = tester;
     }
 
-    public ArrayList<Task> getProgressArrayList() {
-        return progressArrayList;
+    public ArrayList<String> getChatGroup() {
+        return chatGroup;
     }
 
-    public void setProgressArrayList(ArrayList<Task> progressArrayList) {
-        this.progressArrayList = progressArrayList;
+    public void setChatGroup(ArrayList<String> chatGroup) {
+        this.chatGroup = chatGroup;
+    }
+
+    public ArrayList<String> getFileManager() {
+        return fileManager;
+    }
+
+    public void setFileManager(ArrayList<String> fileManager) {
+        this.fileManager = fileManager;
+    }
+
+    public ArrayList<Task> getTaskArrayList() {
+        return taskArrayList;
+    }
+
+    public void setTaskArrayList(ArrayList<Task> taskArrayList) {
+        this.taskArrayList = taskArrayList;
+    }
+
+    public ArrayList<String> getWorkflow() {
+        return workflow;
+    }
+
+    public void setWorkflow(ArrayList<String> workflow) {
+        this.workflow = workflow;
+    }
+
+    public ArrayList<Object> getRecycleBin() {
+        return recycleBin;
+    }
+
+    public void setRecycleBin(ArrayList<Object> recycleBin) {
+        this.recycleBin = recycleBin;
+    }
+
+    public ArrayList<String> getMaterials() {
+        return materials;
+    }
+
+    public void setMaterials(ArrayList<String> materials) {
+        this.materials = materials;
     }
 }

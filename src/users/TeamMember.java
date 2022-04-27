@@ -169,7 +169,7 @@ public class TeamMember {
 
         Task selectedTask = tasks.get(choice-1);
 
-        System.out.println("\n\t\tCurrent Status : " + selectedTask.getTaskStatus());
+        System.out.println("\n\t\tCurrent Status : " + selectedTask.getStatus());
         System.out.print("\t\tEnter the new New Priority S.no : ");
 
         int i = 0;
@@ -195,7 +195,7 @@ public class TeamMember {
             }
         }
 
-        selectedTask.setTaskStatus(DataModel.getMemberTaskStatus().get(priorityChoice-1));
+        selectedTask.setStatus(DataModel.getMemberTaskStatus().get(priorityChoice-1));
     }
 
     public void viewAssignedTask(){
@@ -213,7 +213,7 @@ public class TeamMember {
             System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
             for (Task task : getAssignedTasks()) {
                 i++;
-                System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
+                System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getDescription());
             }
 
             DesignModel.printLine();
@@ -258,9 +258,9 @@ public class TeamMember {
                 for (Task task : getAssignedTasks()) {
                     if (task.getTaskName().equalsIgnoreCase(enteredSearchValue)) {
                         filteredTasks.add(task);
-                    } else if (task.getTaskStatus().equalsIgnoreCase(enteredSearchValue)) {
+                    } else if (task.getStatus().equalsIgnoreCase(enteredSearchValue)) {
                         filteredTasks.add(task);
-                    } else if (task.getTaskPriority().equalsIgnoreCase(enteredSearchValue)) {
+                    } else if (task.getPriority().equalsIgnoreCase(enteredSearchValue)) {
                         filteredTasks.add(task);
                     }
                 }
@@ -273,7 +273,7 @@ public class TeamMember {
                     System.out.printf("\n\t\t%15s %15s %15s %15s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
                     for(Task task : filteredTasks){
                         i++;
-                        System.out.printf("\t\t%15s %15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
+                        System.out.printf("\t\t%15s %15s %15s %15s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getDescription());
                     }
 
                     System.out.println("\n\t\tDo you want to update Task Details? Enter 1 to yes, Enter -1 to no");
@@ -344,7 +344,7 @@ public class TeamMember {
         }
 
         selectedTask.setIssueStatus(DataModel.getMemberIssueStatus().get(priorityChoice-1));
-        getProjectArrayList().get(0).getProgressArrayList().add(selectedTask);
+        //getProjectArrayList().get(0).getProgressArrayList().add(selectedTask);
     }
 
     public void viewAssignedIssue(){
@@ -362,7 +362,7 @@ public class TeamMember {
             System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "IssueName", "Priority", "Deadline", "Status", "Description");
             for (Issue task : getAssignedIssues()) {
                 i++;
-                System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getIssueStatus(), task.getDescription());
+                System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getIssueStatus(), task.getDescription());
             }
 
             DesignModel.printLine();
@@ -400,7 +400,7 @@ public class TeamMember {
         for (Project project : projectArrayList) {
 
             i++;
-            System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getProjectStatus(), project.getDescription());
+            System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
         }
         DesignModel.printLine();
 
@@ -418,11 +418,11 @@ public class TeamMember {
         }
 
         Project selectedProject = projectArrayList.get(choice-1);
-        if(selectedProject.getChatBox().size() == 0){
+        if(selectedProject.getChatGroup().size() == 0){
             System.out.println("\t\tChatbox is Empty");
         }
         else{
-            for(String msg : selectedProject.getChatBox()){
+            for(String msg : selectedProject.getChatGroup()){
                 System.out.println("\t\t\t" + msg);
             }
         }
@@ -461,7 +461,7 @@ public class TeamMember {
                     System.out.print("");
 
                     if(Validation.messageValidation(chat)){
-                        getProjectArrayList().get(chatboxResult).getChatBox().add("\t\t\t\t" + this.memberName + " : " + chat);
+                        getProjectArrayList().get(chatboxResult).getChatGroup().add("\t\t\t\t" + this.memberName + " : " + chat);
                     }
                 } else {
                     System.out.println("\t\tWrong number. check your Input!\n");
@@ -530,7 +530,7 @@ public class TeamMember {
                         break;
                     }
                 }
-                task = new Task(taskName, taskDeadline, taskDescription, DataModel.getPriority().get(priorityChoice - 1));
+                task = new Task(taskName, this.getMemberName(), taskDeadline, taskDescription, DataModel.getPriority().get(priorityChoice - 1));
                 getOwnTasks().add(task);
 
             }  else if (choice == -2) {
@@ -559,7 +559,7 @@ public class TeamMember {
             System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
             for (Task task : getOwnTasks()) {
                 i++;
-                System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
+                System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getDescription());
             }
 
             DesignModel.printLine();
@@ -659,7 +659,7 @@ public class TeamMember {
                 }
 
                 case 4 -> {
-                    System.out.println("\n\t\tCurrent Priority : " + selectedTask.getTaskPriority());
+                    System.out.println("\n\t\tCurrent Priority : " + selectedTask.getPriority());
                     System.out.print("\t\tEnter the new New Priority S.no : ");
 
                     int i = 0;
@@ -685,11 +685,11 @@ public class TeamMember {
                         }
                     }
 
-                    selectedTask.setTaskPriority(DataModel.getPriority().get(priorityChoice-1));
+                    selectedTask.setPriority(DataModel.getPriority().get(priorityChoice-1));
                 }
 
                 case 5 -> {
-                    System.out.println("\n\t\tCurrent Status : " + selectedTask.getTaskStatus());
+                    System.out.println("\n\t\tCurrent Status : " + selectedTask.getStatus());
                     System.out.print("\t\tEnter the new New Priority S.no : ");
 
                     int i = 0;
@@ -715,7 +715,7 @@ public class TeamMember {
                         }
                     }
 
-                    selectedTask.setTaskStatus(DataModel.getTaskStatus().get(priorityChoice-1));
+                    selectedTask.setStatus(DataModel.getTaskStatus().get(priorityChoice-1));
                 }
 
                 default -> System.out.println("\n\tWrong value. Give correct input number!\n");
@@ -738,7 +738,7 @@ public class TeamMember {
         for (Project project : projectArrayList) {
 
             i++;
-            System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getProjectStatus(), project.getDescription());
+            System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
         }
         DesignModel.printLine();
 
@@ -756,11 +756,11 @@ public class TeamMember {
         }
 
         Project selectedProject = projectArrayList.get(choice-1);
-        if(selectedProject.getFileFolder().size() == 0){
+        if(selectedProject.getFileManager().size() == 0){
             System.out.println("\t\tFileFolder is Empty");
         }
         else{
-            for(String msg : selectedProject.getFileFolder()){
+            for(String msg : selectedProject.getFileManager()){
                 System.out.println("\t\t\t" + msg);
             }
         }
@@ -803,19 +803,19 @@ public class TeamMember {
                         File file = new File("E:/Java/projects/taskManagement/src/files/"+chat);
                         if(file.exists()) {
                             System.out.println("\t\tFile Uploaded Successfully");
-                            getProjectArrayList().get(chatboxResult).getFileFolder().add("\t\t\t\tTeamLead -> " + this.memberName + " : " + chat);
+                            getProjectArrayList().get(chatboxResult).getFileManager().add("\t\t\t\tTeamLead -> " + this.memberName + " : " + chat);
                         }
                         else{
                             System.out.println("\t\tFile not Found in your Directory");
                         }
                     }
                 } else if (choice == 2) {
-                    int size = getProjectArrayList().get(chatboxResult).getFileFolder().size();
+                    int size = getProjectArrayList().get(chatboxResult).getFileManager().size();
                     if(size == 0)
                         System.out.println("\t\t\tNo Files are found!");
                     else{
                         int i=0;
-                        for(String string : getProjectArrayList().get(chatboxResult).getFileFolder()){
+                        for(String string : getProjectArrayList().get(chatboxResult).getFileManager()){
                             i++;
                             System.out.printf("\t\t%s. %s\n", i, string);
                         }
@@ -825,7 +825,7 @@ public class TeamMember {
                         while(true){
                             System.out.print("\n\t\tEnter the s.no of the file you want to download : ");
                             file = Validation.numberCheck(scanner);
-                            if(file>0 && file<=getProjectArrayList().get(chatboxResult).getFileFolder().size()){
+                            if(file>0 && file<=getProjectArrayList().get(chatboxResult).getFileManager().size()){
                                 break;
                             }
                             else{
@@ -833,7 +833,7 @@ public class TeamMember {
                             }
                         }
 
-                        System.out.println("\n\t\t\t" + getProjectArrayList().get(chatboxResult).getFileFolder().get(file-1) + " file Downloaded");
+                        System.out.println("\n\t\t\t" + getProjectArrayList().get(chatboxResult).getFileManager().get(file-1) + " file Downloaded");
                     }
                 } else {
                     System.out.println("\t\tWrong number. check your Input!\n");
@@ -849,9 +849,9 @@ public class TeamMember {
         int i=0;
         for(Task task : getAssignedTasks()){
             i++;
-            if(task.getTaskStatus().equalsIgnoreCase("Implementation") || task.getTaskStatus().equalsIgnoreCase("Optimization") || task.getTaskStatus().equalsIgnoreCase("Designing") || task.getTaskStatus().equalsIgnoreCase("Requirement Analysis")){
+            if(task.getStatus().equalsIgnoreCase("Implementation") || task.getStatus().equalsIgnoreCase("Optimization") || task.getStatus().equalsIgnoreCase("Designing") || task.getStatus().equalsIgnoreCase("Requirement Analysis")){
                 System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
-                System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
+                System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getDescription());
             }
         }
 
@@ -859,9 +859,9 @@ public class TeamMember {
         System.out.println("\n\t\t\t Not Started Tasks : \n");
         for(Task task : getAssignedTasks()){
             i++;
-            if(task.getTaskStatus().equalsIgnoreCase("Not yet Started")){
+            if(task.getStatus().equalsIgnoreCase("Not yet Started")){
                 System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
-                System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getTaskPriority(), task.getDeadline(), task.getTaskStatus(), task.getDescription());
+                System.out.printf("\t\t\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getDescription());
             }
         }
 
