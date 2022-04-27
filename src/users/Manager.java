@@ -1121,7 +1121,7 @@ public class Manager extends TeamMember{
             }
             else{
                 System.out.println("\n\t\t\t Enter 1 to Add a File.");
-                System.out.println("\n\t\t\t Enter 2 to Download a File.");
+                System.out.println("\t\t\t Enter 2 to Download a File.");
                 System.out.println("\t\t\t Enter -1 to Close");
 
                 int choice;
@@ -1146,7 +1146,7 @@ public class Manager extends TeamMember{
                         File file = new File("E:/Java/projects/taskManagement/src/files/"+chat);
                         if(file.exists()) {
                             System.out.println("\t\tFile Uploaded Successfully");
-                            getProjectArrayList().get(chatboxResult).getFileFolder().add("\t\t\t\tTeamLead -> " + this.memberName + " : " + chat);
+                            getProjectArrayList().get(chatboxResult).getFileFolder().add("\t\t\t\tTeamLead -> " + this.memberName + " :" + chat);
                         }
                         else{
                             System.out.println("\t\tFile not Found in your Directory");
@@ -1176,7 +1176,7 @@ public class Manager extends TeamMember{
                             }
                         }
 
-                        System.out.println("\n\t\t\t" + getProjectArrayList().get(chatboxResult).getFileFolder().get(file-1) + " file Downloaded");
+                        System.out.println("\n\t\t\t" + getProjectArrayList().get(chatboxResult).getFileFolder().get(file-1).substring(getProjectArrayList().get(chatboxResult).getFileFolder().get(file-1).indexOf(":")+1) + " file Downloaded");
                     }
                 } else {
                     System.out.println("\t\tWrong number. check your Input!\n");
