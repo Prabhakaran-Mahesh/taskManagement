@@ -19,6 +19,7 @@ public class Project {
     ArrayList<String> chatGroup = new ArrayList<>();
     ArrayList<String> fileManager = new ArrayList<>();
     ArrayList<Task> taskArrayList = new ArrayList<>();
+    ArrayList<MileStones> mileStonesArrayList = new ArrayList<>();
     ArrayList<String> workflow = new ArrayList<>();
     ArrayList<Object> recycleBin = new ArrayList<>();
     ArrayList<String> materials = new ArrayList<>();
@@ -167,5 +168,13 @@ public class Project {
 
     public void setMaterials(ArrayList<String> materials) {
         this.materials = materials;
+    }
+
+    public ArrayList<MileStones> getMileStonesArrayList() {
+        return mileStonesArrayList;
+    }
+
+    public void setMileStonesArrayList(ArrayList<MileStones> mileStonesArrayList) {
+        this.mileStonesArrayList = mileStonesArrayList;
     }
 }

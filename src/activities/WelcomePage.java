@@ -26,12 +26,12 @@ public class WelcomePage {
         // Display today's date and time.
         System.out.print("\n\tWelcome User".toUpperCase(Locale.ROOT));
         System.out.printf("%83s Today's Date and Time:    %s\n", " ", dateFormat.format(date));
-        System.out.println("\n\tLogin/SignUp\n\n");
+        System.out.println("\n\tLogin/SignUp\n");
 
 
         boolean exit = false;
         do{
-            System.out.println("\t\tEnter 1 for Login");
+            System.out.println("\n\t\tEnter 1 for Login");
             System.out.println("\t\tEnter 2 for Manager Registration");
             System.out.println("\t\tEnter -1 for Exit\n");
 

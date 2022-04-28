@@ -34,6 +34,7 @@ public class Task {
         this.description = description;
         this.deadline = deadline;
         this.priority = priority;
+        this.status = "Not yet Started";
     }
 
     public Task(String taskName, String taskOwner, String description, String deadline, String priority, ArrayList<TeamMember> assignedMembers, int type) {

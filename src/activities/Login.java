@@ -86,7 +86,7 @@ public class Login {
             if(limit == -1){
                 System.out.println("\n\t\tYou have attempted 3 times with wrong credentials!\n");
                 DesignModel.printLine();
-                System.exit(0);
+                return;
             }
             else if(limit<2){
                 System.out.println("\t\tYou have " + (limit+1) + " more attempts left\n");

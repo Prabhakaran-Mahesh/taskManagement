@@ -4,6 +4,7 @@ import activities.Validation;
 import models.DataModel;
 import models.DesignModel;
 import objects.Issue;
+import objects.MileStones;
 import objects.Project;
 import objects.Task;
 
@@ -18,7 +19,8 @@ public class Manager extends TeamMember{
     ArrayList<TeamMember> companyMembers = new ArrayList<>();
     ArrayList<Task> createdTasks = new ArrayList<>();
     ArrayList<Issue> createdIssue = new ArrayList<>();
-
+    ArrayList<String> notifications = new ArrayList<>();
+    ArrayList<MileStones> milestones = new ArrayList<>();
     ArrayList<TeamLead> teamLeads = new ArrayList<>();
     Tester tester = new Tester("", "", "");
 
@@ -89,6 +91,22 @@ public class Manager extends TeamMember{
     @Override
     public void setProjectArrayList(ArrayList<Project> projectArrayList) {
         this.projectArrayList = projectArrayList;
+    }
+
+    public ArrayList<String> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(ArrayList<String> notifications) {
+        this.notifications = notifications;
+    }
+
+    public ArrayList<MileStones> getMilestones() {
+        return milestones;
+    }
+
+    public void setMilestones(ArrayList<MileStones> milestones) {
+        this.milestones = milestones;
     }
 
     public void addMembersToTheCompany(){
@@ -211,7 +229,6 @@ public class Manager extends TeamMember{
                 System.out.println("\t\t\tWrong input!");
             }
         }
-
 
 
         System.out.print("\n\t\t\tEnter the ID number of the users you want for this project\n\t\t\tEnter -1 to stop. ");
@@ -976,6 +993,94 @@ public class Manager extends TeamMember{
 
     }
 
+    public void createMileStones(){
+        System.out.println();
+        DesignModel.printLine();
+
+        if(projectArrayList.size() == 0){
+            System.out.print("\t\tNo Projects found!\n");
+            DesignModel.printLine();
+        }
+        else {
+            System.out.printf("\n\t\t%15s %15s %15s %25s %35s\n", "S.no", "ProjectName", "Deadline", "Status", "Description");
+            int i = 0;
+            for (Project project : projectArrayList) {
+
+                i++;
+                System.out.printf("\t\t%15s %15s %15s %25s %35s\n", i, project.getProjectName(), project.getDeadline(), project.getStatus(), project.getProjectDescription());
+            }
+            DesignModel.printLine();
+
+            int choice;
+
+            while (true) {
+                System.out.print("\n\t\tEnter the s.no of the Project which you want to add Tasks : ");
+                choice = Validation.numberCheck(scanner);
+                if (choice > 0 && choice <= projectArrayList.size()) {
+                    break;
+                } else {
+                    System.out.println("\t\tWrong input");
+                }
+            }
+
+            Project selectedProject = projectArrayList.get(choice - 1);
+
+            if(selectedProject.getTaskArrayList().size() == 0){
+                System.out.println("\n\t\tThere is no Task Present in this Project!");
+            }
+            else{
+                String taskName, taskDescription;
+
+                System.out.print("\t\t\tEnter Name of the Milestone : ");
+                while ((taskName = scanner.nextLine()).isEmpty()) {
+                    System.out.print("Enter a Valid Project name : ");
+                }
+
+                System.out.print("\t\t\tTask Description : ");
+                //scanner.nextLine();
+                taskDescription = scanner.nextLine();
+                System.out.print("");
+                if(taskDescription.isEmpty()){
+                    taskDescription = "No Description";
+                }
+                System.out.print("");
+
+                i = 0;
+                System.out.printf("\n\t\t%15s %15s %15s %20s %25s %25s\n", "S.no", "TaskName", "Priority", "Deadline", "Status", "Description");
+                for (Task task : selectedProject.getTaskArrayList()) {
+                    i++;
+                    System.out.printf("\t\t%15s %15s %15s %20s %25s %25s\n", i, task.getTaskName(), task.getPriority(), task.getDeadline(), task.getStatus(), task.getDescription());
+                }
+
+                DesignModel.printLine();
+
+                System.out.println("\n\t\t1. Add Task to your MileStones\n\t\t2. Task Adding Completed");
+                ArrayList<Task> tasks = new ArrayList<>();
+
+                while (true) {
+
+                    System.out.print("\t\t\tS.no : ");
+                    int mem = scanner.nextInt();
+                    if (mem == -1) {
+                        break;
+                    } else if (mem < -1 || mem > selectedProject.getTaskArrayList().size() || mem == 0) {
+                        System.out.println("\n\t\t User not found! Enter the correct S.no");
+                    } else {
+                        tasks.add(selectedProject.getTaskArrayList().get(mem - 1));
+                    }
+                }
+
+                MileStones mileStones = new MileStones(taskName, taskDescription, tasks);
+                selectedProject.getMileStonesArrayList().add(mileStones);
+
+                System.out.println("\t\tMileStone Created\n");
+                DesignModel.printLine();
+
+
+            }
+        }
+    }
+
     private void updateTaskDetails(Project selectedProject){
         int choice;
 
@@ -1647,7 +1752,36 @@ public class Manager extends TeamMember{
         }
     }
 
+    public void showNotifications(){
+        System.out.println("\n\t\t\tShow Notifications : \n");
+    }
 
+    public void showMileStonesAchieved(){
+        System.out.println("\n\t\t\tMileStones Achieved : \n");
+
+        for(Project project : projectArrayList){
+            for(MileStones mileStones : project.getMileStonesArrayList()){
+                int i=0, j=0;
+                for(Task task : mileStones.getTaskArrayList()){
+                    i++;
+                    //System.out.println(task);
+                    if(task.getStatus().equalsIgnoreCase("Completed")){
+                        j++;
+                    }
+                }
+                System.out.println();
+                if(i == j){
+                    System.out.printf("\t\t\t\tProject Name :  %25s  Milestone Name :  %25s  Status :  %25s \n", project.getProjectName(), mileStones.getMileStoneName(), "Completed");
+                }
+            }
+        }
+    }
+
+    public void showDashboard(){
+        showNotifications();
+        showListOfProjects();
+        showMileStonesAchieved();
+    }
 
     public void managerWorks(){
 
@@ -1655,8 +1789,7 @@ public class Manager extends TeamMember{
 
         while(true){
             System.out.println("\t\tDashboard!\n");
-            this.showListOfProjects();
-            //this.showRecurringTasks();
+            this.showDashboard();
             System.out.println();
             System.out.println("\n\t\tWhat would you like to do :");
 
@@ -1667,11 +1800,11 @@ public class Manager extends TeamMember{
             System.out.println("\t\t\t Enter 3 to View/Update Details of Projects");
             System.out.println("\t\t\t Enter 4 to Add Tasks");
             System.out.println("\t\t\t Enter 5 to View/Update Details of Task");
-            //System.out.println("\t\t\t Enter 7 to update Recurring Task");
-            System.out.println("\t\t\t Enter 6 to Create Own Tasks");
-            System.out.println("\t\t\t Enter 7 to View/Update Own Tasks");
-            System.out.println("\t\t\t Enter 8 for DiscussionBox");
-            System.out.println("\t\t\t Enter 9 to Add Files");
+            System.out.println("\t\t\t Enter 6 to Create a Milestone");
+            System.out.println("\t\t\t Enter 7 to Create Own Tasks");
+            System.out.println("\t\t\t Enter 8 to View/Update Own Tasks");
+            System.out.println("\t\t\t Enter 9 for DiscussionBox");
+            System.out.println("\t\t\t Enter 10 to Add Files");
             System.out.println("\t\t\t Enter -1 to Logout\n");
 
             int adminChoice=-1;
@@ -1691,10 +1824,11 @@ public class Manager extends TeamMember{
                 case 3 -> this.viewProjects();
                 case 4 -> this.createTasks();
                 case 5 -> this.viewTask();
-                case 6 -> this.createOwnTasks();
-                case 7 ->this.viewOwnTasks();
-                case 8 -> this.writeDiscussionBox();
-                case 9 -> this.inputFiles();
+                case 6 -> this.createMileStones();
+                case 7 -> this.createOwnTasks();
+                case 8 ->this.viewOwnTasks();
+                case 9 -> this.writeDiscussionBox();
+                case 10 -> this.inputFiles();
 
                 default -> System.out.println("\n\tWrong value. Give correct input number!\n");
 
